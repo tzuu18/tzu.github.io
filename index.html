@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TzuJapan - Belajar Bahasa Jepang Dasar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memanggil CSS dari folder css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-stone-50 text-stone-900 selection:bg-red-200 selection:text-red-900">
+
+    <div id="app">
+        <!-- HEADER / NAVIGASI -->
+        <header class="bg-white/90 backdrop-blur-md border-b border-stone-200 sticky top-0 z-50 shadow-sm">
+            <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+                
+                <!-- Logo (Bisa di-klik untuk ke Beranda) -->
+                <div class="flex items-center space-x-3 cursor-pointer group" onclick="if(window.Router) window.Router.push('home')">
+                    <div class="relative w-12 h-12 flex items-center justify-center rounded-lg bg-stone-900 overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300">
+                        <div class="absolute w-8 h-8 bg-[#E60012] rounded-full translate-x-3 translate-y-3 opacity-90"></div>
+                        <span class="relative z-10 text-white font-black text-2xl tracking-tighter">T<span class="text-[#E60012]">Z</span></span>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h1 class="text-2xl font-black tracking-tight leading-none text-stone-900">Tzu<span class="text-[#E60012]">Japan</span></h1>
+                        <span class="text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em] mt-1">Nihongo Academy</span>
+                    </div>
+                </div>
+
+                <!-- Menu Header -->
+                <nav class="hidden md:flex items-center space-x-8 font-bold text-stone-500">
+                    <button onclick="if(window.Router) window.Router.push('home')" class="hover:text-[#E60012] transition-colors">Beranda</button>
+                    <button onclick="if(window.Router) window.Router.push('folder', 'N5')" class="hover:text-[#E60012] transition-colors">Level N5</button>
+                    <button onclick="if(window.Router) window.Router.push('folder', 'N4')" class="hover:text-[#E60012] transition-colors">Level N4</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- KONTEN UTAMA (Akan berubah-ubah otomatis) -->
+        <main id="main-content" class="max-w-6xl mx-auto px-6 py-10 min-h-[80vh]"></main>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-stone-200 bg-white py-12 mt-20">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <p class="text-sm text-stone-400 font-medium">Platform Belajar Bahasa Jepang 50 Hari</p>
+                <p class="text-xs text-stone-300 mt-6">© 2026 TzuJapan Academy</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- <script>
+        const Router = {
+            push: (page, params = null) => {
+                const container = document.getElementById('main-content');
+                window.scrollTo(0,0);
+                if (page === 'home') container.innerHTML = UI.renderHome();
+                else if (page === 'folder') container.innerHTML = UI.renderFolder(params);
+                else if (page === 'lesson') container.innerHTML = UI.renderLesson(params.level, params.day);
+            }
+        };
+
+        // Simpan Router ke window agar bisa diakses onclick di HTML
+        window.Router = Router;
+
+        document.addEventListener('DOMContentLoaded', () => window.Router.push('home'));
+
+
+    </script> -->
+     <!-- MEMANGGIL FILE JAVASCRIPT DARI FOLDER JS (URUTANNYA JANGAN DIUBAH YA) -->
+    <script src="js/database.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+    
+</body>
+</html>
