@@ -1,157 +1,150 @@
 /**
  * js/ui.js
  * Mengatur tampilan antarmuka (UI) website TzuJapan
- * Fitur: Tab Interaktif, Multi-Kuis per Tab, Accordion, dan Review Kuis.
+ * Fitur: Responsif HP, Warna Tematik (Ungu, Emerald, Biru, Amber), 4 Tab Interaktif, Multi-Kuis, dan Review Kuis.
  */
 
 const UI = {
     // 1. TAMPILAN HALAMAN BERANDA (HOME)
     renderHome: () => {
         return `
-            <div class="text-center animate-fade-in py-10">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-[#E60012] mb-6 tracking-tighter">Selamat Datang di TzuJapan!</h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <div class="text-center animate-fade-in py-6 md:py-10">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-[#E60012] mb-4 md:mb-6 tracking-tighter">Selamat Datang di TzuJapan!</h1>
+                <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4">
                     Platform belajar bahasa Jepang mandiri yang interaktif. Pilih level materi yang ingin kamu pelajari hari ini dan mulailah petualanganmu!
                 </p>
                 
-                <div class="flex flex-col md:flex-row justify-center gap-6 mt-8">
-                    <div onclick="if(window.Router) window.Router.push('folder', 'N5')" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group w-full md:w-1/3">
-                        <div class="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#E60012] transition-colors">
-                            <span class="text-3xl font-bold text-[#E60012] group-hover:text-white">N5</span>
+                <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mt-4 md:mt-8">
+                    <div onclick="if(window.Router) window.Router.push('folder', 'N5')" class="bg-white p-6 md:p-8 rounded-3xl shadow-md border border-stone-100 cursor-pointer transform md:hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group w-full md:w-1/3">
+                        <div class="bg-red-50 w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#E60012] transition-colors">
+                            <span class="text-2xl md:text-3xl font-black text-[#E60012] group-hover:text-white transition-colors">N5</span>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Level N5</h2>
-                        <p class="text-gray-500">Materi Dasar & Pemula (Hari 1 - 27)</p>
+                        <h2 class="text-xl md:text-2xl font-black text-stone-800 mb-1 md:mb-2">Level N5</h2>
+                        <p class="text-sm md:text-base text-stone-500">Materi Dasar & Pemula (Hari 1 - 25)</p>
                     </div>
 
-                    <div onclick="if(window.Router) window.Router.push('folder', 'N4')" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 cursor-pointer transform hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group w-full md:w-1/3">
-                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
-                            <span class="text-3xl font-bold text-blue-600 group-hover:text-white">N4</span>
+                    <div onclick="if(window.Router) window.Router.push('folder', 'N4')" class="bg-white p-6 md:p-8 rounded-3xl shadow-md border border-stone-100 cursor-pointer transform md:hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group w-full md:w-1/3">
+                        <div class="bg-blue-50 w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
+                            <span class="text-2xl md:text-3xl font-black text-blue-600 group-hover:text-white transition-colors">N4</span>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Level N4</h2>
-                        <p class="text-gray-500">Materi Menengah Bawah (Hari 1 - 25)</p>
+                        <h2 class="text-xl md:text-2xl font-black text-stone-800 mb-1 md:mb-2">Level N4</h2>
+                        <p class="text-sm md:text-base text-stone-500">Materi Menengah Bawah (Hari 26 - 50)</p>
                     </div>
                 </div>
             </div>
         `;
     },
 
-    // 2. TAMPILAN FOLDER (DAFTAR HARI DENGAN DESKRIPSI)
+    // 2. TAMPILAN FOLDER (DAFTAR HARI)
     renderFolder: (level) => {
-        let totalDays = level === 'N5' ? 27 : 25;
+        const start = level === 'N5' ? 1 : 26;
+        const days = Array.from({length: 25}, (_, i) => i + start);
+        const accentText = level === 'N5' ? 'text-[#E60012]' : 'text-blue-600';
+        const badgeBg = level === 'N5' ? 'bg-[#E60012]' : 'bg-blue-600';
         
-        const themeBorder = level === 'N5' ? 'hover:border-[#E60012]' : 'hover:border-blue-600';
-        const themeBadgeBg = level === 'N5' ? 'bg-[#E60012]' : 'bg-blue-600';
-        const themeText = level === 'N5' ? 'text-[#E60012]' : 'text-blue-600';
-
-        let html = `
-            <div class="animate-fade-in">
-                <div class="flex items-center justify-between mb-8 pb-4 border-b border-stone-200">
+        return `
+            <div class="animate-fade-in space-y-6 md:space-y-8 text-left">
+                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-stone-200 pb-4 gap-4">
                     <div>
-                        <h2 class="text-3xl font-black text-gray-900 tracking-tight">Folder Materi: <span class="${themeText}">Level ${level}</span></h2>
-                        <p class="text-stone-500 font-medium mt-1">Pilih hari untuk melihat detail materi, kosakata, dan cerita.</p>
+                        <h2 class="text-2xl md:text-3xl font-black text-stone-900 tracking-tight">Folder <span class="${accentText}">Level ${level}</span></h2>
+                        <p class="text-sm md:text-base text-stone-500 font-medium mt-1">Pilih hari untuk mulai belajar.</p>
                     </div>
-                    <button onclick="if(window.Router) window.Router.push('home')" class="px-5 py-2.5 bg-white border-2 border-stone-200 text-stone-600 rounded-xl hover:bg-stone-50 hover:text-stone-900 transition-all font-bold shadow-sm">
+                    <button onclick="Router.push('home')" class="w-full md:w-auto px-5 py-3 md:py-2.5 bg-white border-2 border-stone-200 text-stone-600 rounded-xl hover:bg-stone-50 hover:text-stone-900 transition-colors font-bold text-sm md:text-base">
                         ← Kembali
                     </button>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 text-left">
-        `;
-
-        for (let i = 1; i <= totalDays; i++) {
-            const lessonData = Database[level] && Database[level][i];
-            
-            if (lessonData) {
-                let cleanTitle = lessonData.title.includes(':') ? lessonData.title.split(':')[1].trim() : lessonData.title;
-
-                html += `
-                    <div onclick="if(window.Router) window.Router.push('lesson', { level: '${level}', day: ${i} })" 
-                         class="bg-white border-2 border-stone-100 ${themeBorder} p-6 rounded-3xl shadow-sm hover:shadow-xl cursor-pointer transform hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+                    ${days.map(d => {
+                        const hasData = Database[level] && Database[level][d];
+                        const borderHover = level === 'N5' ? 'hover:border-[#E60012]' : 'hover:border-blue-600';
                         
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="${themeBadgeBg} text-white text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-widest shadow-sm">
-                                Hari ${i}
-                            </span>
-                            <span class="w-8 h-8 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:${themeText} transition-colors">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                            </span>
-                        </div>
-                        <h3 class="font-black text-gray-800 text-lg leading-snug mb-2 group-hover:${themeText} transition-colors line-clamp-2">
-                            ${cleanTitle}
-                        </h3>
-                        <p class="text-stone-500 text-xs leading-relaxed line-clamp-3 mt-auto">
-                            ${lessonData.description}
-                        </p>
-                    </div>
-                `;
-            } else {
-                html += `
-                    <div class="bg-stone-50 border-2 border-dashed border-stone-200 p-6 rounded-3xl flex flex-col h-full cursor-not-allowed opacity-60">
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="bg-stone-200 text-stone-500 text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-widest">
-                                Hari ${i}
-                            </span>
-                            <span class="text-[9px] font-black text-stone-400 bg-white border border-stone-200 px-2 py-0.5 rounded-md uppercase">
-                                Terkunci
-                            </span>
-                        </div>
-                        <h3 class="font-bold text-stone-400 text-lg leading-snug mb-2">
-                            Materi Belum Tersedia
-                        </h3>
-                        <p class="text-stone-400 text-xs leading-relaxed mt-auto">
-                            Materi untuk hari ini masih dalam tahap penyusunan.
-                        </p>
-                    </div>
-                `;
-            }
-        }
-
-        html += `</div></div>`;
-        return html;
+                        if (hasData) {
+                            return `
+                            <div onclick="Router.push('lesson', {level:'${level}', day:${d}})" 
+                                 class="bg-white border-2 border-stone-100 ${borderHover} p-5 md:p-6 rounded-3xl shadow-sm hover:shadow-xl cursor-pointer transform md:hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="${badgeBg} text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-lg uppercase tracking-widest shadow-sm">
+                                        Hari ${d}
+                                    </span>
+                                    <span class="w-8 h-8 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:${accentText} transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </span>
+                                </div>
+                                <h3 class="font-black text-stone-800 text-lg md:text-xl leading-snug mb-2 group-hover:${accentText} transition-colors line-clamp-2">
+                                    ${hasData.title.includes(':') ? hasData.title.split(': ')[1] : hasData.title}
+                                </h3>
+                                <p class="text-stone-500 text-xs md:text-sm leading-relaxed line-clamp-2 mt-auto">
+                                    ${hasData.description}
+                                </p>
+                            </div>`;
+                        } else {
+                            return `
+                            <div class="bg-stone-50 border-2 border-dashed border-stone-200 p-5 md:p-6 rounded-3xl flex flex-col h-full cursor-not-allowed opacity-60">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="bg-stone-200 text-stone-500 text-[10px] md:text-xs font-black px-3 py-1 rounded-lg uppercase tracking-widest">
+                                        Hari ${d}
+                                    </span>
+                                    <span class="text-[9px] font-black text-stone-400 bg-white border border-stone-200 px-2 py-0.5 rounded-md uppercase">
+                                        Terkunci
+                                    </span>
+                                </div>
+                                <h3 class="font-bold text-stone-400 text-lg md:text-xl leading-snug mb-2">
+                                    Materi Belum Tersedia
+                                </h3>
+                                <p class="text-stone-400 text-xs md:text-sm leading-relaxed mt-auto">
+                                    Materi untuk hari ini masih dalam tahap penyusunan.
+                                </p>
+                            </div>`;
+                        }
+                    }).join('')}
+                </div>
+            </div>`;
     },
 
-    // 3. TAMPILAN MATERI (DENGAN 3 TAB & TOMBOL KUIS SPESIFIK)
+    // 3. TAMPILAN MATERI (RESPONSIF HP + BERWARNA)
     renderLesson: (level, day) => {
-        const data = Database[level][day];
-        if (!data) return `<div class="text-center text-red-500 py-10 font-bold">Materi tidak ditemukan.</div>`;
+        const lesson = Database[level][day];
+        if (!lesson) return `<div class="text-center py-10 font-bold text-red-500">Materi tidak ditemukan.</div>`;
 
-        const accentColor = level === 'N5' ? '#E60012' : '#2563eb';
+        const accentColor = level === 'N5' ? 'text-[#E60012]' : 'text-blue-600';
+        const borderAccent = level === 'N5' ? 'border-[#E60012]' : 'border-blue-600';
 
-        // --- TAB 2: LOGIKA KOTOBA ---
+        // --- HTML UNTUK KOTOBA (EMERALD) ---
         let kotobaContent = '';
         if (level === 'N5' && day === 1) {
             kotobaContent = `
-                <div class="space-y-4">
-                    <p class="text-xs font-black text-stone-400 uppercase tracking-widest mb-4">Klik Baris untuk Mempelajari Huruf:</p>
-                    ${data.kotoba.map((group, idx) => {
+                <div class="space-y-3 md:space-y-4">
+                    <p class="text-[10px] md:text-xs font-black text-emerald-600 uppercase tracking-widest mb-2 md:mb-4">Klik Baris untuk Mempelajari Huruf:</p>
+                    ${lesson.kotoba.map((group, idx) => {
                         const hiras = group.hiraganaList ? group.hiraganaList.split(' ') : [];
                         const katas = group.katakanaList ? group.katakanaList.split(' ') : [];
                         const romas = group.romaji ? group.romaji.split(', ') : [];
                         
                         return `
-                            <div class="bg-white rounded-3xl border border-stone-100 shadow-sm overflow-hidden transition-all duration-300">
-                                <button onclick="UI.toggleDay1Accordion('line-${idx}')" class="w-full flex items-center justify-between p-6 hover:bg-stone-50 transition-all text-left">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 bg-red-100 text-[#E60012] rounded-2xl flex items-center justify-center font-black text-lg">
+                            <div class="bg-white rounded-2xl md:rounded-3xl border border-emerald-100 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+                                <button onclick="UI.toggleDay1Accordion('line-${idx}')" class="w-full flex items-center justify-between p-4 md:p-6 hover:bg-emerald-50/50 transition-all text-left">
+                                    <div class="flex items-center gap-3 md:gap-4">
+                                        <div class="w-10 h-10 md:w-12 md:h-12 bg-emerald-100 text-emerald-600 rounded-xl md:rounded-2xl flex items-center justify-center font-black text-base md:text-lg">
                                             ${group.arti.includes('Baris') ? group.arti.split(' ')[1][0] : group.arti[0]}
                                         </div>
                                         <div>
-                                            <h4 class="font-black text-gray-800 uppercase tracking-tight">${group.arti}</h4>
-                                            <p class="text-[10px] text-stone-400 font-bold uppercase tracking-widest">${group.kanji}</p>
+                                            <h4 class="font-black text-stone-800 uppercase tracking-tight text-sm md:text-base">${group.arti}</h4>
+                                            <p class="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">${group.kanji}</p>
                                         </div>
                                     </div>
-                                    <span id="icon-line-${idx}" class="text-stone-300 transform transition-transform duration-300">▼</span>
+                                    <span id="icon-line-${idx}" class="text-emerald-400 transform transition-transform duration-300">▼</span>
                                 </button>
                                 
-                                <div id="line-${idx}" class="hidden p-6 md:p-8 bg-stone-50/30 border-t border-stone-100 animate-fade-in overflow-x-auto">
-                                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 md:gap-4 min-w-[300px]">
+                                <div id="line-${idx}" class="hidden p-4 md:p-8 bg-emerald-50/30 border-t border-emerald-50 animate-fade-in overflow-x-auto">
+                                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-2 md:gap-4 min-w-[260px]">
                                         ${hiras.map((h, i) => `
-                                            <div class="group flex flex-col items-center justify-center p-4 bg-white rounded-2xl border-2 border-stone-100 hover:border-red-200 transition-all shadow-sm">
+                                            <div class="group flex flex-col items-center justify-center p-3 md:p-4 bg-white rounded-xl md:rounded-2xl border-2 border-emerald-50 hover:border-emerald-200 transition-all shadow-sm">
                                                 <div class="flex items-center gap-2 mb-1">
-                                                    <span class="text-3xl font-black text-gray-800 group-hover:text-[#E60012]">${h}</span>
-                                                    <div class="w-[1px] h-4 bg-stone-200"></div>
-                                                    <span class="text-3xl font-black text-stone-300 group-hover:text-blue-500">${katas[i] || ''}</span>
+                                                    <span class="text-2xl md:text-3xl font-black text-stone-800 group-hover:text-emerald-600">${h}</span>
+                                                    <div class="w-[1px] h-3 md:h-4 bg-emerald-100"></div>
+                                                    <span class="text-2xl md:text-3xl font-black text-stone-300 group-hover:text-emerald-500">${katas[i] || ''}</span>
                                                 </div>
-                                                <span class="text-xs font-black text-red-500 uppercase tracking-widest">${romas[i] || ''}</span>
+                                                <span class="text-[10px] md:text-xs font-black text-emerald-600 uppercase tracking-widest">${romas[i] || ''}</span>
                                             </div>
                                         `).join('')}
                                     </div>
@@ -163,260 +156,347 @@ const UI = {
             `;
         } else {
             kotobaContent = `
-                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-gray-50 text-gray-400 text-[10px] uppercase font-black tracking-widest border-b border-gray-200">
-                                    <th class="p-5">Kanji</th>
-                                    <th class="p-5">Hiragana/Kana</th>
-                                    <th class="p-5">Romaji</th>
-                                    <th class="p-5">Arti</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${data.kotoba.map((k, idx) => `
-                                    <tr class="border-b border-gray-100 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'} hover:bg-blue-50/30 transition-colors">
-                                        <td class="p-5 font-bold text-2xl text-gray-800 font-jp">${k.kanji}</td>
-                                        <td class="p-5 text-blue-600 font-bold">${k.kana}</td>
-                                        <td class="p-5 text-gray-400 text-xs font-bold">${k.romaji}</td>
-                                        <td class="p-5 text-gray-700 font-black">${k.arti}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                    ${lesson.kotoba.map(k => `
+                        <div class="flex flex-col border border-emerald-50 p-4 md:p-5 rounded-2xl bg-emerald-50/30 hover:bg-emerald-50 transition-all group">
+                            <div class="flex justify-between items-center mb-2 gap-2">
+                                <span class="text-2xl md:text-3xl font-black font-jp text-emerald-600 group-hover:text-emerald-700">${k.kanji}</span>
+                                <span class="font-bold text-stone-700 text-right text-sm md:text-base leading-tight">${k.arti}</span>
+                            </div>
+                            <p class="text-[10px] md:text-xs text-emerald-500 font-bold uppercase tracking-widest">${k.kana} • ${k.romaji}</p>
+                        </div>
+                    `).join('')}
                 </div>
             `;
         }
 
-        // --- TAB 3: LOGIKA DOKKAI ---
-        let dokkaiContent = '';
-        if (data.dokkai) {
-            dokkaiContent = `
-                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-8">
-                    <div class="p-6 md:p-8 border-b border-gray-100 bg-gray-50/50 flex flex-col items-center justify-center text-center">
-                        <span class="text-4xl mb-3">📖</span>
-                        <h4 class="text-2xl font-black text-gray-800 font-jp">${data.dokkai.title}</h4>
+        // --- HTML UNTUK DOKKAI (BIRU) ---
+        let dokkaiHtml = '';
+        if (lesson.dokkai) {
+            dokkaiHtml = `
+                <div class="bg-white p-5 md:p-8 rounded-3xl border border-blue-100 shadow-sm">
+                    <div class="text-center mb-6">
+                        <span class="text-4xl block mb-2 opacity-80">📖</span>
+                        <h3 class="text-xl md:text-2xl font-black font-jp text-blue-900">${lesson.dokkai.title}</h3>
                     </div>
-                    <div class="p-6 md:p-10 space-y-8">
-                        <div class="bg-blue-50/40 p-6 md:p-8 rounded-3xl border border-blue-100">
-                            <p class="text-xl md:text-2xl leading-loose md:leading-[2.5] font-bold text-gray-800 font-jp whitespace-pre-line tracking-wide">${data.dokkai.text}</p>
-                        </div>
-                        <div class="bg-stone-50 p-6 md:p-8 rounded-3xl border border-stone-200">
-                            <div class="flex items-center gap-2 mb-4">
-                                <span class="bg-stone-200 text-stone-500 px-3 py-1 rounded-md text-xs font-black uppercase tracking-widest">Terjemahan</span>
-                            </div>
-                            <p class="text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line">${data.dokkai.translation}</p>
-                        </div>
+                    <div class="bg-blue-50/50 p-5 md:p-8 rounded-2xl border border-blue-200 mb-6 overflow-x-auto">
+                        <p class="text-lg md:text-xl leading-loose md:leading-[2.5] font-bold font-jp text-blue-900 whitespace-pre-line min-w-[250px]">${lesson.dokkai.text}</p>
                     </div>
-                </div>
-            `;
+                    <div class="bg-blue-50/30 p-5 md:p-6 rounded-2xl border border-blue-100">
+                        <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest bg-blue-100 px-2 py-1 rounded-md mb-3 inline-block">Terjemahan</span>
+                        <p class="text-sm md:text-base text-stone-600 leading-relaxed whitespace-pre-line">${lesson.dokkai.translation}</p>
+                    </div>
+                </div>`;
         } else {
-            dokkaiContent = `
-                <div class="bg-stone-50 border-2 border-dashed border-stone-200 p-10 md:p-16 rounded-3xl text-center flex flex-col items-center justify-center mb-8">
-                    <span class="text-6xl mb-6 block opacity-50 grayscale">📚</span>
-                    <h4 class="text-2xl font-black text-stone-400 mb-3">Cerita Belum Tersedia</h4>
-                    <p class="text-stone-400 max-w-md font-medium leading-relaxed">Materi Dokkai untuk pelajaran hari ini sedang dalam tahap penyusunan oleh Sensei.</p>
-                </div>
-            `;
+            dokkaiHtml = `
+                <div class="bg-blue-50/50 border-2 border-dashed border-blue-200 p-8 md:p-12 rounded-3xl text-center flex flex-col items-center justify-center">
+                    <span class="text-5xl md:text-6xl mb-4 block opacity-30 grayscale">📚</span>
+                    <h4 class="text-xl md:text-2xl font-black text-blue-400 mb-2">Cerita Belum Tersedia</h4>
+                    <p class="text-sm md:text-base text-blue-400 max-w-sm">Materi Dokkai untuk pelajaran hari ini belum disiapkan.</p>
+                </div>`;
+        }
+
+        // --- HTML UNTUK CHOUKAI (AMBER) ---
+        let choukaiHtml = '';
+        if (lesson.choukai) {
+            let choukaiMediaHtml = '';
+            
+            // JIKA ADA ID YOUTUBE, RENDER IFRAME YOUTUBE
+            if (lesson.choukai.youtubeId) {
+                choukaiMediaHtml = `
+                    <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-md border-2 border-amber-200 bg-black mx-auto">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${lesson.choukai.youtubeId}?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                `;
+            } 
+            // JIKA ADA FILE AUDIO, RENDER AUDIO PLAYER NATIVE
+            else if (lesson.choukai.audioSrc) {
+                choukaiMediaHtml = `
+                    <audio controls class="w-full max-w-md rounded-lg shadow-sm">
+                        <source src="${lesson.choukai.audioSrc}" type="audio/mpeg">
+                        Browser Anda tidak mendukung elemen audio.
+                    </audio>
+                `;
+            } 
+            // JIKA TIDAK ADA KEDUANYA, RENDER DUMMY PLAYER
+            else {
+                choukaiMediaHtml = `
+                    <div class="w-full max-w-md bg-white p-4 rounded-xl border border-amber-200 shadow-sm flex items-center gap-4">
+                        <button class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors shadow-md">
+                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                        </button>
+                        <div class="flex-1 h-2 bg-amber-100 rounded-full overflow-hidden">
+                            <div class="w-0 h-full bg-amber-500 rounded-full"></div>
+                        </div>
+                        <span class="text-xs font-bold text-amber-600">0:00 / 0:00</span>
+                    </div>
+                `;
+            }
+
+            choukaiHtml = `
+                <div class="bg-white p-5 md:p-8 rounded-3xl border border-amber-100 shadow-sm">
+                    <div class="text-center mb-6">
+                        <span class="text-4xl block mb-2 opacity-80">🎧</span>
+                        <h3 class="text-xl md:text-2xl font-black font-jp text-amber-900">${lesson.choukai.title}</h3>
+                    </div>
+                    <div class="bg-amber-50/50 p-5 md:p-8 rounded-2xl border border-amber-200 mb-6 flex flex-col items-center gap-4 text-center">
+                        ${choukaiMediaHtml}
+                        ${lesson.choukai.text ? `<p class="text-lg md:text-xl leading-loose md:leading-[2.5] font-bold font-jp text-amber-900 whitespace-pre-line mt-4">${lesson.choukai.text}</p>` : ''}
+                    </div>
+                    <div class="bg-amber-50/30 p-5 md:p-6 rounded-2xl border border-amber-100">
+                        <span class="text-[10px] font-black text-amber-600 uppercase tracking-widest bg-amber-100 px-2 py-1 rounded-md mb-3 inline-block">Transkrip / Terjemahan</span>
+                        <p class="text-sm md:text-base text-stone-600 leading-relaxed whitespace-pre-line">${lesson.choukai.translation}</p>
+                    </div>
+                </div>`;
+        } else {
+            choukaiHtml = `
+                <div class="bg-amber-50/50 border-2 border-dashed border-amber-200 p-8 md:p-12 rounded-3xl text-center flex flex-col items-center justify-center">
+                    <span class="text-5xl md:text-6xl mb-4 block opacity-30 grayscale">🎧</span>
+                    <h4 class="text-xl md:text-2xl font-black text-amber-400 mb-2">Audio Belum Tersedia</h4>
+                    <p class="text-sm md:text-base text-amber-400 max-w-sm">Materi Choukai untuk pelajaran hari ini belum disiapkan.</p>
+                </div>`;
         }
 
         return `
-            <div class="max-w-5xl mx-auto animate-fade-in text-left pb-20">
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div>
-                        <span class="text-xs font-black text-gray-300 uppercase tracking-widest">Level ${level} • Hari ${day}</span>
-                        <h2 class="text-2xl font-black text-gray-800 mt-1">${data.title}</h2>
+            <div class="fade-in space-y-6 md:space-y-8 max-w-4xl mx-auto text-left pb-10">
+                
+                <!-- HEADER MATERI -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-5 md:p-6 rounded-[2rem] border border-stone-100 shadow-sm gap-4 md:gap-6">
+                    <div class="w-full">
+                        <button onclick="Router.push('folder', '${level}')" class="text-stone-400 hover:text-stone-900 font-bold mb-3 flex items-center gap-2 transition-colors text-xs md:text-sm uppercase tracking-widest">
+                            ← Kembali
+                        </button>
+                        <h2 class="text-2xl md:text-3xl font-black text-stone-900 leading-tight">${lesson.title}</h2>
+                        <p class="text-stone-500 mt-2 text-sm md:text-base leading-relaxed">${lesson.description}</p>
                     </div>
-                    <div class="w-full md:w-auto">
-                        <button onclick="if(window.Router) window.Router.push('folder', '${level}')" class="w-full md:w-auto px-6 py-3 bg-gray-100 text-gray-600 rounded-xl hover:bg-gray-200 transition-colors font-bold">
-                            ← Kembali ke List
+                </div>
+
+                <!-- NAVIGASI TAB (DESAIN PILL, SEKARANG 4 TAB) -->
+                <div class="flex flex-wrap bg-stone-100 p-1.5 rounded-[1.25rem] w-full gap-1 shadow-inner">
+                    <button onclick="UI.switchTab('bunpou', '${level}')" id="tab-bunpou" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all">
+                        文法 Bunpou
+                    </button>
+                    <button onclick="UI.switchTab('kotoba', '${level}')" id="tab-kotoba" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                        言葉 Kotoba
+                    </button>
+                    <button onclick="UI.switchTab('dokkai', '${level}')" id="tab-dokkai" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                        読解 Dokkai
+                    </button>
+                    <button onclick="UI.switchTab('choukai', '${level}')" id="tab-choukai" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                        聴解 Choukai
+                    </button>
+                </div>
+
+                <!-- KONTEN: BUNPOU (UNGU) -->
+                <div id="content-bunpou" class="block fade-in space-y-6">
+                    <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
+                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 1</span> 
+                        Tata Bahasa (Bunpou)
+                    </h3>
+                    ${lesson.bunpou.map(b => `
+                        <div class="bg-white p-5 md:p-8 rounded-3xl border border-stone-100 shadow-sm border-l-[6px] border-l-purple-500">
+                            <h4 class="text-lg md:text-xl font-bold mb-2 text-stone-800">${b.title}</h4>
+                            <p class="text-sm md:text-base text-stone-600 mb-5 md:mb-6 leading-relaxed">${b.explanation}</p>
+                            
+                            ${b.formula ? `
+                            <div class="bg-stone-900 text-purple-400 p-4 md:p-5 rounded-2xl font-mono text-center mb-6 text-xs md:text-sm border-b-4 border-stone-800 shadow-inner overflow-x-auto whitespace-nowrap">
+                                ${b.formula}
+                            </div>` : ''}
+                            
+                            <div class="space-y-3">
+                                ${b.examples.map(ex => `
+                                    <div class="p-4 bg-purple-50/50 rounded-2xl border-l-4 border-purple-300">
+                                        <p class="text-lg md:text-xl font-bold font-jp text-stone-800">${ex.jp}</p>
+                                        <p class="text-purple-600 text-xs md:text-sm mt-1 italic">"${ex.id}"</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                    
+                    <!-- TOMBOL KUIS BUNPOU -->
+                    <div class="text-center pt-6 md:pt-8 mt-6 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'bunpou')" class="w-full md:w-auto bg-purple-600 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-purple-200 hover:bg-purple-700 hover:-translate-y-1 transition-all">
+                            📝 Uji Tata Bahasa
                         </button>
                     </div>
                 </div>
 
-                <div class="flex flex-wrap bg-gray-100 p-1.5 rounded-2xl mb-8 w-full md:w-fit gap-1">
-                    <button onclick="UI.switchTab('bunpou')" id="btn-tab-bunpou" class="flex-1 md:flex-none px-6 md:px-8 py-3 rounded-xl font-black transition-all bg-white shadow-sm text-gray-800 text-sm md:text-base">
-                        Tata Bahasa
-                    </button>
-                    <button onclick="UI.switchTab('kotoba')" id="btn-tab-kotoba" class="flex-1 md:flex-none px-6 md:px-8 py-3 rounded-xl font-black transition-all text-gray-400 hover:text-gray-600 text-sm md:text-base">
-                        Kosakata
-                    </button>
-                    <button onclick="UI.switchTab('dokkai')" id="btn-tab-dokkai" class="flex-1 md:flex-none px-6 md:px-8 py-3 rounded-xl font-black transition-all text-gray-400 hover:text-gray-600 text-sm md:text-base">
-                        Cerita
-                    </button>
-                </div>
-
-                <div id="tab-container">
-                    <div id="pane-bunpou" class="animate-fade-in block">
-                        <h3 class="text-xl font-black text-gray-800 mb-6 flex items-center">
-                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 1</span> 
-                            Tata Bahasa (Bunpou)
-                        </h3>
-                        <div class="grid grid-cols-1 gap-6 mb-8">
-                            ${data.bunpou.map(item => `
-                                <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 border-l-[6px]" style="border-left-color: ${accentColor}">
-                                    <h4 class="text-lg font-black text-gray-800 mb-2">${item.title}</h4>
-                                    <p class="text-gray-500 mb-5 text-sm leading-relaxed font-medium">${item.explanation}</p>
-                                    <div class="bg-gray-900 text-white p-4 rounded-xl mb-6 font-mono text-center shadow-inner border-b-4 border-gray-800">
-                                        <span class="text-green-400 font-bold text-sm">${item.formula}</span>
-                                    </div>
-                                    <div class="space-y-3">
-                                        <p class="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-1">Contoh Kalimat:</p>
-                                        ${item.examples.map(ex => `
-                                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 hover:bg-white transition-colors">
-                                                <p class="font-bold text-gray-800 text-lg mb-1 font-jp">${ex.jp}</p>
-                                                <p class="text-gray-400 text-sm italic">"${ex.id}"</p>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="text-center pt-6 border-t-2 border-dashed border-gray-200">
-                            <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'bunpou')" class="bg-purple-600 text-white px-8 py-4 rounded-[2rem] font-black text-lg shadow-lg hover:bg-purple-700 hover:-translate-y-1 transition-all">
-                                📝 Uji Tata Bahasa
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="pane-kotoba" class="animate-fade-in hidden">
-                        <h3 class="text-xl font-black text-gray-800 mb-6 flex items-center">
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 2</span> 
+                <!-- KONTEN: KOTOBA (EMERALD) -->
+                <div id="content-kotoba" class="hidden fade-in space-y-6">
+                    <div class="bg-white p-5 md:p-8 rounded-3xl border border-stone-100 shadow-sm">
+                        <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
+                            <span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 2</span> 
                             Kosakata Baru (Kotoba)
                         </h3>
-                        <div class="mb-8">${kotobaContent}</div>
-                        <div class="text-center pt-6 border-t-2 border-dashed border-gray-200">
-                            <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kotoba')" class="bg-green-600 text-white px-8 py-4 rounded-[2rem] font-black text-lg shadow-lg hover:bg-green-700 hover:-translate-y-1 transition-all">
-                                📝 Uji Kosakata
-                            </button>
-                        </div>
+                        ${kotobaContent}
                     </div>
-
-                    <div id="pane-dokkai" class="animate-fade-in hidden">
-                        <h3 class="text-xl font-black text-gray-800 mb-6 flex items-center">
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 3</span> 
-                            Membaca Cerita (Dokkai)
-                        </h3>
-                        ${dokkaiContent}
-                        <div class="text-center pt-6 border-t-2 border-dashed border-gray-200">
-                            <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'dokkai')" class="bg-blue-600 text-white px-8 py-4 rounded-[2rem] font-black text-lg shadow-lg hover:bg-blue-700 hover:-translate-y-1 transition-all">
-                                📝 Uji Pemahaman Cerita
-                            </button>
-                        </div>
+                    
+                    <!-- TOMBOL KUIS KOTOBA -->
+                    <div class="text-center pt-6 md:pt-8 mt-6 md:mt-8 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kotoba')" class="w-full md:w-auto bg-emerald-600 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-emerald-200 hover:bg-emerald-700 hover:-translate-y-1 transition-all">
+                            📝 Uji Kosakata
+                        </button>
                     </div>
                 </div>
-            </div>
-        `;
+
+                <!-- KONTEN: DOKKAI (BIRU) -->
+                <div id="content-dokkai" class="hidden fade-in space-y-6">
+                    <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 3</span> 
+                        Membaca Cerita (Dokkai)
+                    </h3>
+                    ${dokkaiHtml}
+                    
+                    <!-- TOMBOL KUIS DOKKAI -->
+                    <div class="text-center pt-6 md:pt-8 mt-4 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'dokkai')" class="w-full md:w-auto bg-blue-600 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all">
+                            📝 Uji Pemahaman Cerita
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KONTEN: CHOUKAI (AMBER) -->
+                <div id="content-choukai" class="hidden fade-in space-y-6">
+                    <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
+                        <span class="bg-amber-100 text-amber-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 4</span> 
+                        Mendengar (Choukai)
+                    </h3>
+                    ${choukaiHtml}
+                    
+                    <!-- TOMBOL KUIS CHOUKAI -->
+                    <div class="text-center pt-6 md:pt-8 mt-4 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'choukai')" class="w-full md:w-auto bg-amber-500 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-amber-200 hover:bg-amber-600 hover:-translate-y-1 transition-all">
+                            📝 Uji Pendengaran
+                        </button>
+                    </div>
+                </div>
+
+            </div>`;
     },
 
-    // 4. TAMPILAN LAYAR KUIS
+    // 4. LOGIKA PERPINDAHAN TAB (SEKARANG 4 TAB)
+    switchTab: (tabName, level) => {
+        const tabs = ['bunpou', 'kotoba', 'dokkai', 'choukai'];
+        
+        tabs.forEach(t => {
+            const btn = document.getElementById(`tab-${t}`);
+            const content = document.getElementById(`content-${t}`);
+            if (!btn || !content) return;
+
+            if (t === tabName) {
+                content.classList.remove('hidden');
+                btn.className = "flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all";
+            } else {
+                content.classList.add('hidden');
+                btn.className = "flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all";
+            }
+        });
+    },
+
+    // 5. TAMPILAN LAYAR KUIS (RESPONSIF HP)
     renderQuizScreen: () => {
         const lesson = Database[Quiz.currentLevel][Quiz.currentDay];
-        if (!lesson) return `<div class="text-center py-20 font-bold">Gagal memuat kuis.</div>`;
+        if (!lesson) return `<div class="text-center py-20 font-bold text-red-500">Gagal memuat kuis.</div>`;
 
         const quizType = Quiz.currentType || 'umum';
         let quizData = [];
         let typeLabel = "Uji Pemahaman";
         let typeColor = "bg-[#E60012]";
+        let typeBorder = "border-[#E60012]";
+        let typeShadow = "shadow-red-200";
 
         if (Array.isArray(lesson.quizzes)) {
             quizData = lesson.quizzes;
         } else if (lesson.quizzes && lesson.quizzes[quizType]) {
             quizData = lesson.quizzes[quizType];
-            if (quizType === 'bunpou') { typeLabel = "Kuis Tata Bahasa"; typeColor = "bg-purple-600"; }
-            if (quizType === 'kotoba') { typeLabel = "Kuis Kosakata"; typeColor = "bg-green-600"; }
-            if (quizType === 'dokkai') { typeLabel = "Kuis Cerita"; typeColor = "bg-blue-600"; }
+            if (quizType === 'bunpou') { typeLabel = "Kuis Tata Bahasa"; typeColor = "bg-purple-600"; typeBorder = "peer-checked:border-purple-600 peer-checked:bg-purple-50 peer-checked:text-purple-700"; typeShadow = "shadow-purple-200 hover:bg-purple-700"; }
+            if (quizType === 'kotoba') { typeLabel = "Kuis Kosakata"; typeColor = "bg-emerald-600"; typeBorder = "peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-700"; typeShadow = "shadow-emerald-200 hover:bg-emerald-700"; }
+            if (quizType === 'dokkai') { typeLabel = "Kuis Cerita"; typeColor = "bg-blue-600"; typeBorder = "peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700"; typeShadow = "shadow-blue-200 hover:bg-blue-700"; }
+            if (quizType === 'choukai') { typeLabel = "Kuis Pendengaran"; typeColor = "bg-amber-500"; typeBorder = "peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700"; typeShadow = "shadow-amber-200 hover:bg-amber-600"; }
         }
 
         if (!quizData || quizData.length === 0) {
             return `
                 <div class="max-w-3xl mx-auto text-center py-20 animate-fade-in">
                     <div class="text-6xl mb-6 grayscale opacity-50">🚧</div>
-                    <h2 class="text-3xl font-black text-gray-800 mb-4">Kuis Belum Tersedia</h2>
-                    <p class="text-gray-500 mb-8">Sensei masih meracik soal untuk bagian ini. Silakan kembali belajar materinya.</p>
-                    <button onclick="if(window.Router) window.Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="px-8 py-3 bg-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-300">Kembali ke Materi</button>
+                    <h2 class="text-3xl font-black text-stone-800 mb-4">Kuis Belum Tersedia</h2>
+                    <p class="text-stone-500 mb-8">Sensei masih meracik soal untuk bagian ini. Silakan kembali belajar materinya.</p>
+                    <button onclick="if(window.Router) window.Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="px-8 py-3 bg-stone-200 text-stone-700 rounded-xl font-bold hover:bg-stone-300">Kembali ke Materi</button>
                 </div>
             `;
         }
 
         return `
-            <div class="max-w-3xl mx-auto animate-fade-in text-left">
-                <div class="bg-white p-8 rounded-3xl shadow-xl border border-stone-100 mb-10 flex items-center gap-6">
-                    <div class="w-16 h-16 ${typeColor} text-white rounded-2xl flex items-center justify-center text-3xl shadow-md">📝</div>
+            <div class="fade-in max-w-2xl mx-auto bg-white p-6 md:p-10 rounded-[2rem] md:rounded-3xl border border-stone-100 shadow-sm text-left">
+                <div class="mb-6 md:mb-8 pb-4 border-b border-stone-100 flex items-center gap-4">
+                    <div class="w-12 h-12 md:w-16 md:h-16 ${typeColor} text-white rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-md shrink-0">📝</div>
                     <div>
-                        <h2 class="text-3xl font-black text-gray-900 mb-1">${typeLabel}</h2>
-                        <p class="text-gray-500 font-medium tracking-wide">Materi: ${lesson.title}</p>
+                        <h2 class="text-xl md:text-2xl font-black text-stone-900 leading-tight">${typeLabel}</h2>
+                        <p class="text-stone-500 font-medium tracking-wide text-xs md:text-sm mt-1">Materi: ${lesson.title}</p>
                     </div>
                 </div>
-
-                <form id="quiz-form" class="space-y-8">
+                
+                <form id="quiz-form">
                     ${quizData.map((q, i) => `
-                        <div class="bg-white p-8 rounded-3xl shadow-md border border-stone-50">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center font-black text-sm">${i + 1}</span>
-                                <p class="text-lg font-bold text-gray-800">${q.q}</p>
+                        <div class="mb-8 md:mb-10 bg-stone-50 p-5 md:p-6 rounded-3xl border border-stone-100">
+                            <div class="flex gap-3 items-start mb-5">
+                                <span class="bg-stone-900 text-white w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">${i+1}</span>
+                                <p class="font-bold text-base md:text-lg text-stone-800 leading-snug">${q.q}</p>
                             </div>
-                            <div class="grid grid-cols-1 gap-3">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 ${q.a.map((opt, idx) => `
                                     <div class="relative">
-                                        <input type="radio" id="q${i}o${idx}" name="q${i}" value="${idx}" class="sr-only peer" required>
-                                        <label for="q${i}o${idx}" class="block p-5 rounded-2xl border-2 border-stone-100 cursor-pointer hover:bg-stone-50 transition-all font-bold text-gray-600 peer-checked:border-[#E60012] peer-checked:bg-red-50 peer-checked:text-[#E60012]">
+                                        <input type="radio" id="q${i}o${idx}" name="q${i}" value="${idx}" class="hidden peer" required>
+                                        <label for="q${i}o${idx}" class="block p-4 border-2 border-stone-200 bg-white rounded-2xl cursor-pointer hover:border-stone-300 transition-all font-medium text-sm md:text-base text-stone-600 ${typeBorder}">
                                             ${opt}
                                         </label>
-                                    </div>
-                                `).join('')}
+                                    </div>`).join('')}
                             </div>
-                        </div>
-                    `).join('')}
-
-                    <div class="flex gap-4 pt-10 pb-20">
-                        <button type="button" onclick="if(window.Router) window.Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="flex-1 py-5 font-black text-gray-400 hover:text-gray-900 transition-colors uppercase tracking-widest">
-                            Batalkan
-                        </button>
-                        <button type="button" onclick="if(window.Quiz) Quiz.submit()" class="flex-[2] ${typeColor} text-white py-5 rounded-[2rem] font-black text-xl shadow-xl transform hover:-translate-y-1 transition-all">
-                            Selesaikan Kuis
-                        </button>
+                        </div>`).join('')}
+                    
+                    <div class="flex flex-col-reverse md:flex-row gap-3 md:gap-4 mt-8 md:mt-10">
+                        <button type="button" onclick="Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="w-full md:flex-1 py-4 font-bold text-stone-500 hover:bg-stone-100 rounded-2xl transition-all text-sm md:text-base">Batalkan Kuis</button>
+                        <button type="button" onclick="Quiz.submit()" class="w-full md:flex-[2] ${typeColor} text-white py-4 rounded-2xl font-black shadow-lg ${typeShadow} transition-all text-base md:text-lg">Selesaikan Kuis</button>
                     </div>
                 </form>
-            </div>
-        `;
+            </div>`;
     },
 
-    // 5. TAMPILAN HASIL KUIS (DENGAN REVIEW JAWABAN)
-    renderQuizResult: (params) => {
-        const scorePercent = Math.round((params.score / params.total) * 100);
-        let message = scorePercent >= 70 ? "Sugoi! Kamu menguasai bagian ini! 🌸" : "Pantang menyerah, coba lagi ya! 💪";
+    // 6. TAMPILAN HASIL KUIS & REVIEW (RESPONSIF HP)
+    renderQuizResult: (p) => {
+        const scorePercent = (p.score / p.total) * 100;
+        let message = scorePercent >= 70 ? "Hebat! Kamu Menguasai Materi Ini! 🌸" : "Jangan Menyerah! Terus Belajar Ya! 💪";
         
         let reviewHtml = '';
-        if (params.details && params.details.length > 0) {
+        if (p.details && p.details.length > 0) {
             reviewHtml = `
-                <div class="mt-16 w-full text-left space-y-6">
-                    <h3 class="text-2xl font-black text-gray-800 mb-6 flex items-center gap-3">
-                        <span>🔍</span> Review Jawaban
+                <div class="mt-12 md:mt-16 w-full text-left space-y-4 md:space-y-6 border-t border-stone-100 pt-8">
+                    <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center gap-2">
+                        <span class="text-2xl">🔍</span> Review Jawaban
                     </h3>
                     
-                    ${params.details.map((item, index) => `
-                        <div class="p-6 md:p-8 rounded-3xl border-2 shadow-sm ${item.isCorrect ? 'border-green-100 bg-green-50/50' : 'border-red-100 bg-red-50/50'}">
-                            <p class="font-bold text-lg text-gray-800 mb-4">${index + 1}. ${item.question}</p>
-                            <div class="space-y-3">
+                    ${p.details.map((item, index) => `
+                        <div class="p-5 md:p-6 rounded-3xl border-2 ${item.isCorrect ? 'border-emerald-100 bg-emerald-50/50' : 'border-red-100 bg-red-50/50'}">
+                            <p class="font-bold text-base md:text-lg text-stone-800 mb-4">${index + 1}. ${item.question}</p>
+                            <div class="space-y-2 md:space-y-3">
                                 ${item.options.map((opt, optIndex) => {
-                                    let styleClass = "bg-white border-gray-200 text-gray-500 opacity-70";
+                                    let styleClass = "bg-white border-stone-200 text-stone-400 opacity-60";
                                     let iconHtml = "";
 
+                                    // Warna hijau untuk review kita ganti jadi emerald juga biar serasi
                                     if (optIndex === item.correctIndex) {
-                                        styleClass = "bg-green-100 border-green-500 text-green-800 font-bold shadow-md";
-                                        iconHtml = '<span class="bg-green-500 text-white text-[10px] px-2 py-1 rounded-md uppercase tracking-widest ml-2">✅ Jawaban Benar</span>';
+                                        styleClass = "bg-emerald-100 border-emerald-400 text-emerald-800 font-bold shadow-sm";
+                                        iconHtml = '<span class="bg-emerald-500 text-white text-[9px] md:text-[10px] px-2 py-1 rounded w-fit uppercase tracking-widest mt-1 md:mt-0 md:ml-2">Benar</span>';
                                     } else if (optIndex === item.selectedIndex && !item.isCorrect) {
-                                        styleClass = "bg-red-100 border-red-500 text-red-800 font-bold shadow-md line-through";
-                                        iconHtml = '<span class="bg-red-500 text-white text-[10px] px-2 py-1 rounded-md uppercase tracking-widest ml-2">❌ Pilihan Kamu</span>';
+                                        styleClass = "bg-red-100 border-red-400 text-red-800 font-bold shadow-sm line-through opacity-80";
+                                        iconHtml = '<span class="bg-red-500 text-white text-[9px] md:text-[10px] px-2 py-1 rounded w-fit uppercase tracking-widest mt-1 md:mt-0 md:ml-2">Pilihanmu</span>';
                                     }
 
                                     return `
-                                        <div class="p-4 rounded-2xl border-2 flex flex-col md:flex-row md:items-center justify-between gap-2 ${styleClass}">
-                                            <span>${opt}</span>
-                                            <div>${iconHtml}</div>
+                                        <div class="p-3 md:p-4 rounded-xl md:rounded-2xl border-2 flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-2 ${styleClass}">
+                                            <span class="text-sm md:text-base">${opt}</span>
+                                            ${iconHtml}
                                         </div>
                                     `;
                                 }).join('')}
@@ -428,57 +508,25 @@ const UI = {
         }
 
         return `
-            <div class="max-w-4xl mx-auto animate-fade-in py-10">
-                <div class="bg-white p-8 md:p-16 rounded-[3rem] shadow-xl border border-stone-100 text-center flex flex-col items-center">
-                    <div class="w-24 h-24 bg-stone-900 rounded-3xl flex items-center justify-center text-5xl mb-8 shadow-inner">🎯</div>
-                    <h2 class="text-4xl font-black text-gray-900 mb-2">Skor Kamu</h2>
-                    <p class="text-gray-400 font-bold mb-10 uppercase tracking-widest text-xs">${message}</p>
-                    
-                    <div class="text-8xl font-black text-[#E60012] mb-4">${params.score}<span class="text-3xl text-stone-200 font-light"> / ${params.total}</span></div>
-                    
-                    <div class="w-full max-w-md bg-stone-100 h-4 rounded-full overflow-hidden mb-12 border shadow-inner">
-                        <div class="bg-[#E60012] h-full transition-all duration-1000" style="width: ${scorePercent}%"></div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-4 w-full max-w-lg mb-8 border-b-2 border-dashed border-gray-200 pb-16">
-                        <button onclick="if(window.Router) window.Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="flex-1 bg-stone-900 text-white py-5 rounded-2xl font-black text-lg hover:shadow-lg hover:-translate-y-1 transition-all">
-                            Kembali Ke Materi
-                        </button>
-                        <button onclick="if(window.Quiz) Quiz.start('${Quiz.currentLevel}', ${Quiz.currentDay}, '${Quiz.currentType}')" class="flex-1 bg-gray-100 text-gray-600 font-bold py-5 rounded-2xl hover:bg-gray-200 hover:-translate-y-1 transition-all">
-                            Ulangi Kuis
-                        </button>
-                    </div>
-
-                    <!-- AREA REVIEW JAWABAN -->
-                    ${reviewHtml}
-                    
+            <div class="fade-in bg-white p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-stone-100 shadow-xl max-w-2xl mx-auto mt-6 md:mt-10 text-center">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-stone-900 rounded-2xl md:rounded-3xl flex items-center justify-center text-white text-3xl md:text-4xl mx-auto mb-4 md:mb-6 shadow-inner">🎯</div>
+                
+                <p class="text-stone-400 font-bold text-xs md:text-sm uppercase tracking-widest mb-1">Skor Evaluasi Kamu</p>
+                <h2 class="text-6xl md:text-7xl font-black text-[#E60012] mb-3 md:mb-4">${p.score}<span class="text-2xl md:text-3xl text-stone-300"> / ${p.total}</span></h2>
+                
+                <p class="text-stone-600 font-bold text-sm md:text-lg mb-8">${message}</p>
+                
+                <div class="w-full max-w-sm mx-auto bg-stone-100 h-3 rounded-full overflow-hidden mb-10 shadow-inner">
+                    <div class="bg-[#E60012] h-full transition-all duration-1000" style="width: ${scorePercent}%"></div>
                 </div>
-            </div>
-        `;
-    },
 
-    // 6. LOGIKA PERPINDAHAN 3 TAB
-    switchTab: (tabName) => {
-        const panes = {
-            bunpou: document.getElementById('pane-bunpou'),
-            kotoba: document.getElementById('pane-kotoba'),
-            dokkai: document.getElementById('pane-dokkai')
-        };
-        const btns = {
-            bunpou: document.getElementById('btn-tab-bunpou'),
-            kotoba: document.getElementById('btn-tab-kotoba'),
-            dokkai: document.getElementById('btn-tab-dokkai')
-        };
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="w-full bg-stone-900 text-white py-4 md:py-5 rounded-2xl font-bold shadow-md hover:bg-stone-800 transition-all text-sm md:text-base">Kembali ke Materi</button>
+                    <button onclick="Quiz.start('${Quiz.currentLevel}', ${Quiz.currentDay}, '${Quiz.currentType}')" class="w-full bg-stone-100 text-stone-600 font-bold py-4 md:py-5 hover:bg-stone-200 rounded-2xl transition-all text-sm md:text-base">Coba Ulang Kuis</button>
+                </div>
 
-        if (!panes.bunpou || !panes.kotoba || !panes.dokkai) return;
-
-        Object.keys(panes).forEach(key => {
-            panes[key].classList.replace('block', 'hidden');
-            btns[key].className = "flex-1 md:flex-none px-6 md:px-8 py-3 rounded-xl font-black transition-all text-gray-400 hover:text-gray-600 text-sm md:text-base";
-        });
-
-        panes[tabName].classList.replace('hidden', 'block');
-        btns[tabName].className = "flex-1 md:flex-none px-6 md:px-8 py-3 rounded-xl font-black transition-all bg-white shadow-sm text-gray-800 text-sm md:text-base";
+                ${reviewHtml}
+            </div>`;
     },
 
     // 7. LOGIKA KHUSUS HARI 1: TOGGLE ACCORDION

@@ -91,8 +91,8 @@ const Database = {
                     ]
                 }
             ],
-             quizzes: {
-                 bunpou: [
+            quizzes: {
+                bunpou: [
                     { q: "Huruf apa yang digunakan untuk menulis kosakata asli bahasa Jepang?", a: ["Katakana", "Kanji", "Hiragana", "Romaji"], correct: 2 },
                     { q: "Huruf apa yang khusus digunakan untuk menulis kata serapan dari bahasa asing?", a: ["Hiragana", "Katakana", "Kanji", "Romaji"], correct: 1 },
                     { q: "Kata 「わたし」 (Watashi) sebaiknya ditulis menggunakan huruf...", a: ["Hiragana", "Katakana", "Kanji", "Romaji"], correct: 0 },
@@ -121,7 +121,14 @@ const Database = {
                     { q: "Mana yang merupakan huruf Hiragana 'Pi'?", a: ["ぱ", "ぴ", "ぷ", "ぺ"], correct: 1 },
                     { q: "Huruf apakah ini: 「ヲ」?", a: ["Wa", "Wo", "N", "O"], correct: 1 }
                 ],
-            }
+            },
+            // choukai: {
+            //     title: "Latihan Mendengar Percakapan",
+            //     youtubeId: "dQw4w9WgXcQ", // Masukkan ID YouTube di sini
+            //     text: "Simak baik-baik percakapan dalam video di atas.",
+            //     translation: "..."
+            // }
+
         },
         2: {
             title: "Hari 2: Perkenalan Diri (Jikoshoukai)",
@@ -169,7 +176,7 @@ const Database = {
                 translation: "Yamada: Salam kenal. Saya adalah Yamada. (Saya) orang Jepang.\nMaria: Salam kenal. Saya Maria. (Saya) orang Indonesia.\nYamada: Apakah Saudari Maria seorang pelajar?\nMaria: Bukan, (saya) bukan pelajar. (Saya) pegawai perusahaan. Kalau Saudara Yamada?\nYamada: Saya bukan pegawai perusahaan. (Saya) seorang guru. Senang berkenalan dengan Anda (Mohon bimbingannya).\nMaria: Senang berkenalan dengan Anda juga."
             },
             // ... (kode quizzes hari ke 2) ...
-           quizzes: {
+            quizzes: {
                 bunpou: [
                     { q: "Untuk menyatakan 'A adalah B', partikel apa yang diletakkan setelah Subjek?", a: ["か (ka)", "は (wa)", "の (no)", "に (ni)"], correct: 1 },
                     { q: "Bagaimana cara mengubah kalimat afirmatif (positif) menjadi kalimat tanya?", a: ["Menambahkan 'ja arimasen'", "Menambahkan 'desu'", "Menambahkan partikel 'ka' di akhir kalimat", "Menghapus partikel 'wa'"], correct: 2 },

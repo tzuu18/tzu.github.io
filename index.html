@@ -29,51 +29,48 @@
                 </div>
 
                 <!-- Menu Header -->
-                <nav class="hidden md:flex items-center space-x-8 font-bold text-stone-500">
-                    <button onclick="if(window.Router) window.Router.push('home')" class="hover:text-[#E60012] transition-colors">Beranda</button>
-                    <button onclick="if(window.Router) window.Router.push('folder', 'N5')" class="hover:text-[#E60012] transition-colors">Level N5</button>
-                    <button onclick="if(window.Router) window.Router.push('folder', 'N4')" class="hover:text-[#E60012] transition-colors">Level N4</button>
-                </nav>
-            </div>
-        </header>
+            <nav class="hidden md:flex items-center space-x-8 font-bold text-stone-500">
+                <button onclick="if(window.Router) window.Router.push('home')" class="hover:text-[#E60012] transition-colors">Beranda</button>
+                <button onclick="if(window.Router) window.Router.push('folder', 'N5')" class="hover:text-[#E60012] transition-colors">Level N5</button>
+                <button onclick="if(window.Router) window.Router.push('folder', 'N4')" class="hover:text-[#E60012] transition-colors">Level N4</button>
+            </nav>
+        </div>
+    </header>
 
-        <!-- KONTEN UTAMA (Akan berubah-ubah otomatis) -->
-        <main id="main-content" class="max-w-6xl mx-auto px-6 py-10 min-h-[80vh]"></main>
+    <!-- KONTEN UTAMA (Akan berubah-ubah otomatis) -->
+    <main id="main-content" class="max-w-6xl mx-auto px-6 py-10 pb-28 md:pb-10 min-h-[80vh]"></main>
 
-        <!-- FOOTER -->
-        <footer class="border-t border-stone-200 bg-white py-12 mt-20">
-            <div class="max-w-6xl mx-auto px-6 text-center">
-                <p class="text-sm text-stone-400 font-medium">Platform Belajar Bahasa Jepang 50 Hari</p>
-                <p class="text-xs text-stone-300 mt-6">© 2026 TzuJapan Academy</p>
-            </div>
-        </footer>
-    </div>
+    <!-- FOOTER -->
+    <footer class="border-t border-stone-200 bg-white py-12 mt-20 mb-16 md:mb-0">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-sm text-stone-400 font-medium">Platform Belajar Bahasa Jepang 50 Hari</p>
+            <p class="text-xs text-stone-300 mt-6">© 2026 TzuJapan Academy</p>
+        </div>
+    </footer>
 
+    <!-- MOBILE BOTTOM NAVIGATION (KHUSUS HP) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-stone-200 flex justify-around items-center h-16 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+        <button onclick="if(window.Router) window.Router.push('home')" class="flex flex-col items-center justify-center w-full h-full text-stone-400 hover:text-[#E60012] transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <span class="text-[10px] font-bold">Beranda</span>
+        </button>
+        <button onclick="if(window.Router) window.Router.push('folder', 'N5')" class="flex flex-col items-center justify-center w-full h-full text-stone-400 hover:text-[#E60012] transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <span class="text-[10px] font-bold">Level N5</span>
+        </button>
+        <button onclick="if(window.Router) window.Router.push('folder', 'N4')" class="flex flex-col items-center justify-center w-full h-full text-stone-400 hover:text-blue-600 transition-colors">
+            <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span class="text-[10px] font-bold">Level N4</span>
+        </button>
+    </nav>
+</div>
 
-    <!-- <script>
-        const Router = {
-            push: (page, params = null) => {
-                const container = document.getElementById('main-content');
-                window.scrollTo(0,0);
-                if (page === 'home') container.innerHTML = UI.renderHome();
-                else if (page === 'folder') container.innerHTML = UI.renderFolder(params);
-                else if (page === 'lesson') container.innerHTML = UI.renderLesson(params.level, params.day);
-            }
-        };
-
-        // Simpan Router ke window agar bisa diakses onclick di HTML
-        window.Router = Router;
-
-        document.addEventListener('DOMContentLoaded', () => window.Router.push('home'));
-
-
-    </script> -->
-     <!-- MEMANGGIL FILE JAVASCRIPT DARI FOLDER JS (URUTANNYA JANGAN DIUBAH YA) -->
+<!-- MEMANGGIL FILE JAVASCRIPT DARI FOLDER JS (URUTANNYA JANGAN DIUBAH YA) -->
     <script src="js/database.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
-    
+
 </body>
 </html>
