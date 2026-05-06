@@ -458,7 +458,7 @@ const UI = {
 
     // 4. LOGIKA PERPINDAHAN TAB (SEKARANG 5 TAB)
     switchTab: (tabName, level) => {
-        const tabs = ['bunpou', 'kotoba', 'dokkai', 'choukai', 'kanji'];
+        const tabs = ['kotoba', 'bunpou', 'dokkai', 'choukai', 'kanji'];
         
         tabs.forEach(t => {
             const btn = document.getElementById(`tab-${t}`);

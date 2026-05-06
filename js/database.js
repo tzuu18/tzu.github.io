@@ -313,18 +313,49 @@ const Database = {
                     ]
                 }
             ],
-            quizzes: [
-                { q: "Partikel apa yang digunakan untuk menyatakan arti 'Juga'?", a: ["Wa", "Ka", "Mo", "No"], c: 2 },
-                { q: "Apa fungsi utama dari partikel 'No' (の)?", a: ["Menanyakan sesuatu", "Menghubungkan dua kata benda", "Menyangkal sesuatu", "Menyatakan subjek"], c: 1 },
-                { q: "Terjemahkan kata 'Isha' (いしゃ) ke dalam bahasa Indonesia.", a: ["Guru", "Peneliti", "Dokter", "Pegawai Bank"], c: 2 },
-                { q: "Kalimat mana yang berarti 'Saya juga mahasiswa'?", a: ["Watashi wa gakusei desu", "Watashi mo gakusei desu", "Watashi no gakusei desu", "Watashi wa gakusei ja arimasen"], c: 1 },
-                { q: "Pilih bentuk yang LEBIH SOPAN dari kata tanya 'Dare' (Siapa).", a: ["Dore", "Nansai", "Donata", "Dochira"], c: 2 },
-                { q: "Lengkapi kalimat ini: 'Yamada-san wa Sakura Daigaku ... gakusei desu.'", a: ["Wa", "Mo", "Ni", "No"], c: 3 },
-                { q: "Apa arti dari 'Ginkouin' (ぎんこういん)?", a: ["Rumah Sakit", "Pegawai Perusahaan", "Pegawai Bank", "Universitas"], c: 2 },
-                { q: "Bagaimana cara mengatakan 'Saya berasal dari Indonesia'?", a: ["Indoneshia no jin desu", "Indoneshia kara kimashita", "Indoneshia mo kimashita", "Indoneshia wa kimashita"], c: 1 },
-                { q: "Bentuk sopan untuk bertanya 'Umur berapa' (Nansai) adalah...", a: ["Oikutsu", "Donata", "Doko", "Ikura"], c: 0 },
-                { q: "Terjemahkan ungkapan ini: 'Shitsurei desu ga, o-namae wa?'", a: ["Siapa nama Anda?", "Permisi, siapa nama Anda?", "Apakah ini nama Anda?", "Salam kenal, saya..."], c: 1 }
-            ]
+            dokkai: {
+                title: "これは なんですか (Ini apa?)",
+                text: "マリア： やまださん、それは なんですか。\nやまだ： これは <ruby>辞書<rt>じしょ</rt></ruby>です。\nマリア： やまださんの <ruby>辞書<rt>じしょ</rt></ruby> ですか。\nやまだ： いいえ、<ruby>私<rt>わたし</rt></ruby>の じゃありません。たなか<ruby>先生<rt>せんせい</rt></ruby>の です。\nマリア： そうですか。あれは やまださんの <ruby>鞄<rt>かばん</rt></ruby> ですか。\nやまだ： はい、あれは <ruby>私<rt>わたし</rt></ruby>の です。",
+                translation: "Maria: Yamada, itu (di dekatmu) apa?\nYamada: Ini adalah kamus.\nMaria: Apakah kamus milik Yamada?\nYamada: Bukan, bukan milik saya. Milik Pak Tanaka.\nMaria: Begitu ya. Apakah itu (di sana) tas milik Yamada?\nYamada: Ya, itu milik saya."
+            },
+            quizzes: {
+                bunpou: [
+                    { q: "Pola kalimat yang tepat untuk menyatakan 'Ini adalah buku' adalah...", a: ["これは ほん です", "それは ほん です", "あれは ほん です", "ほんは これ です"], correct: 0 },
+                    { q: "Jika sebuah benda berada di dekat teman bicaramu, kamu menunjuknya menggunakan kata...", a: ["これ (Kore)", "それ (Sore)", "あれ (Are)", "わたし (Watashi)"], correct: 1 },
+                    { q: "Kata tunjuk untuk benda yang jaraknya jauh dari kamu DAN temanmu adalah...", a: ["これ", "それ", "あれ", "どれ"], correct: 2 },
+                    { q: "Untuk menanyakan 'Ini apa?', kalimat bahasa Jepang yang benar adalah...", a: ["これは だれですか", "これは なんですか", "これは ほんですか", "なんは これですか"], correct: 1 },
+                    { q: "Terjemahan yang tepat untuk 'Apakah ini kamus atau buku?' adalah...", a: ["これは じしょですか、ほんですか", "これは じしょ、ほんですか", "これ じしょですか ほんですか", "これは じしょですか、ほんです"], correct: 0 },
+                    { q: "Lengkapi kalimat berikut: あれ (...) とけい です。", a: ["は", "か", "も", "の"], correct: 0 },
+                    { q: "Bagaimana cara bertanya 'Apakah itu (jauh di sana) adalah payung?'", a: ["あれは かさです", "これは かさですか", "それは かさですか", "あれは かさですか"], correct: 3 },
+                    { q: "Lengkapi kalimat tanya berikut: それは かばん (...)。", a: ["です", "ですか", "は", "も"], correct: 1 },
+                    { q: "Jika seseorang memegang payung dan bertanya padamu 'Kore wa nan desu ka?', kamu akan menjawab dengan awalan...", a: ["これは...", "それは...", "あれは...", "わたしは..."], correct: 1 },
+                    { q: "Jika benda ada di tanganmu dan temanmu bertanya 'Sore wa nan desu ka?', kamu membalas dengan awalan...", a: ["これは...", "それは...", "あれは...", "あなたは..."], correct: 0 }
+                ],
+                kotoba: [
+                    { q: "Bahasa Jepang dari kata 'Buku' adalah...", a: ["ほん", "じしょ", "かさ", "かばん"], correct: 0 },
+                    { q: "Bahasa Jepang dari kata 'Kamus' adalah...", a: ["ざっし", "じしょ", "しんぶん", "のーと"], correct: 1 },
+                    { q: "Bahasa Jepang dari kata 'Payung' adalah...", a: ["かばん", "つくえ", "かさ", "いす"], correct: 2 },
+                    { q: "Bahasa Jepang dari kata 'Meja' adalah...", a: ["いす", "ほん", "とけい", "つくえ"], correct: 3 },
+                    { q: "Bahasa Jepang dari kata 'Kursi' adalah...", a: ["かばん", "かさ", "いす", "つくえ"], correct: 2 },
+                    { q: "Bahasa Jepang dari kata 'Jam' adalah...", a: ["とけい", "のーと", "ほん", "じしょ"], correct: 0 },
+                    { q: "Bahasa Jepang dari kata 'Tas' adalah...", a: ["かさ", "かばん", "いす", "つくえ"], correct: 1 },
+                    { q: "Bahasa Jepang dari kata 'Majalah' adalah...", a: ["しんぶん", "じしょ", "ほん", "ざっし"], correct: 3 },
+                    { q: "Bahasa Jepang dari kata 'Koran' adalah...", a: ["てちょう", "のーと", "しんぶん", "ざっし"], correct: 2 },
+                    { q: "Bahasa Jepang dari kata tanya 'Apa' adalah...", a: ["だれ", "なん", "どこ", "いつ"], correct: 1 },
+                    { q: "Kata tunjuk untuk benda yang DEKAT dengan pembicara (Ini) adalah...", a: ["それ", "あれ", "どれ", "これ"], correct: 3 },
+                    { q: "Kata 'Pensil' dalam bahasa Jepang adalah...", a: ["とけい", "えんぴつ", "ぼーるぺん", "かばん"], correct: 1 },
+                    { q: "Kata 'Pulpen' dalam bahasa Jepang adalah...", a: ["ぼーるぺん", "えんぴつ", "のーと", "てちょう"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Buku Catatan' adalah...", a: ["てちょう", "ほん", "ざっし", "ノート"], correct: 3 },
+                    { q: "Bahasa Jepang dari 'Buku Saku / Agenda' adalah...", a: ["てちょう", "ノート", "しんぶん", "じしょ"], correct: 0 }
+                ],
+                dokkai: [
+                    { q: "Benda apa yang ditanyakan oleh Maria di awal percakapan?", a: ["Tas", "Kamus", "Jam", "Buku"], correct: 1 },
+                    { q: "Milik siapakah kamus tersebut?", a: ["Milik Maria", "Milik Sekolah", "Milik Tanaka-sensei", "Milik Yamada"], correct: 2 },
+                    { q: "Kalimat apa yang Maria gunakan saat menunjuk kamus yang dipegang Yamada?", a: ["それは なんですか", "これは なんですか", "あれは なんですか", "どれは なんですか"], correct: 0 },
+                    { q: "Benda apa yang posisinya jauh dari Maria maupun Yamada?", a: ["Payung", "Meja", "Kamus", "Tas"], correct: 3 },
+                    { q: "Milik siapakah tas yang ada di sana?", a: ["Milik Yamada", "Milik Maria", "Milik Tanaka-sensei", "Tidak ada pemiliknya"], correct: 0 }
+                ]
+            }
         },
         4: {
             title: "Hari 4: Menunjuk Benda (Kore/Sore/Are)",
@@ -425,18 +456,49 @@ const Database = {
                     ]
                 }
             ],
-            quizzes: [
-                { q: "Apa perbedaan antara 'Kore' dan 'Kono'?", a: ["Kore untuk manusia, Kono untuk benda", "Kore bisa berdiri sendiri, Kono harus diikuti kata benda", "Kore berarti Itu, Kono berarti Ini", "Tidak ada perbedaan"], c: 1 },
-                { q: "Jika seseorang bertanya dan jawabannya SALAH, kata apa yang paling natural diucapkan?", a: ["Sou desu", "Sou ja arimasen", "Chigaimasu", "Hai, desu"], c: 2 },
-                { q: "Bagaimana cara mengatakan 'Buku ini milik saya'?", a: ["Kore hon wa watashi no desu", "Kono hon wa watashi desu", "Kono hon wa watashi no desu", "Kore wa watashi no hon desu"], c: 2 },
-                { q: "Apa arti dari kalimat tanya: 'Kore wa Jisho desu ka, Hon desu ka?'", a: ["Apakah ini kamus dan buku?", "Apakah ini kamus atau buku?", "Ini kamus, bukan buku.", "Buku ini adalah kamus."], c: 1 },
-                { q: "Apa yang harus diucapkan saat kita baru mengerti suatu informasi baru ('Oh, begitu')?", a: ["Sou desu", "Chigaimasu", "Sou desu ka", "Arigatou"], c: 2 },
-                { q: "Jika A bertanya: 'Are wa dare no kaban desu ka?' dan itu tas milik Tuan Sato. Bagaimana jawaban B yang tepat dan efisien?", a: ["Satou-san no kaban kaban desu", "Satou-san no desu", "Satou-san desu", "Hai, Satou-san desu"], c: 1 },
-                { q: "Apa tujuan menambahkan awalan 'O' (お) pada kata seperti 'O-miyage'?", a: ["Mengubah arti kata", "Menjadikannya bentuk negatif", "Menunjukkan kesopanan", "Menunjukkan kepemilikan"], c: 2 },
-                { q: "Terjemahkan: 'Kore wa Konpyuutaa no hon desu.'", a: ["Ini adalah buku milik komputer", "Ini adalah buku tentang komputer", "Komputer ini adalah buku", "Buku ini ada di komputer"], c: 1 },
-                { q: "Kata tunjuk mana yang digunakan untuk menunjuk benda yang jauh dari pembicara dan pendengar?", a: ["Kore / Kono", "Sore / Sono", "Are / Ano", "Dore / Dono"], c: 2 },
-                { q: "Lengkapi kalimat ini agar bermakna 'Ya, betul': Sore wa tokei desu ka. ...Hai, ________.", a: ["Tokei desu ka", "Chigaimasu", "Sou desu ka", "Sou desu"], c: 3 }
-            ]
+            dokkai: {
+                title: "ここは どこですか (Di mana ini?)",
+                text: "マリア： やまださん、ここは どこですか。\nやまだ： ここは <ruby>受付<rt>うけつけ</rt></ruby>です。\nマリア： そうですか。<ruby>事務所<rt>じむしょ</rt></ruby>は どこですか。\nやまだ： <ruby>事務所<rt>じむしょ</rt></ruby>は あそこです。\nマリア： <ruby>食堂<rt>しょくどう</rt></ruby>も あそこですか。\nやまだ： いいえ、<ruby>食堂<rt>しょくどう</rt></ruby>は そこです。\nマリア： トイレは どこですか。\nやまだ： トイレは あそこです。",
+                translation: "Maria: Yamada, di sini (tempat ini) di mana?\nYamada: Di sini adalah resepsionis.\nMaria: Begitu ya. Kantor ada di mana?\nYamada: Kantor ada di sana.\nMaria: Apakah kantin juga ada di sana?\nYamada: Bukan, kantin ada di situ.\nMaria: Toilet ada di mana?\nYamada: Toilet ada di sana."
+            },
+            quizzes: {
+                bunpou: [
+                    { q: "Apa kata tunjuk untuk tempat di mana pembicara berdiri?", a: ["そこ", "どこ", "ここ", "あそこ"], correct: 2 },
+                    { q: "Bahasa Jepang dari 'Di sini adalah kantor'?", a: ["じむしょは ここです", "ここは じむしょです", "ここは じむしょですか", "そこは じむしょです"], correct: 1 },
+                    { q: "Cara menanyakan 'Toilet ada di mana?'", a: ["トイレは どこですか", "トイレは あそこですか", "どこは トイレですか", "ここは トイレですか"], correct: 0 },
+                    { q: "Lengkapi: しょくどう (...) あそこです。", a: ["の", "か", "も", "は"], correct: 3 },
+                    { q: "Arti 'エレベーターは そこです'?", a: ["Lift di mana?", "Lift di sana", "Lift di sini", "Lift di situ"], correct: 3 },
+                    { q: "Kata tunjuk tempat yang jauh dari keduanya?", a: ["どこ", "そこ", "ここ", "あそこ"], correct: 3 },
+                    { q: "Kalimat 'Guru ada di kelas'?", a: ["せんせいは きょうしつです", "せんせいは どこですか", "きょうしつは せんせいです", "ここは きょうしつです"], correct: 0 },
+                    { q: "Lengkapi: かいぎしつは (...) ですか。", a: ["ここ", "どこ", "だれ", "なん"], correct: 1 },
+                    { q: "Terjemahan 'あそこは ロビーです'?", a: ["Di situ lobi", "Lobi di sana", "Di sana lobi", "Di mana lobi?"], correct: 2 },
+                    { q: "Jawaban tepat untuk '事務所は どこですか'?", a: ["はい、じむしょです", "じむしょは あそこです", "じむしょは なんですか", "いいえ、じむしょじゃありません"], correct: 1 }
+                ],
+                kotoba: [
+                    { q: "Bahasa Jepang 'Ruang Kelas'?", a: ["じむしょ", "しょくどう", "きょうしつ", "へya"], correct: 2 },
+                    { q: "Bahasa Jepang 'Kantin'?", a: ["しょくどう", "かいぎしつ", "うけつけ", "といれ"], correct: 0 },
+                    { q: "Bahasa Jepang 'Kantor'?", a: ["きょうしつ", "へや", "くに", "じむしょ"], correct: 3 },
+                    { q: "Bahasa Jepang 'Ruang Rapat'?", a: ["しょくどう", "かいぎしつ", "かいだん", "ろびー"], correct: 1 },
+                    { q: "Bahasa Jepang 'Toilet'?", a: ["へや", "といれ", "エレベーター", "うけつけ"], correct: 1 },
+                    { q: "Bahasa Jepang 'Kamar'?", a: ["くに", "へya", "じむしょ", "きょうしつ"], correct: 1 },
+                    { q: "Bahasa Jepang 'Resepsionis'?", a: ["うけつけ", "かいだん", "しょくどう", "といれ"], correct: 0 },
+                    { q: "Bahasa Jepang 'Tangga'?", a: ["エレベーター", "かいだん", "へや", "ろびー"], correct: 1 },
+                    { q: "Bahasa Jepang 'Lift'?", a: ["エレベーター", "ロビー", "トイレ", "ドア"], correct: 0 },
+                    { q: "Bahasa Jepang 'Lobi'?", a: ["トイレ", "ロビー", "エレベーター", "エアコン"], correct: 1 },
+                    { q: "Bahasa Jepang 'Negara'?", a: ["くに", "へや", "まち", "やま"], correct: 0 },
+                    { q: "Kata tanya 'Di mana'?", a: ["なん", "だれ", "どこ", "いつ"], correct: 2 },
+                    { q: "Kata tunjuk 'Di sini'?", a: ["そこ", "ここ", "あそこ", "どこ"], correct: 1 },
+                    { q: "Kata tunjuk 'Di sana (Jauh)'?", a: ["ここ", "そこ", "あそこ", "どこ"], correct: 2 },
+                    { q: "Kata tunjuk 'Di situ'?", a: ["そこ", "ここ", "あそこ", "どこ"], correct: 0 }
+                ],
+                dokkai: [
+                    { q: "Di mana Maria dan Yamada berada?", a: ["Kantor", "Resepsionis", "Kantin", "Toilet"], correct: 1 },
+                    { q: "Apa yang ditanya Maria pertama kali?", a: ["Kelas", "Toilet", "Kantor", "Kantin"], correct: 2 },
+                    { q: "Di mana letak Kantor (Jimusho)?", a: ["Koko", "Soko", "Asoko", "Lantai 2"], correct: 2 },
+                    { q: "Apakah Kantin juga ada di Asoko?", a: ["Ya", "Bukan, di Soko", "Bukan, di Koko", "Tutup"], correct: 1 },
+                    { q: "Di mana letak Toilet?", a: ["Koko", "Soko", "Asoko", "Dalam kantor"], correct: 2 }
+                ]
+            }
         },
         5: {
             title: "Hari 5: Tempat & Arah (Koko/Soko/Asoko)",
@@ -539,19 +601,49 @@ const Database = {
                         { jp: "おくに は どちらですか。", id: "Negara asal Anda dari mana?" }
                     ]
                 }
-            ],
-            quizzes: [
-                { q: "Apa kata tunjuk yang tepat untuk tempat di mana pembicara dan pendengar sama-sama berada?", a: ["Soko", "Asoko", "Koko", "Doko"], c: 2 },
-                { q: "Bentuk sopan dari 'Sana' (Asoko) adalah?", a: ["Sochira", "Dochira", "Kochira", "Achira"], c: 3 },
-                { q: "Terjemahkan kalimat ini: 'Jimusho wa doko desu ka.'", a: ["Di mana ruang kelas?", "Di mana kantor?", "Kantin ada di mana?", "Siapa yang ada di kantor?"], c: 1 },
-                { q: "Bagaimana cara bertanya 'Mobil ini buatan mana?'", a: ["Kore wa nan no kuruma desu ka", "Kore wa dare no kuruma desu ka", "Kore wa doko no kuruma desu ka", "Kore wa kuruma no doko desu ka"], c: 2 },
-                { q: "Kata apa yang TIDAK boleh digunakan saat menanyakan nama perusahaan seseorang?", a: ["Nan", "Doko", "Dochira", "Semua boleh"], c: 0 },
-                { q: "Lengkapi: 'Tanaka-san wa _______ desu.' (Tuan Tanaka ada di ruang rapat)", a: ["Shokudou", "Kaigishitsu", "Toire", "Kyoushitsu"], c: 1 },
-                { q: "Apa fungsi partikel 'No' (の) pada kalimat 'Kankoku no kamera desu'?", a: ["Menyatakan kepemilikan", "Menyatakan asal/buatan", "Menyatakan waktu", "Menyatakan tempat"], c: 1 },
-                { q: "Jika pelayan toko ingin bertanya dengan sopan 'Lift ada di sebelah mana?', ia akan menggunakan kata...", a: ["Doko", "Asoko", "Dochira", "Kochira"], c: 2 },
-                { q: "Terjemahkan: 'Kutsu uriba wa chika desu.'", a: ["Tempat jual sepatu ada di lantai satu.", "Sepatu ada di ruang bawah tanah.", "Tempat jual sepatu ada di basement.", "Ini adalah sepatu dari basement."], c: 2 },
-                { q: "Untuk menanyakan negara asal seseorang dengan sopan, kita berkata:", a: ["Kuni wa doko desu ka", "Okuni wa dochira desu ka", "Anata wa kuni desu ka", "Okuni wa nan desu ka"], c: 1 }
-            ]
+            ],dokkai: {
+                title: "いくらですか (Harganya Berapa?)",
+                text: "マリア： すみません、ネクタイの <ruby>売<rt>う</rt></ruby>り<ruby>場<rt>ば</rt></ruby>は どちらですか。\n<ruby>店員<rt>てんいん</rt></ruby>： ３<ruby>階<rt>かい</rt></ruby>です。\n\n（３<ruby>階<rt>かい</rt></ruby>で）\nマリア： すみません、その ネクタイを <ruby>見<rt>み</rt></ruby>せて ください。\n<ruby>店員<rt>てんいん</rt></ruby>： はい、どうぞ。\nマリア： これは イタリアの ネクタイですか。\n<ruby>店員<rt>てんいん</rt></ruby>： いいえ、フランスの です。\nマリア： いくらですか。\n<ruby>店員<rt>てんいん</rt></ruby>： ７３００<ruby>円<rt>えん</rt></ruby>です。\nマリア： じゃ、これを ください。",
+                translation: "Maria: Permisi, konter penjualan dasi ada di sebelah mana?\nPelayan Toko: Ada di lantai 3.\n\n(Di lantai 3)\nMaria: Permisi, tolong perlihatkan dasi yang itu.\nPelayan Toko: Baik, silakan.\nMaria: Apakah ini dasi buatan Italia?\nPelayan Toko: Bukan, (ini) buatan Prancis.\nMaria: Berapa harganya?\nPelayan Toko: 7.300 Yen.\nMaria: Kalau begitu, saya minta (beli) yang ini."
+            },
+            quizzes: {
+                bunpou: [
+                    { q: "Bentuk sopan dari 'ここ' (Koko) adalah...", a: ["そちら", "どちら", "こちら", "あちら"], correct: 2 },
+                    { q: "Bentuk sopan dari 'どこ' (Doko) yang digunakan untuk menanyakan arah adalah...", a: ["あちら", "こちら", "どちら", "そちら"], correct: 2 },
+                    { q: "Kalimat yang paling sopan untuk menunjuk 'Toilet ada di sebelah sana' adalah...", a: ["トイレは あそこです", "トイレは あちらです", "トイレは そちらです", "トイレは どちらですか"], correct: 1 },
+                    { q: "Untuk menanyakan harga barang, kata tanya yang digunakan adalah...", a: ["なん", "だれ", "どこ", "いくら"], correct: 3 },
+                    { q: "Terjemahan dari 'この くつは いくらですか' adalah...", a: ["Sepatu ini buatan mana?", "Sepatu ini milik siapa?", "Sepatu ini harganya berapa?", "Sepatu ini ada di mana?"], correct: 2 },
+                    { q: "Lengkapi: マリアさんの おくには (...) ですか。", a: ["こちら", "どちら", "なん", "いくら"], correct: 1 },
+                    { q: "Bagaimana cara memperkenalkan temanmu secara sopan? '(Di sebelah sini) adalah Tuan Yamada.'", a: ["ここは やまださんです", "こちらは やまださんです", "あちらは やまださんです", "やまださんは こちらですか"], correct: 1 },
+                    { q: "Lengkapi kalimat: それは ３０００ (...) です。", a: ["かい", "えん", "ちか", "ひゃく"], correct: 1 },
+                    { q: "Kalimat 'ワインの うりばは どちらですか' berarti...", a: ["Berapa harga wine?", "Anggur ini buatan mana?", "Siapa yang minum wine?", "Tempat penjualan wine ada di sebelah mana?"], correct: 3 },
+                    { q: "Jika pelayan toko menunjuk ke arahmu (sebelah situ), dia akan menggunakan kata...", a: ["こちら", "あちら", "そちら", "どちら"], correct: 2 }
+                ],
+                kotoba: [
+                    { q: "Bahasa Jepang dari 'Sebelah sini' (sopan) adalah...", a: ["そちら", "あちら", "どちら", "こちら"], correct: 3 },
+                    { q: "Bahasa Jepang dari 'Sebelah situ' (sopan) adalah...", a: ["そちら", "あちら", "どちら", "こちら"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Sebelah sana' (sopan) adalah...", a: ["こちら", "そちら", "あちら", "どちら"], correct: 2 },
+                    { q: "Bahasa Jepang dari 'Berapa harganya' adalah...", a: ["どちら", "いくら", "なん", "どこ"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Sepatu' adalah...", a: ["くつ", "えん", "ちか", "かい"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Dasi' adalah...", a: ["ワイン", "ネクタイ", "うりば", "くつ"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Tempat Penjualan / Konter' adalah...", a: ["ちか", "かい", "うりば", "ワイン"], correct: 2 },
+                    { q: "Bahasa Jepang dari 'Bawah tanah / Basement' adalah...", a: ["ちか", "かい", "くつ", "えん"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Lantai' adalah...", a: ["えん", "かい", "ちか", "まん"], correct: 1 },
+                    { q: "Angka 'Ratus' dalam bahasa Jepang adalah...", a: ["ひゃく", "せん", "まん", "えん"], correct: 0 },
+                    { q: "Angka 'Ribu' dalam bahasa Jepang adalah...", a: ["まん", "ひゃく", "せん", "かい"], correct: 2 },
+                    { q: "Angka 'Puluh Ribu' dalam bahasa Jepang adalah...", a: ["せん", "ひゃく", "まん", "えん"], correct: 2 },
+                    { q: "Mata uang Jepang 'Yen' dibaca...", a: ["えん", "いん", "おん", "あん"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Wine / Anggur' adalah...", a: ["くつ", "ネクタイ", "ワイン", "うりば"], correct: 2 },
+                    { q: "Kata tanya 'Sebelah mana' (sopan) adalah...", a: ["こちら", "そちら", "あちら", "どちら"], correct: 3 }
+                ],
+                dokkai: [
+                    { q: "Di lantai berapakah letak tempat penjualan dasi?", a: ["Lantai 1", "Lantai 2", "Lantai 3", "Bawah Tanah (Basement)"], correct: 2 },
+                    { q: "Dasi buatan negara manakah yang dibeli Maria?", a: ["Jepang", "Italia", "Prancis", "Indonesia"], correct: 2 },
+                    { q: "Berapa harga dasi yang dibeli oleh Maria?", a: ["3.000 Yen", "7.000 Yen", "7.300 Yen", "3.700 Yen"], correct: 2 },
+                    { q: "Barang apa yang sedang dicari oleh Maria di cerita tersebut?", a: ["Kutsu (Sepatu)", "Nekutai (Dasi)", "Wain (Wine)", "Tokei (Jam)"], correct: 1 },
+                    { q: "Apa yang Maria katakan saat memutuskan untuk membeli barang tersebut?", a: ["いくらですか (Berapa harganya?)", "みせてください (Tolong perlihatkan)", "これを ください (Saya minta ini)", "ありがとう (Terima kasih)"], correct: 2 }
+                ]
+            }
         },
         6: {
             title: "Hari 6: Waktu, Hari & Kata Kerja Dasar",
@@ -662,18 +754,49 @@ const Database = {
                     ]
                 }
             ],
-            quizzes: [
-                { q: "Apa bahasa Jepangnya 'Hari ini'?", a: ["Ashita", "Ototoi", "Kinou", "Kyou"], c: 3 },
-                { q: "Bentuk LAMPAU POSITIF dari kata kerja 'Tidur' (Nemasu) adalah?", a: ["Nemashite", "Nemashita", "Nemasen", "Nemasen deshita"], c: 1 },
-                { q: "Bagaimana cara membaca jam 7:30?", a: ["Shichiji han", "Nanaji han", "Shichiji fun", "Nanaji pun"], c: 0 },
-                { q: "Partikel apa yang menghubungkan dua kata benda dengan arti 'Dan'?", a: ["Ni", "Ka", "To", "Wa"], c: 2 },
-                { q: "Lengkapi: 'Ginkou wa 9-ji _____ 3-ji made desu.' (Bank dari jam 9 sampai jam 3)", a: ["Ni", "Kara", "To", "Made"], c: 1 },
-                { q: "Kata keterangan waktu manakah yang TIDAK boleh ditambahkan partikel 'ni' (に)?", a: ["Getsuyoubi (Senin)", "6-ji (Jam 6)", "Ashita (Besok)", "Nichiyoubi (Minggu)"], c: 2 },
-                { q: "Terjemahkan kalimat ini: 'Kinou hatarakimasen deshita.'", a: ["Kemarin saya bekerja.", "Besok saya tidak akan bekerja.", "Hari ini saya tidak bekerja.", "Kemarin saya tidak bekerja."], c: 3 },
-                { q: "Apa arti dari 'Ototoi'?", a: ["Kemarin", "Besok lusa", "Dua hari yang lalu", "Pagi ini"], c: 2 },
-                { q: "Jika seseorang bercerita betapa lelahnya mereka bekerja, ungkapan apa yang tepat untuk bersimpati?", a: ["Arigatou", "Taihen desu ne", "Sou desu ka", "Chigaimasu"], c: 1 },
-                { q: "Apa arti dari kata 'Benkyoushimasu'?", a: ["Bekerja", "Beristirahat", "Tidur", "Belajar"], c: 3 }
-            ]
+           dokkai: {
+                title: "やまださんの まいにち (Hari-hari Yamada)",
+                text: "やまださんは まいにち ６じに おきます。\n９じから ５じまで じむしょで はたらきます。\nひるやすみは １２じから １じまで です。\nばん、７じから ９じまで べんきょうします。\n１１じに ねます。\nどようびと にちようびは やすみます。",
+                translation: "Yamada bangun jam 6 setiap hari.\nBekerja di kantor dari jam 9 sampai jam 5.\nIstirahat siang dari jam 12 sampai jam 1.\nMalam hari, belajar dari jam 7 sampai jam 9.\nTidur jam 11.\nHari Sabtu dan Minggu libur."
+            },
+            quizzes: {
+                bunpou: [
+                    { q: "Untuk menyatakan 'Sekarang jam 4', kalimat yang benar adalah...", a: ["いま よじ です", "いま しじ です", "いま よんじ です", "いま じよん です"], correct: 0 },
+                    { q: "Partikel yang digunakan untuk menyatakan jam kegiatan dilakukan (contoh: bangun PADA jam 6) adalah...", a: ["は (wa)", "に (ni)", "を (wo)", "が (ga)"], correct: 1 },
+                    { q: "Lengkapi: ９じ (...) ５じ (...) はたらきます。", a: ["から - まで", "まで - から", "に - まで", "から - に"], correct: 0 },
+                    { q: "Bagaimana cara bertanya 'Jam berapa sekarang?'", a: ["いま なんぷんですか", "いま なんじですか", "どこですか", "いくらですか"], correct: 1 },
+                    { q: "Arti dari 'ぎんこうは ３じまで です' adalah...", a: ["Bank buka jam 3", "Bank tutup jam 3", "Bank sampai jam 3", "Bank dari jam 3"], correct: 2 },
+                    { q: "Bentuk negatif (tidak melakukan) dari 'べんきょうします' adalah...", a: ["べんきょうしました", "べんきょうしません", "べんきょうして", "べんきょう"], correct: 1 },
+                    { q: "Lengkapi: わたしは まいにち １１じ (...) ねます。", a: ["に", "を", "へ", "は"], correct: 0 },
+                    { q: "Jam 8:30 dalam bahasa Jepang disebut...", a: ["はちじ はん", "はちじ さんじゅうじ", "はちじ ふん", "はちじ ご"], correct: 0 },
+                    { q: "Pola untuk menyatakan 'Selesai' dalam kegiatan adalah...", a: ["おわります", "おきます", "ねます", "はたらきます"], correct: 0 },
+                    { q: "Lengkapi: じゅぎょうは なんじ (...) おわりますか。", a: ["から", "まで", "に", "を"], correct: 2 }
+                ],
+                kotoba: [
+                    { q: "Bahasa Jepang dari 'Sekarang' adalah...", a: ["いま", "あした", "きのう", "きょう"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Bekerja' adalah...", a: ["ねます", "おきます", "はたらきます", "やすみます"], correct: 2 },
+                    { q: "Huruf Katakana yang benar untuk 'Department Store' adalah...", a: ["アパート", "デパート", "レポート", "エレベーター"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Tidur' adalah...", a: ["おきます", "ねます", "たべます", "のみます"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Belajar' adalah...", a: ["べんきょうします", "べんきょうしません", "おわります", "いきます"], correct: 0 },
+                    { q: "Satuan untuk jam adalah...", a: ["じ", "ふん", "えん", "かい"], correct: 0 },
+                    { q: "Satuan untuk menit adalah...", a: ["じ", "ふん", "さい", "にん"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Pagi' (AM) adalah...", a: ["ごご", "ごぜん", "あさ", "ばん"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Siang/Malam' (PM) adalah...", a: ["ごぜん", "ごご", "ひる", "よる"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Istirahat / Libur' adalah...", a: ["はたらきます", "やすみます", "おわります", "ねます"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Selesai' adalah...", a: ["おわります", "はじまります", "いきます", "きます"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Bank' adalah...", a: ["ぎんこう", "がっこう", "じむしょ", "うけつけ"], correct: 0 },
+                    { q: "Jam 9 dalam bahasa Jepang dibaca...", a: ["きゅうじ", "くじ", "こじ", "じゅうじ"], correct: 1 },
+                    { q: "Jam 7 dalam bahasa Jepang dibaca...", a: ["ななじ", "しちじ", "しじ", "なな"], correct: 1 },
+                    { q: "Jam 12:30 (Setengah satu) disebut...", a: ["じゅうにじ はん", "じゅうにじ さんじゅうぷん", "Kedua jawaban benar", "Salah semua"], correct: 2 }
+                ],
+                dokkai: [
+                    { q: "Jam berapakah Yamada-san bangun tidur setiap hari?", a: ["Jam 5", "Jam 6", "Jam 7", "Jam 9"], correct: 1 },
+                    { q: "Dari jam berapakah Yamada-san mulai bekerja?", a: ["Jam 6", "Jam 12", "Jam 9", "Jam 5"], correct: 2 },
+                    { q: "Berapa lama durasi istirahat siang (hiruyasumi) Yamada-san?", a: ["30 menit", "1 jam", "2 jam", "Tidak ada istirahat"], correct: 1 },
+                    { q: "Apa yang dilakukan Yamada-san pada jam 8 malam?", a: ["Bekerja", "Tidur", "Belajar", "Istirahat"], correct: 2 },
+                    { q: "Kapan Yamada-san beristirahat (libur) dari pekerjaannya?", a: ["Minggu saja", "Sabtu saja", "Senin sampai Jumat", "Sabtu dan Minggu"], correct: 3 }
+                ]
+            }
         },
         7: {
             title: "Hari 7: Pergi, Datang, Pulang & Tanggal",
