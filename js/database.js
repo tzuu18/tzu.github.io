@@ -908,19 +908,49 @@ const Database = {
                         { jp: "あしたは にちようびですね。…あ、そうですね。", id: "Besok hari Minggu ya. ...Ah, iya betul. (Setuju)" }
                     ]
                 }
-            ],
-            quizzes: [
-                { q: "Partikel apa yang digunakan untuk menunjukkan arah (Ke) dengan kata kerja Ikimasu?", a: ["Ni (に)", "De (で)", "E (へ)", "To (と)"], c: 2 },
-                { q: "Bagaimana cara membaca tanggal 20 dalam bahasa Jepang?", a: ["Nijuunichi", "Hatsuka", "Futsuka", "Tooka"], c: 1 },
-                { q: "Terjemahkan: 'Pergi dengan bus.'", a: ["Basu de ikimasu", "Basu e ikimasu", "Basu to ikimasu", "Basu aruite ikimasu"], c: 0 },
-                { q: "Jika kamu pulang dengan 'Berjalan kaki', partikel apa yang dipakai setelah kata Aruite?", a: ["De", "Ni", "E", "Tidak pakai partikel"], c: 3 },
-                { q: "Bagaimana cara bilang 'Tidak pergi ke mana-mana' (Lampau)?", a: ["Doko mo ikimasen", "Doko e mo ikimasen deshita", "Doko mo ikimashita", "Nani mo ikimasen deshita"], c: 1 },
-                { q: "Apa bahasa Jepangnya 'Pacar perempuan / Dia perempuan'?", a: ["Kare", "Hito", "Tomodachi", "Kanojo"], c: 3 },
-                { q: "Apa fungsi partikel 'To' (と) pada kalimat 'Tomodachi to ikimasu'?", a: ["Kendaraan", "Tujuan", "Bersama (dengan)", "Waktu"], c: 2 },
-                { q: "Kata tanya apa yang berarti 'Kapan' dan TIDAK perlu memakai partikel Ni?", a: ["Nanji", "Itsu", "Doko", "Nannichi"], c: 1 },
-                { q: "Lawan bicara berkata 'Hari ini panas ya', dan kamu setuju. Apa balasan yang tepat?", a: ["Sou desu ka", "Chigaimasu", "Sou desu ne", "Douitashimashite"], c: 2 },
-                { q: "Tanggal 1 bahasa Jepangnya adalah...", a: ["Ichi nichi", "Tsuitachi", "Mikka", "Nanoka"], c: 1 }
-            ]
+            ],dokkai: {
+                title: "どこへ いきましたか (Pergi ke Mana?)",
+                text: "マリア： やまださん、にちようび どこへ いきましたか。\nやまだ： わたしは どこも いきませんでした。ひとりで うちで やすみました。マリアさんは？\nマリア： わたしは <ruby>友達<rt>ともだち</rt></ruby>と スーパーへ いました。\nやまだ： そうですか。なんで いきましたか。\nマリア： タクシーで いきました。",
+                translation: "Maria: Yamada, hari Minggu pergi ke mana?\nYamada: Saya tidak pergi ke mana pun. Sendirian beristirahat di rumah. Kalau Maria?\nMaria: Saya pergi ke supermarket bersama teman.\nYamada: Begitu ya. Naik apa perginya?\nMaria: Pergi menggunakan taksi."
+            },
+            quizzes: {
+                bunpou: [
+                    { q: "Partikel yang digunakan untuk menunjukkan arah tujuan (ke) adalah...", a: ["に", "へ", "で", "を"], correct: 1 },
+                    { q: "Partikel yang diletakkan setelah kendaraan untuk menunjukkan alat transportasi adalah...", a: ["と", "へ", "に", "で"], correct: 3 },
+                    { q: "Partikel yang berarti 'bersama' diletakkan setelah kata benda orang adalah...", a: ["と", "で", "は", "も"], correct: 0 },
+                    { q: "Kalimat yang benar untuk 'Pergi menggunakan kereta' adalah...", a: ["でんしゃへ いきます", "でんしゃで いきます", "でんしゃと いきます", "あるいて でんしゃ いきます"], correct: 1 },
+                    { q: "Untuk menyatakan 'Tidak pergi ke mana pun (lampau)', kalimatnya adalah...", a: ["どこへ いきますか", "どこも いきません", "どこも いきませんでした", "どこへ いきませんでした"], correct: 2 },
+                    { q: "Jika pergi dengan 'Berjalan kaki', pasangan kalimat yang benar adalah...", a: ["あるいてで いきます", "あるいて いきます", "あるいてへ いきます", "あるいてと いきます"], correct: 1 },
+                    { q: "Lengkapi kalimat ini: わたしは ひとりで うち (...) かえります。", a: ["で", "と", "へ", "に"], correct: 2 },
+                    { q: "Lengkapi kalimat ini: かぞく (...) ひこうきで にほんへ きます。", a: ["と", "で", "へ", "は"], correct: 0 },
+                    { q: "Bagaimana cara bertanya 'Pergi naik apa?' kepada seseorang?", a: ["だれと いきますか", "どこへ いきますか", "なんで いきますか", "いつ いきますか"], correct: 2 },
+                    { q: "Terjemahan dari 'ともだちと えきへ いきます' adalah...", a: ["Pergi ke stasiun sendirian", "Pergi ke stasiun bersama teman", "Teman datang ke stasiun", "Pulang dari stasiun bersama teman"], correct: 1 }
+                ],
+                kotoba: [
+                    { q: "Bahasa Jepang dari kata 'Pergi' adalah...", a: ["いきます", "きます", "かえります", "やすみます"], correct: 0 },
+                    { q: "Bahasa Jepang dari kata 'Datang' adalah...", a: ["いきます", "きます", "かえります", "ねます"], correct: 1 },
+                    { q: "Bahasa Jepang dari kata 'Pulang' adalah...", a: ["いきます", "きます", "かえります", "おきます"], correct: 2 },
+                    { q: "Bahasa Jepang dari kata 'Kereta' adalah...", a: ["くるま", "じてんしゃ", "でんしゃ", "タクシー"], correct: 2 },
+                    { q: "Bahasa Jepang dari kata 'Mobil' adalah...", a: ["くるま", "でんしゃ", "ひこうき", "スーパー"], correct: 0 },
+                    { q: "Bahasa Jepang dari kata 'Sepeda' adalah...", a: ["じてんしゃ", "くるま", "でんしゃ", "タクシー"], correct: 0 },
+                    { q: "Bahasa Jepang dari kata 'Pesawat' adalah...", a: ["ひこうき", "えき", "かぞく", "スーパー"], correct: 0 },
+                    { q: "Bahasa Jepang dari 'Berjalan Kaki' adalah...", a: ["はたらきます", "あるいて", "いきます", "おわります"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Stasiun' adalah...", a: ["へや", "じむしょ", "うけつけ", "えき"], correct: 3 },
+                    { q: "Bahasa Jepang dari 'Teman' adalah...", a: ["かぞく", "ともだち", "せんせい", "がくせい"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Keluarga' adalah...", a: ["ともだち", "かぞく", "くに", "ひと"], correct: 1 },
+                    { q: "Bahasa Jepang dari 'Sendirian' adalah...", a: ["ひとりで", "どこも", "こちら", "いくら"], correct: 0 },
+                    { q: "Huruf Katakana yang benar untuk kata 'Taksi' adalah...", a: ["ロビー", "スーパー", "タクシー", "デパート"], correct: 2 },
+                    { q: "Huruf Katakana yang benar untuk kata 'Supermarket' adalah...", a: ["スーパー", "デパート", "ロビー", "エレベーター"], correct: 0 },
+                    { q: "Kata 'どこも' memiliki arti...", a: ["Ke mana", "Ke mana pun", "Di mana", "Sebelah mana"], correct: 1 }
+                ],
+                dokkai: [
+                    { q: "Ke mana Yamada-san pergi pada hari Minggu?", a: ["Ke Supermarket", "Ke Stasiun", "Tidak pergi ke mana-pun", "Ke Jepang"], correct: 2 },
+                    { q: "Apa yang dilakukan Yamada-san di rumahnya?", a: ["Belajar", "Bekerja", "Beristirahat (Yasumimasu)", "Tidur"], correct: 2 },
+                    { q: "Maria pergi ke tempat apa pada hari Minggu?", a: ["Eki (Stasiun)", "Uketsuke (Resepsionis)", "Suupaa (Supermarket)", "Jimusho (Kantor)"], correct: 2 },
+                    { q: "Maria pergi ke supermarket bersama siapa?", a: ["Yamada-san", "Tanaka-sensei", "Sendirian", "Tomodachi (Teman)"], correct: 3 },
+                    { q: "Alat transportasi apa yang digunakan Maria untuk pergi?", a: ["Densha (Kereta)", "Takushii (Taksi)", "Jitensha (Sepeda)", "Aruite (Jalan kaki)"], correct: 1 }
+                ]
+            }
         },
         8: {
             title: "Hari 8: Aktivitas & Mengajak (Kata Kerja Transitif)",

@@ -1,13 +1,12 @@
 /**
  * js/ui.js
  * Mengatur tampilan antarmuka (UI) website TzuJapan
- * Fitur: Responsif HP, Warna Tematik (Ungu, Emerald, Biru, Amber, Teal), 5 Tab Interaktif, Multi-Kuis, dan Review Kuis.
+ * Fitur: Urutan Belajar Baru (Kotoba -> Bunpou), Responsif HP, Warna Tematik.
  */
 
 const UI = {
     // 1. TAMPILAN HALAMAN BERANDA (HOME)
     renderHome: () => {
-        // LOGIKA MEMILIH KOTOWAZA BERDASARKAN TANGGAL (Agar ganti tiap hari)
         const today = new Date();
         const dateIndex = (today.getDate() + today.getMonth()) % Database.kotowazaList.length;
         const dailyKotowaza = Database.kotowazaList[dateIndex];
@@ -40,8 +39,8 @@ const UI = {
                 <div class="max-w-4xl mx-auto px-4 mb-12 md:mb-16">
                     <p class="text-xs font-black text-stone-400 uppercase tracking-widest mb-6">Metode Belajar Terpadu 5 Pilar</p>
                     <div class="flex flex-wrap justify-center gap-2 md:gap-4">
-                        <div class="bg-purple-50 text-purple-700 px-4 py-2 rounded-xl font-bold text-sm border border-purple-100 shadow-sm flex items-center gap-2"><span class="text-lg">📚</span> Tata Bahasa</div>
                         <div class="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl font-bold text-sm border border-emerald-100 shadow-sm flex items-center gap-2"><span class="text-lg">💬</span> Kosakata</div>
+                        <div class="bg-purple-50 text-purple-700 px-4 py-2 rounded-xl font-bold text-sm border border-purple-100 shadow-sm flex items-center gap-2"><span class="text-lg">📚</span> Tata Bahasa</div>
                         <div class="bg-blue-50 text-blue-700 px-4 py-2 rounded-xl font-bold text-sm border border-blue-100 shadow-sm flex items-center gap-2"><span class="text-lg">📖</span> Membaca</div>
                         <div class="bg-amber-50 text-amber-700 px-4 py-2 rounded-xl font-bold text-sm border border-amber-100 shadow-sm flex items-center gap-2"><span class="text-lg">🎧</span> Mendengar</div>
                         <div class="bg-teal-50 text-teal-700 px-4 py-2 rounded-xl font-bold text-sm border border-teal-100 shadow-sm flex items-center gap-2"><span class="text-lg">✍️</span> Kanji</div>
@@ -164,14 +163,14 @@ const UI = {
                                     <span id="icon-line-${idx}" class="text-emerald-400 transform transition-transform duration-300">▼</span>
                                 </button>
                                 
-                                <div id="line-${idx}" class="hidden p-4 md:p-8 bg-emerald-50/30 border-t border-emerald-50 animate-fade-in overflow-x-auto">
+                                <div id="line-${idx}" class="hidden p-4 md:p-8 bg-stone-50/30 border-t border-emerald-50 animate-fade-in overflow-x-auto">
                                     <div class="grid grid-cols-3 sm:grid-cols-5 gap-2 md:gap-4 min-w-[260px]">
                                         ${hiras.map((h, i) => `
                                             <div class="group flex flex-col items-center justify-center p-3 md:p-4 bg-white rounded-xl md:rounded-2xl border-2 border-emerald-50 hover:border-emerald-200 transition-all shadow-sm">
                                                 <div class="flex items-center gap-2 mb-1">
                                                     <span class="text-2xl md:text-3xl font-black text-stone-800 group-hover:text-emerald-600">${h}</span>
                                                     <div class="w-[1px] h-3 md:h-4 bg-emerald-100"></div>
-                                                    <span class="text-2xl md:text-3xl font-black text-stone-300 group-hover:text-emerald-500">${katas[i] || ''}</span>
+                                                    <span class="text-2xl md:text-3xl font-black text-stone-300 group-hover:text-blue-500">${katas[i] || ''}</span>
                                                 </div>
                                                 <span class="text-[10px] md:text-xs font-black text-emerald-600 uppercase tracking-widest">${romas[i] || ''}</span>
                                             </div>
@@ -229,37 +228,10 @@ const UI = {
         let choukaiHtml = '';
         if (lesson.choukai) {
             let choukaiMediaHtml = '';
-            
-            // JIKA ADA ID YOUTUBE, RENDER IFRAME YOUTUBE
             if (lesson.choukai.youtubeId) {
-                choukaiMediaHtml = `
-                    <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-md border-2 border-amber-200 bg-black mx-auto">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${lesson.choukai.youtubeId}?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                `;
-            } 
-            // JIKA ADA FILE AUDIO, RENDER AUDIO PLAYER NATIVE
-            else if (lesson.choukai.audioSrc) {
-                choukaiMediaHtml = `
-                    <audio controls class="w-full max-w-md rounded-lg shadow-sm">
-                        <source src="${lesson.choukai.audioSrc}" type="audio/mpeg">
-                        Browser Anda tidak mendukung elemen audio.
-                    </audio>
-                `;
-            } 
-            // JIKA TIDAK ADA KEDUANYA, RENDER DUMMY PLAYER
-            else {
-                choukaiMediaHtml = `
-                    <div class="w-full max-w-md bg-white p-4 rounded-xl border border-amber-200 shadow-sm flex items-center gap-4">
-                        <button class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors shadow-md">
-                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
-                        </button>
-                        <div class="flex-1 h-2 bg-amber-100 rounded-full overflow-hidden">
-                            <div class="w-0 h-full bg-amber-500 rounded-full"></div>
-                        </div>
-                        <span class="text-xs font-bold text-amber-600">0:00 / 0:00</span>
-                    </div>
-                `;
+                choukaiMediaHtml = `<div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-md border-2 border-amber-200 bg-black mx-auto"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${lesson.choukai.youtubeId}?rel=0" frameborder="0" allowfullscreen></iframe></div>`;
+            } else {
+                choukaiMediaHtml = `<div class="w-full max-w-md bg-white p-4 rounded-xl border border-amber-200 shadow-sm flex items-center gap-4"><button class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-md">▶</button><div class="flex-1 h-2 bg-amber-100 rounded-full"></div><span class="text-xs font-bold text-amber-600">0:00</span></div>`;
             }
 
             choukaiHtml = `
@@ -270,20 +242,15 @@ const UI = {
                     </div>
                     <div class="bg-amber-50/50 p-5 md:p-8 rounded-2xl border border-amber-200 mb-6 flex flex-col items-center gap-4 text-center">
                         ${choukaiMediaHtml}
-                        ${lesson.choukai.text ? `<p class="text-lg md:text-xl leading-loose md:leading-[2.5] font-bold font-jp text-amber-900 whitespace-pre-line mt-4">${lesson.choukai.text}</p>` : ''}
+                        ${lesson.choukai.text ? `<p class="text-lg md:text-xl font-bold font-jp text-amber-900 whitespace-pre-line mt-4">${lesson.choukai.text}</p>` : ''}
                     </div>
                     <div class="bg-amber-50/30 p-5 md:p-6 rounded-2xl border border-amber-100">
-                        <span class="text-[10px] font-black text-amber-600 uppercase tracking-widest bg-amber-100 px-2 py-1 rounded-md mb-3 inline-block">Transkrip / Terjemahan</span>
-                        <p class="text-sm md:text-base text-stone-600 leading-relaxed whitespace-pre-line">${lesson.choukai.translation}</p>
+                        <span class="text-[10px] font-black text-amber-600 uppercase tracking-widest bg-amber-100 px-2 py-1 rounded-md mb-3 inline-block">Transkrip</span>
+                        <p class="text-sm md:text-base text-stone-600 whitespace-pre-line">${lesson.choukai.translation}</p>
                     </div>
                 </div>`;
         } else {
-            choukaiHtml = `
-                <div class="bg-amber-50/50 border-2 border-dashed border-amber-200 p-8 md:p-12 rounded-3xl text-center flex flex-col items-center justify-center">
-                    <span class="text-5xl md:text-6xl mb-4 block opacity-30 grayscale">🎧</span>
-                    <h4 class="text-xl md:text-2xl font-black text-amber-400 mb-2">Audio Belum Tersedia</h4>
-                    <p class="text-sm md:text-base text-amber-400 max-w-sm">Materi Choukai untuk pelajaran hari ini belum disiapkan.</p>
-                </div>`;
+            choukaiHtml = `<div class="bg-amber-50/50 border-2 border-dashed border-amber-200 p-8 rounded-3xl text-center"><span class="text-5xl block grayscale opacity-30">🎧</span><h4 class="text-xl font-black text-amber-400 mt-2">Audio Belum Tersedia</h4></div>`;
         }
 
         // --- HTML UNTUK KANJI (TEAL) ---
@@ -291,180 +258,112 @@ const UI = {
         if (lesson.kanji) {
             kanjiHtml = `
                 <div class="bg-white p-5 md:p-8 rounded-3xl border border-teal-100 shadow-sm">
-                    <div class="text-center mb-6">
-                        <span class="text-4xl block mb-2 opacity-80">✍️</span>
-                        <h3 class="text-xl md:text-2xl font-black font-jp text-teal-900">${lesson.kanji.title || 'Belajar Kanji'}</h3>
-                    </div>
+                    <div class="text-center mb-6"><span class="text-4xl block opacity-80">✍️</span><h3 class="text-xl font-black font-jp text-teal-900">${lesson.kanji.title}</h3></div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        ${lesson.kanji.list.map(k => `
-                            <div class="bg-teal-50/50 p-5 rounded-2xl border border-teal-100 flex flex-col items-center justify-center group hover:bg-teal-50 transition-colors">
-                                <span class="text-5xl font-black font-jp text-teal-600 mb-3 group-hover:text-teal-700 transition-colors">${k.karakter}</span>
-                                <div class="text-center space-y-1">
-                                    <p class="text-xs font-bold text-teal-500 uppercase tracking-widest">Kunyomi</p>
-                                    <p class="text-sm text-stone-700">${k.kunyomi || '-'}</p>
-                                    <p class="text-xs font-bold text-teal-500 uppercase tracking-widest mt-2">Onyomi</p>
-                                    <p class="text-sm text-stone-700">${k.onyomi || '-'}</p>
-                                    <p class="text-sm font-bold text-stone-900 mt-2 bg-white px-3 py-1 rounded-lg border border-teal-100">${k.arti}</p>
-                                </div>
-                            </div>
-                        `).join('')}
+                        ${lesson.kanji.list.map(k => `<div class="bg-teal-50/50 p-5 rounded-2xl border border-teal-100 flex flex-col items-center justify-center text-center"><span class="text-5xl font-black font-jp text-teal-600 mb-3">${k.karakter}</span><div class="space-y-1"><p class="text-[10px] font-black text-teal-500 uppercase tracking-widest">Kunyomi</p><p class="text-sm text-stone-700">${k.kunyomi}</p><p class="text-[10px] font-black text-teal-500 uppercase tracking-widest mt-2">Onyomi</p><p class="text-sm text-stone-700">${k.onyomi}</p><p class="text-sm font-bold text-stone-900 mt-2 bg-white px-3 py-1 rounded-lg border border-teal-100">${k.arti}</p></div></div>`).join('')}
                     </div>
                 </div>`;
         } else {
-            kanjiHtml = `
-                <div class="bg-teal-50/50 border-2 border-dashed border-teal-200 p-8 md:p-12 rounded-3xl text-center flex flex-col items-center justify-center">
-                    <span class="text-5xl md:text-6xl mb-4 block opacity-30 grayscale">✍️</span>
-                    <h4 class="text-xl md:text-2xl font-black text-teal-400 mb-2">Kanji Belum Tersedia</h4>
-                    <p class="text-sm md:text-base text-teal-400 max-w-sm">Materi Kanji untuk pelajaran hari ini belum disiapkan.</p>
-                </div>`;
+            kanjiHtml = `<div class="bg-teal-50/50 border-2 border-dashed border-teal-200 p-8 rounded-3xl text-center"><span class="text-5xl block grayscale opacity-30">✍️</span><h4 class="text-xl font-black text-teal-400 mt-2">Kanji Belum Tersedia</h4></div>`;
         }
 
         return `
             <div class="fade-in space-y-6 md:space-y-8 max-w-4xl mx-auto text-left pb-10">
                 
                 <!-- HEADER MATERI -->
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-5 md:p-6 rounded-[2rem] border border-stone-100 shadow-sm gap-4 md:gap-6">
-                    <div class="w-full">
-                        <button onclick="Router.push('folder', '${level}')" class="text-stone-400 hover:text-stone-900 font-bold mb-3 flex items-center gap-2 transition-colors text-xs md:text-sm uppercase tracking-widest">
-                            ← Kembali
-                        </button>
-                        <h2 class="text-2xl md:text-3xl font-black text-stone-900 leading-tight">${lesson.title}</h2>
-                        <p class="text-stone-500 mt-2 text-sm md:text-base leading-relaxed">${lesson.description}</p>
+                <div class="bg-white p-5 md:p-6 rounded-[2rem] border border-stone-100 shadow-sm">
+                    <button onclick="Router.push('folder', '${level}')" class="text-stone-400 hover:text-stone-900 font-bold mb-3 flex items-center gap-2 text-xs md:text-sm uppercase tracking-widest">← Kembali</button>
+                    <h2 class="text-2xl md:text-3xl font-black text-stone-900 leading-tight">${lesson.title}</h2>
+                    <p class="text-stone-500 mt-2 text-sm md:text-base leading-relaxed">${lesson.description}</p>
+                </div>
+
+                <!-- NAVIGASI TAB (URUTAN BARU: KOTOBA PERTAMA) -->
+                <div class="flex flex-wrap bg-stone-100 p-1.5 rounded-[1.25rem] w-full gap-1 shadow-inner">
+                    <button onclick="UI.switchTab('kotoba', '${level}')" id="tab-kotoba" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all">言葉 Kotoba</button>
+                    <button onclick="UI.switchTab('bunpou', '${level}')" id="tab-bunpou" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">文法 Bunpou</button>
+                    <button onclick="UI.switchTab('dokkai', '${level}')" id="tab-dokkai" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">読解 Dokkai</button>
+                    <button onclick="UI.switchTab('choukai', '${level}')" id="tab-choukai" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">聴解 Choukai</button>
+                    <button onclick="UI.switchTab('kanji', '${level}')" id="tab-kanji" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">漢字 Kanji</button>
+                </div>
+
+                <!-- BAGIAN 1: KOTOBA (HIJAU EMERALD) -->
+                <div id="content-kotoba" class="block fade-in space-y-6">
+                    <div class="bg-white p-5 md:p-8 rounded-3xl border border-stone-100 shadow-sm">
+                        <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
+                            <span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 1</span> 
+                            Kosakata Baru (Kotoba)
+                        </h3>
+                        ${kotobaContent}
+                    </div>
+                    <div class="text-center pt-4 md:pt-6 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kotoba')" class="w-full md:w-auto bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all">📝 Uji Kosakata</button>
                     </div>
                 </div>
 
-                <!-- NAVIGASI TAB (DESAIN PILL, SEKARANG 5 TAB) -->
-                <div class="flex flex-wrap bg-stone-100 p-1.5 rounded-[1.25rem] w-full gap-1 shadow-inner">
-                    <button onclick="UI.switchTab('bunpou', '${level}')" id="tab-bunpou" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all">
-                        文法 Bunpou
-                    </button>
-                    <button onclick="UI.switchTab('kotoba', '${level}')" id="tab-kotoba" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
-                        言葉 Kotoba
-                    </button>
-                    <button onclick="UI.switchTab('dokkai', '${level}')" id="tab-dokkai" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
-                        読解 Dokkai
-                    </button>
-                    <button onclick="UI.switchTab('choukai', '${level}')" id="tab-choukai" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
-                        聴解 Choukai
-                    </button>
-                    <button onclick="UI.switchTab('kanji', '${level}')" id="tab-kanji" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
-                        漢字 Kanji
-                    </button>
-                </div>
-
-                <!-- KONTEN: BUNPOU (UNGU) -->
-                <div id="content-bunpou" class="block fade-in space-y-6">
+                <!-- BAGIAN 2: BUNPOU (UNGU) -->
+                <div id="content-bunpou" class="hidden fade-in space-y-6">
                     <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 1</span> 
+                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 2</span> 
                         Tata Bahasa (Bunpou)
                     </h3>
                     ${lesson.bunpou.map(b => `
                         <div class="bg-white p-5 md:p-8 rounded-3xl border border-stone-100 shadow-sm border-l-[6px] border-l-purple-500">
                             <h4 class="text-lg md:text-xl font-bold mb-2 text-stone-800">${b.title}</h4>
-                            <p class="text-sm md:text-base text-stone-600 mb-5 md:mb-6 leading-relaxed">${b.explanation}</p>
-                            
-                            ${b.formula ? `
-                            <div class="bg-stone-900 text-purple-400 p-4 md:p-5 rounded-2xl font-mono text-center mb-6 text-xs md:text-sm border-b-4 border-stone-800 shadow-inner overflow-x-auto whitespace-nowrap">
-                                ${b.formula}
-                            </div>` : ''}
-                            
+                            <p class="text-sm md:text-base text-stone-600 mb-5 leading-relaxed">${b.explanation}</p>
+                            ${b.formula ? `<div class="bg-stone-900 text-purple-400 p-4 rounded-2xl font-mono text-center mb-6 text-xs border-b-4 border-stone-800 overflow-x-auto">${b.formula}</div>` : ''}
                             <div class="space-y-3">
                                 ${b.examples.map(ex => `
                                     <div class="p-4 bg-purple-50/50 rounded-2xl border-l-4 border-purple-300">
                                         <p class="text-lg md:text-xl font-bold font-jp text-stone-800">${ex.jp}</p>
-                                        <p class="text-purple-600 text-xs md:text-sm mt-1 italic">"${ex.id}"</p>
+                                        <p class="text-purple-600 text-xs italic mt-1">"${ex.id}"</p>
                                     </div>
                                 `).join('')}
                             </div>
                         </div>
                     `).join('')}
-                    
-                    <!-- TOMBOL KUIS BUNPOU -->
-                    <div class="text-center pt-6 md:pt-8 mt-6 border-t-2 border-dashed border-stone-200">
-                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'bunpou')" class="w-full md:w-auto bg-purple-600 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-purple-200 hover:bg-purple-700 hover:-translate-y-1 transition-all">
-                            📝 Uji Tata Bahasa
-                        </button>
+                    <div class="text-center pt-4 md:pt-6 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'bunpou')" class="w-full md:w-auto bg-purple-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-purple-200 hover:bg-purple-700 transition-all">📝 Uji Tata Bahasa</button>
                     </div>
                 </div>
 
-                <!-- KONTEN: KOTOBA (EMERALD) -->
-                <div id="content-kotoba" class="hidden fade-in space-y-6">
-                    <div class="bg-white p-5 md:p-8 rounded-3xl border border-stone-100 shadow-sm">
-                        <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
-                            <span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 2</span> 
-                            Kosakata Baru (Kotoba)
-                        </h3>
-                        ${kotobaContent}
-                    </div>
-                    
-                    <!-- TOMBOL KUIS KOTOBA -->
-                    <div class="text-center pt-6 md:pt-8 mt-6 md:mt-8 border-t-2 border-dashed border-stone-200">
-                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kotoba')" class="w-full md:w-auto bg-emerald-600 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-emerald-200 hover:bg-emerald-700 hover:-translate-y-1 transition-all">
-                            📝 Uji Kosakata
-                        </button>
-                    </div>
-                </div>
-
-                <!-- KONTEN: DOKKAI (BIRU) -->
+                <!-- BAGIAN 3-5: DOKKAI, CHOUKAI, KANJI (HIDDEN BY DEFAULT) -->
                 <div id="content-dokkai" class="hidden fade-in space-y-6">
                     <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
                         <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 3</span> 
                         Membaca Cerita (Dokkai)
                     </h3>
                     ${dokkaiHtml}
-                    
-                    <!-- TOMBOL KUIS DOKKAI -->
-                    <div class="text-center pt-6 md:pt-8 mt-4 border-t-2 border-dashed border-stone-200">
-                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'dokkai')" class="w-full md:w-auto bg-blue-600 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all">
-                            📝 Uji Pemahaman Cerita
-                        </button>
-                    </div>
+                    <div class="text-center pt-4 border-t-2 border-dashed border-stone-200"><button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'dokkai')" class="w-full md:w-auto bg-blue-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">📝 Uji Cerita</button></div>
                 </div>
 
-                <!-- KONTEN: CHOUKAI (AMBER) -->
                 <div id="content-choukai" class="hidden fade-in space-y-6">
                     <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
                         <span class="bg-amber-100 text-amber-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 4</span> 
                         Mendengar (Choukai)
                     </h3>
                     ${choukaiHtml}
-                    
-                    <!-- TOMBOL KUIS CHOUKAI -->
-                    <div class="text-center pt-6 md:pt-8 mt-4 border-t-2 border-dashed border-stone-200">
-                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'choukai')" class="w-full md:w-auto bg-amber-500 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-amber-200 hover:bg-amber-600 hover:-translate-y-1 transition-all">
-                            📝 Uji Pendengaran
-                        </button>
-                    </div>
+                    <div class="text-center pt-4 border-t-2 border-dashed border-stone-200"><button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'choukai')" class="w-full md:w-auto bg-amber-500 text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-amber-200 hover:bg-amber-600 transition-all">📝 Uji Pendengaran</button></div>
                 </div>
 
-                <!-- KONTEN: KANJI (TEAL) -->
                 <div id="content-kanji" class="hidden fade-in space-y-6">
                     <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
                         <span class="bg-teal-100 text-teal-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 5</span> 
                         Menulis Kanji (Kanji)
                     </h3>
                     ${kanjiHtml}
-                    
-                    <!-- TOMBOL KUIS KANJI -->
-                    <div class="text-center pt-6 md:pt-8 mt-4 border-t-2 border-dashed border-stone-200">
-                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kanji')" class="w-full md:w-auto bg-teal-500 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-teal-200 hover:bg-teal-600 hover:-translate-y-1 transition-all">
-                            📝 Uji Kanji
-                        </button>
-                    </div>
+                    <div class="text-center pt-4 border-t-2 border-dashed border-stone-200"><button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kanji')" class="w-full md:w-auto bg-teal-500 text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-teal-200 hover:bg-teal-600 transition-all">📝 Uji Kanji</button></div>
                 </div>
 
             </div>`;
     },
 
-    // 4. LOGIKA PERPINDAHAN TAB (SEKARANG 5 TAB)
+    // 4. LOGIKA PERPINDAHAN TAB
     switchTab: (tabName, level) => {
         const tabs = ['kotoba', 'bunpou', 'dokkai', 'choukai', 'kanji'];
-        
         tabs.forEach(t => {
             const btn = document.getElementById(`tab-${t}`);
             const content = document.getElementById(`content-${t}`);
             if (!btn || !content) return;
-
             if (t === tabName) {
                 content.classList.remove('hidden');
                 btn.className = "flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all";
@@ -475,53 +374,30 @@ const UI = {
         });
     },
 
-    // 5. TAMPILAN LAYAR KUIS (RESPONSIF HP)
+    // 5. TAMPILAN LAYAR KUIS
     renderQuizScreen: () => {
         const lesson = Database[Quiz.currentLevel][Quiz.currentDay];
-        if (!lesson) return `<div class="text-center py-20 font-bold text-red-500">Gagal memuat kuis.</div>`;
-
         const quizType = Quiz.currentType || 'umum';
-        let quizData = [];
+        let quizData = (Array.isArray(lesson.quizzes)) ? lesson.quizzes : lesson.quizzes[quizType];
+        
         let typeLabel = "Uji Pemahaman";
         let typeColor = "bg-[#E60012]";
-        let typeBorder = "border-[#E60012]";
-        let typeShadow = "shadow-red-200";
-
-        if (Array.isArray(lesson.quizzes)) {
-            quizData = lesson.quizzes;
-        } else if (lesson.quizzes && lesson.quizzes[quizType]) {
-            quizData = lesson.quizzes[quizType];
-            if (quizType === 'bunpou') { typeLabel = "Kuis Tata Bahasa"; typeColor = "bg-purple-600"; typeBorder = "peer-checked:border-purple-600 peer-checked:bg-purple-50 peer-checked:text-purple-700"; typeShadow = "shadow-purple-200 hover:bg-purple-700"; }
-            if (quizType === 'kotoba') { typeLabel = "Kuis Kosakata"; typeColor = "bg-emerald-600"; typeBorder = "peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-700"; typeShadow = "shadow-emerald-200 hover:bg-emerald-700"; }
-            if (quizType === 'dokkai') { typeLabel = "Kuis Cerita"; typeColor = "bg-blue-600"; typeBorder = "peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700"; typeShadow = "shadow-blue-200 hover:bg-blue-700"; }
-            if (quizType === 'choukai') { typeLabel = "Kuis Pendengaran"; typeColor = "bg-amber-500"; typeBorder = "peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700"; typeShadow = "shadow-amber-200 hover:bg-amber-600"; }
-            if (quizType === 'kanji') { typeLabel = "Kuis Kanji"; typeColor = "bg-teal-500"; typeBorder = "peer-checked:border-teal-500 peer-checked:bg-teal-50 peer-checked:text-teal-700"; typeShadow = "shadow-teal-200 hover:bg-teal-600"; }
-        }
-
-        if (!quizData || quizData.length === 0) {
-            return `
-                <div class="max-w-3xl mx-auto text-center py-20 animate-fade-in">
-                    <div class="text-6xl mb-6 grayscale opacity-50">🚧</div>
-                    <h2 class="text-3xl font-black text-stone-800 mb-4">Kuis Belum Tersedia</h2>
-                    <p class="text-stone-500 mb-8">Sensei masih meracik soal untuk bagian ini. Silakan kembali belajar materinya.</p>
-                    <button onclick="if(window.Router) window.Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="px-8 py-3 bg-stone-200 text-stone-700 rounded-xl font-bold hover:bg-stone-300">Kembali ke Materi</button>
-                </div>
-            `;
-        }
+        let typeBorder = "peer-checked:border-red-600";
+        if (quizType === 'kotoba') { typeLabel = "Kuis Kosakata"; typeColor = "bg-emerald-600"; typeBorder = "peer-checked:border-emerald-600 peer-checked:bg-emerald-50"; }
+        if (quizType === 'bunpou') { typeLabel = "Kuis Tata Bahasa"; typeColor = "bg-purple-600"; typeBorder = "peer-checked:border-purple-600 peer-checked:bg-purple-50"; }
+        if (quizType === 'dokkai') { typeLabel = "Kuis Cerita"; typeColor = "bg-blue-600"; typeBorder = "peer-checked:border-blue-600 peer-checked:bg-blue-50"; }
+        if (quizType === 'choukai') { typeLabel = "Kuis Pendengaran"; typeColor = "bg-amber-500"; typeBorder = "peer-checked:border-amber-500 peer-checked:bg-amber-50"; }
+        if (quizType === 'kanji') { typeLabel = "Kuis Kanji"; typeColor = "bg-teal-500"; typeBorder = "peer-checked:border-teal-500 peer-checked:bg-teal-50"; }
 
         return `
-            <div class="fade-in max-w-2xl mx-auto bg-white p-6 md:p-10 rounded-[2rem] md:rounded-3xl border border-stone-100 shadow-sm text-left">
-                <div class="mb-6 md:mb-8 pb-4 border-b border-stone-100 flex items-center gap-4">
-                    <div class="w-12 h-12 md:w-16 md:h-16 ${typeColor} text-white rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-md shrink-0">📝</div>
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-black text-stone-900 leading-tight">${typeLabel}</h2>
-                        <p class="text-stone-500 font-medium tracking-wide text-xs md:text-sm mt-1">Materi: ${lesson.title}</p>
-                    </div>
+            <div class="fade-in max-w-2xl mx-auto bg-white p-6 md:p-10 rounded-[2rem] border border-stone-100 shadow-sm text-left">
+                <div class="mb-8 pb-4 border-b border-stone-100 flex items-center gap-4">
+                    <div class="w-12 h-12 ${typeColor} text-white rounded-2xl flex items-center justify-center text-2xl shadow-md shrink-0">📝</div>
+                    <div><h2 class="text-xl md:text-2xl font-black text-stone-900">${typeLabel}</h2><p class="text-stone-500 text-xs md:text-sm mt-1">Materi: ${lesson.title}</p></div>
                 </div>
-                
                 <form id="quiz-form">
                     ${quizData.map((q, i) => `
-                        <div class="mb-8 md:mb-10 bg-stone-50 p-5 md:p-6 rounded-3xl border border-stone-100">
+                        <div class="mb-8 bg-stone-50 p-5 md:p-6 rounded-3xl border border-stone-100">
                             <div class="flex gap-3 items-start mb-5">
                                 <span class="bg-stone-900 text-white w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">${i+1}</span>
                                 <p class="font-bold text-base md:text-lg text-stone-800 leading-snug">${q.q}</p>
@@ -529,17 +405,14 @@ const UI = {
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 ${q.a.map((opt, idx) => `
                                     <div class="relative">
-                                        <input type="radio" id="q${i}o${idx}" name="q${i}" value="${idx}" class="hidden peer" required>
-                                        <label for="q${i}o${idx}" class="block p-4 border-2 border-stone-200 bg-white rounded-2xl cursor-pointer hover:border-stone-300 transition-all font-medium text-sm md:text-base text-stone-600 ${typeBorder}">
-                                            ${opt}
-                                        </label>
+                                        <input type="radio" id="q${i}o${idx}" name="q${i}" value="${idx}" class="hidden peer">
+                                        <label for="q${i}o${idx}" class="block p-4 border-2 border-stone-200 bg-white rounded-2xl cursor-pointer hover:border-stone-300 transition-all text-sm md:text-base text-stone-600 ${typeBorder}">${opt}</label>
                                     </div>`).join('')}
                             </div>
                         </div>`).join('')}
-                    
-                    <div class="flex flex-col-reverse md:flex-row gap-3 md:gap-4 mt-8 md:mt-10">
-                        <button type="button" onclick="Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="w-full md:flex-1 py-4 font-bold text-stone-500 hover:bg-stone-100 rounded-2xl transition-all text-sm md:text-base">Batalkan Kuis</button>
-                        <button type="button" onclick="Quiz.submit()" class="w-full md:flex-[2] ${typeColor} text-white py-4 rounded-2xl font-black shadow-lg ${typeShadow} transition-all text-base md:text-lg">Selesaikan Kuis</button>
+                    <div class="flex flex-col-reverse md:flex-row gap-3 mt-8">
+                        <button type="button" onclick="Router.push('lesson', {level: '${Quiz.currentLevel}', day: ${Quiz.currentDay}})" class="w-full md:flex-1 py-4 font-bold text-stone-500 rounded-2xl">Batal</button>
+                        <button type="button" onclick="Quiz.submit()" class="w-full md:flex-[2] ${typeColor} text-white py-4 rounded-2xl font-black shadow-lg transition-all text-base">Selesaikan Kuis</button>
                     </div>
                 </form>
             </div>`;
@@ -566,7 +439,6 @@ const UI = {
                                     let styleClass = "bg-white border-stone-200 text-stone-400 opacity-60";
                                     let iconHtml = "";
 
-                                    // Warna hijau untuk review
                                     if (optIndex === item.correctIndex) {
                                         styleClass = "bg-emerald-100 border-emerald-400 text-emerald-800 font-bold shadow-sm";
                                         iconHtml = '<span class="bg-emerald-500 text-white text-[9px] md:text-[10px] px-2 py-1 rounded w-fit uppercase tracking-widest mt-1 md:mt-0 md:ml-2">Benar</span>';
@@ -615,9 +487,7 @@ const UI = {
     toggleDay1Accordion: (elementId) => {
         const element = document.getElementById(elementId);
         const icon = document.getElementById('icon-' + elementId);
-        
         if (!element || !icon) return;
-
         if (element.classList.contains('hidden')) {
             element.classList.replace('hidden', 'block');
             icon.style.transform = 'rotate(180deg)';
