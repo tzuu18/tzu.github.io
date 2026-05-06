@@ -192,7 +192,7 @@ const UI = {
                                 <span class="text-2xl md:text-3xl font-black font-jp text-emerald-600 group-hover:text-emerald-700">${k.kanji}</span>
                                 <span class="font-bold text-stone-700 text-right text-sm md:text-base leading-tight">${k.arti}</span>
                             </div>
-                            <p class="text-[10px] md:text-xs text-emerald-500 font-bold uppercase tracking-widest">${k.kana} • ${k.romaji}</p>
+                            <p class="text-[10px] md:text-xs text-emerald-500 font-bold uppercase tracking-widest">${k.kana}</p>
                         </div>
                     `).join('')}
                 </div>
