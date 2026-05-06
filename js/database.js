@@ -3,6 +3,44 @@
  * Data Materi untuk TzuJapan (N5 & N4)
  */
 const Database = {
+    // DATA KOTOWAZA (MOTIVASI HARIAN)
+    kotowazaList: [
+        {
+            jp: "継続は力なり",
+            roma: "Keizoku wa chikara nari",
+            id: "Konsistensi adalah kekuatan. Sedikit demi sedikit setiap hari, kamu pasti bisa menaklukkan bahasa Jepang!"
+        },
+        {
+            jp: "七転び八起き",
+            roma: "Nana korobi ya oki",
+            id: "Jatuh tujuh kali, bangun delapan kali. Jangan menyerah meskipun materi terasa sulit hari ini!"
+        },
+        {
+            jp: "一期一会",
+            roma: "Ichi go ichi e",
+            id: "Satu pertemuan, satu kesempatan. Hargai setiap detik waktu belajarmu karena momen ini takkan terulang."
+        },
+        {
+            jp: "猿も木から落ちる",
+            roma: "Saru mo ki kara ochiru",
+            id: "Bahkan monyet pun bisa jatuh dari pohon. Tak apa melakukan kesalahan saat belajar, itu hal yang manusiawi!"
+        },
+        {
+            jp: "塵も積もれば山となる",
+            roma: "Chiri mo tsumoreba yama to naru",
+            id: "Debu yang terkumpul pun akan menjadi gunung. Kosakata yang kamu hafal hari ini akan menjadi ilmu besar nantinya."
+        },
+        {
+            jp: "案ずるより産むが易し",
+            roma: "Anzuru yori umu ga yasushi",
+            id: "Melakukan sesuatu lebih mudah daripada mencemaskannya. Jangan takut mulai belajar, ternyata tidak sesulit itu kok!"
+        },
+        {
+            jp: "明日は明日の風が吹く",
+            roma: "Ashita wa ashita no kaze ga fuku",
+            id: "Besok angin besok yang akan bertiup. Jika hari ini sulit, istirahatlah. Besok adalah kesempatan baru!"
+        }
+    ],
     // ================= LEVEL N5 (1 - 25) =================
     N5: {
         1: {

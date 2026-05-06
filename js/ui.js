@@ -7,6 +7,11 @@
 const UI = {
     // 1. TAMPILAN HALAMAN BERANDA (HOME)
     renderHome: () => {
+        // LOGIKA MEMILIH KOTOWAZA BERDASARKAN TANGGAL (Agar ganti tiap hari)
+        const today = new Date();
+        const dateIndex = (today.getDate() + today.getMonth()) % Database.kotowazaList.length;
+        const dailyKotowaza = Database.kotowazaList[dateIndex];
+
         return `
             <div class="text-center animate-fade-in py-6 md:py-10">
                 <h1 class="text-3xl md:text-5xl font-extrabold text-[#E60012] mb-4 md:mb-6 tracking-tighter">Selamat Datang di TzuJapan!</h1>
@@ -14,7 +19,7 @@ const UI = {
                     Platform belajar bahasa Jepang mandiri yang interaktif. Pilih level materi yang ingin kamu pelajari hari ini dan mulailah petualanganmu!
                 </p>
                 
-                <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mt-4 md:mt-8">
+                <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mt-4 md:mt-8 mb-12 md:mb-16">
                     <div onclick="if(window.Router) window.Router.push('folder', 'N5')" class="bg-white p-6 md:p-8 rounded-3xl shadow-md border border-stone-100 cursor-pointer transform md:hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group w-full md:w-1/3">
                         <div class="bg-red-50 w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#E60012] transition-colors">
                             <span class="text-2xl md:text-3xl font-black text-[#E60012] group-hover:text-white transition-colors">N5</span>
@@ -29,6 +34,30 @@ const UI = {
                         </div>
                         <h2 class="text-xl md:text-2xl font-black text-stone-800 mb-1 md:mb-2">Level N4</h2>
                         <p class="text-sm md:text-base text-stone-500">Materi Menengah Bawah (Hari 26 - 50)</p>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto px-4 mb-12 md:mb-16">
+                    <p class="text-xs font-black text-stone-400 uppercase tracking-widest mb-6">Metode Belajar Terpadu 5 Pilar</p>
+                    <div class="flex flex-wrap justify-center gap-2 md:gap-4">
+                        <div class="bg-purple-50 text-purple-700 px-4 py-2 rounded-xl font-bold text-sm border border-purple-100 shadow-sm flex items-center gap-2"><span class="text-lg">📚</span> Tata Bahasa</div>
+                        <div class="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl font-bold text-sm border border-emerald-100 shadow-sm flex items-center gap-2"><span class="text-lg">💬</span> Kosakata</div>
+                        <div class="bg-blue-50 text-blue-700 px-4 py-2 rounded-xl font-bold text-sm border border-blue-100 shadow-sm flex items-center gap-2"><span class="text-lg">📖</span> Membaca</div>
+                        <div class="bg-amber-50 text-amber-700 px-4 py-2 rounded-xl font-bold text-sm border border-amber-100 shadow-sm flex items-center gap-2"><span class="text-lg">🎧</span> Mendengar</div>
+                        <div class="bg-teal-50 text-teal-700 px-4 py-2 rounded-xl font-bold text-sm border border-teal-100 shadow-sm flex items-center gap-2"><span class="text-lg">✍️</span> Kanji</div>
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto px-4">
+                    <div class="bg-stone-900 rounded-3xl p-6 md:p-8 shadow-xl text-left flex flex-col md:flex-row items-center md:items-start gap-6 relative overflow-hidden group hover:shadow-2xl transition-all">
+                        <div class="absolute -right-4 -bottom-10 text-9xl opacity-5 font-jp text-white group-hover:scale-110 transition-transform duration-700">${dailyKotowaza.jp[0]}</div>
+                        <div class="w-16 h-16 bg-[#E60012] rounded-2xl flex items-center justify-center text-3xl shrink-0 z-10 shadow-lg mt-2">🎌</div>
+                        <div class="z-10 text-center md:text-left">
+                            <h3 class="text-stone-400 text-[10px] md:text-xs font-black uppercase tracking-widest mb-2">Motivasi Hari Ini</h3>
+                            <p class="text-2xl md:text-3xl font-bold text-white mb-1 font-jp">${dailyKotowaza.jp}</p>
+                            <p class="text-[#E60012] font-bold text-sm md:text-base italic mb-3">"${dailyKotowaza.roma}"</p>
+                            <p class="text-stone-300 text-sm md:text-base font-medium leading-relaxed max-w-lg">${dailyKotowaza.id}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -537,7 +566,7 @@ const UI = {
                                     let styleClass = "bg-white border-stone-200 text-stone-400 opacity-60";
                                     let iconHtml = "";
 
-                                    // Warna hijau untuk review kita ganti jadi emerald juga biar serasi
+                                    // Warna hijau untuk review
                                     if (optIndex === item.correctIndex) {
                                         styleClass = "bg-emerald-100 border-emerald-400 text-emerald-800 font-bold shadow-sm";
                                         iconHtml = '<span class="bg-emerald-500 text-white text-[9px] md:text-[10px] px-2 py-1 rounded w-fit uppercase tracking-widest mt-1 md:mt-0 md:ml-2">Benar</span>';
