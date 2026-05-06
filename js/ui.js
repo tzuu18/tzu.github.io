@@ -1,7 +1,7 @@
 /**
  * js/ui.js
  * Mengatur tampilan antarmuka (UI) website TzuJapan
- * Fitur: Responsif HP, Warna Tematik (Ungu, Emerald, Biru, Amber), 4 Tab Interaktif, Multi-Kuis, dan Review Kuis.
+ * Fitur: Responsif HP, Warna Tematik (Ungu, Emerald, Biru, Amber, Teal), 5 Tab Interaktif, Multi-Kuis, dan Review Kuis.
  */
 
 const UI = {
@@ -257,6 +257,39 @@ const UI = {
                 </div>`;
         }
 
+        // --- HTML UNTUK KANJI (TEAL) ---
+        let kanjiHtml = '';
+        if (lesson.kanji) {
+            kanjiHtml = `
+                <div class="bg-white p-5 md:p-8 rounded-3xl border border-teal-100 shadow-sm">
+                    <div class="text-center mb-6">
+                        <span class="text-4xl block mb-2 opacity-80">✍️</span>
+                        <h3 class="text-xl md:text-2xl font-black font-jp text-teal-900">${lesson.kanji.title || 'Belajar Kanji'}</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        ${lesson.kanji.list.map(k => `
+                            <div class="bg-teal-50/50 p-5 rounded-2xl border border-teal-100 flex flex-col items-center justify-center group hover:bg-teal-50 transition-colors">
+                                <span class="text-5xl font-black font-jp text-teal-600 mb-3 group-hover:text-teal-700 transition-colors">${k.karakter}</span>
+                                <div class="text-center space-y-1">
+                                    <p class="text-xs font-bold text-teal-500 uppercase tracking-widest">Kunyomi</p>
+                                    <p class="text-sm text-stone-700">${k.kunyomi || '-'}</p>
+                                    <p class="text-xs font-bold text-teal-500 uppercase tracking-widest mt-2">Onyomi</p>
+                                    <p class="text-sm text-stone-700">${k.onyomi || '-'}</p>
+                                    <p class="text-sm font-bold text-stone-900 mt-2 bg-white px-3 py-1 rounded-lg border border-teal-100">${k.arti}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>`;
+        } else {
+            kanjiHtml = `
+                <div class="bg-teal-50/50 border-2 border-dashed border-teal-200 p-8 md:p-12 rounded-3xl text-center flex flex-col items-center justify-center">
+                    <span class="text-5xl md:text-6xl mb-4 block opacity-30 grayscale">✍️</span>
+                    <h4 class="text-xl md:text-2xl font-black text-teal-400 mb-2">Kanji Belum Tersedia</h4>
+                    <p class="text-sm md:text-base text-teal-400 max-w-sm">Materi Kanji untuk pelajaran hari ini belum disiapkan.</p>
+                </div>`;
+        }
+
         return `
             <div class="fade-in space-y-6 md:space-y-8 max-w-4xl mx-auto text-left pb-10">
                 
@@ -271,19 +304,22 @@ const UI = {
                     </div>
                 </div>
 
-                <!-- NAVIGASI TAB (DESAIN PILL, SEKARANG 4 TAB) -->
+                <!-- NAVIGASI TAB (DESAIN PILL, SEKARANG 5 TAB) -->
                 <div class="flex flex-wrap bg-stone-100 p-1.5 rounded-[1.25rem] w-full gap-1 shadow-inner">
-                    <button onclick="UI.switchTab('bunpou', '${level}')" id="tab-bunpou" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all">
+                    <button onclick="UI.switchTab('bunpou', '${level}')" id="tab-bunpou" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all">
                         文法 Bunpou
                     </button>
-                    <button onclick="UI.switchTab('kotoba', '${level}')" id="tab-kotoba" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                    <button onclick="UI.switchTab('kotoba', '${level}')" id="tab-kotoba" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
                         言葉 Kotoba
                     </button>
-                    <button onclick="UI.switchTab('dokkai', '${level}')" id="tab-dokkai" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                    <button onclick="UI.switchTab('dokkai', '${level}')" id="tab-dokkai" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
                         読解 Dokkai
                     </button>
-                    <button onclick="UI.switchTab('choukai', '${level}')" id="tab-choukai" class="flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                    <button onclick="UI.switchTab('choukai', '${level}')" id="tab-choukai" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
                         聴解 Choukai
+                    </button>
+                    <button onclick="UI.switchTab('kanji', '${level}')" id="tab-kanji" class="flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all">
+                        漢字 Kanji
                     </button>
                 </div>
 
@@ -372,12 +408,28 @@ const UI = {
                     </div>
                 </div>
 
+                <!-- KONTEN: KANJI (TEAL) -->
+                <div id="content-kanji" class="hidden fade-in space-y-6">
+                    <h3 class="text-xl md:text-2xl font-black text-stone-800 mb-4 md:mb-6 flex items-center">
+                        <span class="bg-teal-100 text-teal-600 px-3 py-1 rounded-lg mr-3 text-xs uppercase tracking-tighter">Bagian 5</span> 
+                        Menulis Kanji (Kanji)
+                    </h3>
+                    ${kanjiHtml}
+                    
+                    <!-- TOMBOL KUIS KANJI -->
+                    <div class="text-center pt-6 md:pt-8 mt-4 border-t-2 border-dashed border-stone-200">
+                        <button onclick="if(window.Quiz) Quiz.start('${level}', ${day}, 'kanji')" class="w-full md:w-auto bg-teal-500 text-white px-8 py-4 rounded-2xl md:rounded-[2rem] font-black text-base md:text-lg shadow-lg shadow-teal-200 hover:bg-teal-600 hover:-translate-y-1 transition-all">
+                            📝 Uji Kanji
+                        </button>
+                    </div>
+                </div>
+
             </div>`;
     },
 
-    // 4. LOGIKA PERPINDAHAN TAB (SEKARANG 4 TAB)
+    // 4. LOGIKA PERPINDAHAN TAB (SEKARANG 5 TAB)
     switchTab: (tabName, level) => {
-        const tabs = ['bunpou', 'kotoba', 'dokkai', 'choukai'];
+        const tabs = ['bunpou', 'kotoba', 'dokkai', 'choukai', 'kanji'];
         
         tabs.forEach(t => {
             const btn = document.getElementById(`tab-${t}`);
@@ -386,10 +438,10 @@ const UI = {
 
             if (t === tabName) {
                 content.classList.remove('hidden');
-                btn.className = "flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all";
+                btn.className = "flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black bg-white shadow-sm text-stone-800 transition-all";
             } else {
                 content.classList.add('hidden');
-                btn.className = "flex-1 min-w-[80px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all";
+                btn.className = "flex-1 min-w-[65px] text-[10px] md:text-sm py-3 md:py-2.5 rounded-xl font-black text-stone-400 hover:text-stone-600 transition-all";
             }
         });
     },
@@ -414,6 +466,7 @@ const UI = {
             if (quizType === 'kotoba') { typeLabel = "Kuis Kosakata"; typeColor = "bg-emerald-600"; typeBorder = "peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-700"; typeShadow = "shadow-emerald-200 hover:bg-emerald-700"; }
             if (quizType === 'dokkai') { typeLabel = "Kuis Cerita"; typeColor = "bg-blue-600"; typeBorder = "peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700"; typeShadow = "shadow-blue-200 hover:bg-blue-700"; }
             if (quizType === 'choukai') { typeLabel = "Kuis Pendengaran"; typeColor = "bg-amber-500"; typeBorder = "peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700"; typeShadow = "shadow-amber-200 hover:bg-amber-600"; }
+            if (quizType === 'kanji') { typeLabel = "Kuis Kanji"; typeColor = "bg-teal-500"; typeBorder = "peer-checked:border-teal-500 peer-checked:bg-teal-50 peer-checked:text-teal-700"; typeShadow = "shadow-teal-200 hover:bg-teal-600"; }
         }
 
         if (!quizData || quizData.length === 0) {

@@ -127,8 +127,14 @@ const Database = {
             //     youtubeId: "dQw4w9WgXcQ", // Masukkan ID YouTube di sini
             //     text: "Simak baik-baik percakapan dalam video di atas.",
             //     translation: "..."
+            // },
+            // kanji: {
+            //     title: "Kanji Dasar 1",
+            //     list: [
+            //         { karakter: '一', kunyomi: 'ひと(つ)', onyomi: 'イチ', arti: 'Satu' },
+            //         { karakter: '二', kunyomi: 'ふた(つ)', onyomi: 'ニ', arti: 'Dua' }
+            //     ]
             // }
-
         },
         2: {
             title: "Hari 2: Perkenalan Diri (Jikoshoukai)",
