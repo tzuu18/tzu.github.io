@@ -1,11 +1,13 @@
-/**
- * js/app.js
- */
+// js/app.js
+// File utama untuk menjalankan aplikasi TzuJapan
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Memulai aplikasi di halaman beranda
-    if (typeof Router !== 'undefined') {
-        Router.push('home');
-    } else {
-        console.error("Router belum termuat. Periksa urutan script di index.html");
-    }
+    // JALAN PINTAS NINJA: 
+    // Mengaitkan Router dan Quiz ke sistem global (window)
+    // agar semua tombol di layar (onclick) bisa langsung mendeteksinya!
+    window.Router = Router;
+    window.Quiz = Quiz;
+
+    // Mulai navigasi awal saat web dibuka
+    Router.push('home');
 });

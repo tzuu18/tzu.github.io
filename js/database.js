@@ -20,7 +20,7 @@ const Database = {
                 { kanji: 'や - よ', kana: 'ya - yo', romaji: 'Ya, Yu, Yo', arti: 'Baris Y', hiraganaList: 'や ゆ よ', katakanaList: 'ヤ ユ ヨ' },
                 { kanji: 'ら - ろ', kana: 'ra - ro', romaji: 'Ra, Ri, Ru, Re, Ro', arti: 'Baris R', hiraganaList: 'ら り る れ ろ', katakanaList: 'ラ リ ル レ ロ' },
                 { kanji: 'わ・を・ん', kana: 'wa, wo, n', romaji: 'Wa, Wo, N', arti: 'Baris W & N Mati', hiraganaList: 'わ を ん', katakanaList: 'ワ ヲ ン' },
-                
+
                 // Huruf Teng-teng & Maru (Dakuon & Handakuon)
                 { kanji: 'が - ご', kana: 'ga - go', romaji: 'Ga, Gi, Gu, Ge, Go', arti: 'Baris G', hiraganaList: 'が ぎ ぐ げ ご', katakanaList: 'ガ ギ グ ゲ ゴ' },
                 { kanji: 'ざ - ぞ', kana: 'za - zo', romaji: 'Za, Ji, Zu, Ze, Zo', arti: 'Baris Z', hiraganaList: 'ざ じ ず ぜ ぞ', katakanaList: 'ザ ジ ズ ゼ ゾ' },
@@ -91,18 +91,37 @@ const Database = {
                     ]
                 }
             ],
-            quizzes: [
-                { q: "Apa yang membedakan kata 'Obasan' (Bibi) dan 'Obaasan' (Nenek)?", a: ["Huruf kanjinya", "Adanya vokal panjang pada huruf 'a'", "Cara penulisan Hiragananya", "Tidak ada bedanya"], c: 1 },
-                { q: "Bagaimana cara memanjangkan vokal pada penulisan huruf Katakana?", a: ["Menambahkan huruf vokal kecil", "Menambahkan huruf 'tsu' kecil", "Menambahkan tanda strip (ー)", "Tidak bisa dipanjangkan"], c: 2 },
-                { q: "Huruf 'N' (ん) pada kata 'Enpitsu' (えんぴつ) akan terdengar seperti bunyi huruf apa?", a: ["N", "M", "NG", "NY"], c: 1 },
-                { q: "Apa fungsi dari huruf 'tsu' kecil (っ) dalam sebuah kata?", a: ["Untuk dipanjangkan", "Sebagai tanda tanya", "Menggandakan huruf konsonan berikutnya", "Menghilangkan bunyi vokal"], c: 2 },
-                { q: "Mana dari pasangan huruf ini yang dibaca SATU ketukan (melebur)?", a: ["ひや (Hi-ya)", "きよ (Ki-yo)", "じゆ (Ji-yu)", "ひゃ (Hya)"], c: 3 },
-                { q: "Huruf 'N' (ん) TIDAK BOLEH ditempatkan di mana?", a: ["Di akhir kata", "Di tengah kata", "Di awal kata", "Sebelum huruf vokal"], c: 2 },
-                { q: "Bagaimana cara membaca kata 'Zasshi' (ざっし) yang benar?", a: ["Zashishi", "Zatsushi", "Zashi", "Zasshi (ditahan di huruf S)"], c: 3 },
-                { q: "Huruf 'N' (ん) pada kata 'Tenki' (てんき) akan terdengar seperti bunyi?", a: ["M", "N", "NG", "NY"], c: 2 },
-                { q: "Akhiran kalimat yang paling umum mengalami pelesapan vokal (huruf 'u' tidak dibaca jelas) adalah...", a: ["~arimasen", ~"~mashita", "~desu / ~masu", "~deshou"], c: 2 },
-                { q: "Apa romaji (huruf latin) dari gabungan huruf し + ゅ?", a: ["Syu", "Shu", "Siyu", "Siu"], c: 1 }
-            ]
+             quizzes: {
+                 bunpou: [
+                    { q: "Huruf apa yang digunakan untuk menulis kosakata asli bahasa Jepang?", a: ["Katakana", "Kanji", "Hiragana", "Romaji"], correct: 2 },
+                    { q: "Huruf apa yang khusus digunakan untuk menulis kata serapan dari bahasa asing?", a: ["Hiragana", "Katakana", "Kanji", "Romaji"], correct: 1 },
+                    { q: "Kata 「わたし」 (Watashi) sebaiknya ditulis menggunakan huruf...", a: ["Hiragana", "Katakana", "Kanji", "Romaji"], correct: 0 },
+                    { q: "Kata 「カメラ」 (Kamera) harus ditulis menggunakan huruf...", a: ["Hiragana", "Katakana", "Kanji", "Romaji"], correct: 1 },
+                    { q: "Ada berapa jenis huruf utama yang digunakan dalam bahasa Jepang?", a: ["1 jenis", "2 jenis", "3 jenis", "4 jenis"], correct: 2 }
+                ],
+                kotoba: [
+                    { q: "Mana yang merupakan huruf Hiragana 'A'?", a: ["ア", "あ", "い", "イ"], correct: 1 },
+                    { q: "Mana yang merupakan huruf Katakana 'I'?", a: ["あ", "い", "ア", "イ"], correct: 3 },
+                    { q: "Huruf う (U) termasuk dalam jenis huruf apa?", a: ["Katakana", "Kanji", "Hiragana", "Romaji"], correct: 2 },
+                    { q: "Mana pasangan huruf Hiragana dan Katakana yang tepat untuk 'O'?", a: ["あ/ア", "お/オ", "え/エ", "う/ウ"], correct: 1 },
+                    { q: "Huruf apakah ini: 「か」?", a: ["Ka", "Ki", "Ku", "Ke"], correct: 0 },
+                    { q: "Huruf apakah ini: 「シ」?", a: ["Sa", "Shi", "Su", "Se"], correct: 1 },
+                    { q: "Mana yang merupakan huruf Hiragana 'Te'?", a: ["た", "ち", "つ", "て"], correct: 3 },
+                    { q: "Huruf apakah ini: 「ノ」?", a: ["Na", "Ni", "Nu", "No"], correct: 3 },
+                    { q: "Mana yang merupakan huruf Katakana 'Ha'?", a: ["ハ", "ヒ", "フ", "ヘ"], correct: 0 },
+                    { q: "Huruf apakah ini: 「み」?", a: ["Ma", "Mi", "Mu", "Me"], correct: 1 },
+                    { q: "Mana yang merupakan huruf Hiragana 'Yu'?", a: ["や", "ゆ", "よ", "わ"], correct: 1 },
+                    { q: "Huruf apakah ini: 「レ」?", a: ["Ra", "Ri", "Ru", "Re"], correct: 3 },
+                    { q: "Mana yang merupakan huruf Katakana 'Wa'?", a: ["ワ", "ヲ", "ン", "ア"], correct: 0 },
+                    { q: "Huruf apakah ini: 「ん」?", a: ["N mati", "Wa", "Wo", "O"], correct: 0 },
+                    { q: "Mana yang merupakan huruf Hiragana 'Ga'?", a: ["か", "が", "き", "ぎ"], correct: 1 },
+                    { q: "Huruf apakah ini: 「ズ」?", a: ["Za", "Ji", "Zu", "Ze"], correct: 2 },
+                    { q: "Mana yang merupakan huruf Katakana 'De'?", a: ["ダ", "ヂ", "ヅ", "デ"], correct: 3 },
+                    { q: "Huruf apakah ini: 「ボ」?", a: ["Ba", "Bi", "Bu", "Bo"], correct: 3 },
+                    { q: "Mana yang merupakan huruf Hiragana 'Pi'?", a: ["ぱ", "ぴ", "ぷ", "ぺ"], correct: 1 },
+                    { q: "Huruf apakah ini: 「ヲ」?", a: ["Wa", "Wo", "N", "O"], correct: 1 }
+                ],
+            }
         },
         2: {
             title: "Hari 2: Perkenalan Diri (Jikoshoukai)",
@@ -144,18 +163,45 @@ const Database = {
                     ]
                 }
             ],
-            quizzes: [
-                { q: "Apa bahasa Jepangnya 'Saya'?", a: ["Anata", "Sensei", "Watashi", "Gakusei"], c: 2 },
-                { q: "Partikel apa yang digunakan untuk menandai subjek pembicaraan?", a: ["Ka", "No", "Wa", "Ni"], c: 2 },
-                { q: "Ucapan pembuka saat pertama kali berkenalan adalah...", a: ["Arigatou", "Hajimemashite", "Sayounara", "Sumimasen"], c: 1 },
-                { q: "Terjemahkan kalimat ini: 'Watashi wa gakusei desu.'", a: ["Saya adalah guru", "Saya adalah pelajar", "Apakah kamu pelajar?", "Saya bukan pelajar"], c: 1 },
-                { q: "Apa bentuk negatif dari '~desu'?", a: ["~masu", "~mashita", "~ja arimasen", "~desu ka"], c: 2 },
-                { q: "Bagaimana cara bertanya 'Apakah kamu seorang guru?'", a: ["Anata wa sensei ja arimasen", "Anata wa sensei desu ka", "Watashi wa sensei desu", "Sensei wa anata desu ka"], c: 1 },
-                { q: "Ucapan penutup saat selesai memperkenalkan diri adalah...", a: ["Yoroshiku onegaishimasu", "Ohayou gozaimasu", "Konnichiwa", "Gomen nasai"], c: 0 },
-                { q: "Partikel 'Wa' pada kalimat 'Watashi wa' ditulis menggunakan huruf Hiragana apa?", a: ["わ (Wa)", "を (Wo)", "は (Ha)", "ほ (Ho)"], c: 2 },
-                { q: "Apa arti dari 'Kaishain'?", a: ["Guru", "Dokter", "Pelajar", "Pegawai Perusahaan"], c: 3 },
-                { q: "Lengkapi kalimat berikut: Watashi ... Sensei ja arimasen.", a: ["No", "Wa", "Ni", "Ka"], c: 1 }
-            ]
+            dokkai: {
+                title: "はじめまして (Salam Kenal)",
+                text: "やまだ： はじめまして。<ruby>私<rt>わたし</rt></ruby>は <ruby>山田<rt>やまだ</rt></ruby>です。<ruby>日本人<rt>にほんじん</rt></ruby>です。\nマリア： はじめまして。マリアです。インドネシア<ruby>人<rt>じん</rt></ruby>です。\nやまだ： マリアさんは <ruby>学生<rt>がくせい</rt></ruby>ですか。\nマリア： いいえ、<ruby>学生<rt>がくせい</rt></ruby>じゃありません。<ruby>会社員<rt>かいしゃいん</rt></ruby>です。やまださんは？\nやまだ： <ruby>私<rt>わたし</rt></ruby>は <ruby>会社員<rt>かいしゃいん</rt></ruby>じゃありません。<ruby>先生<rt>せんせい</rt></ruby>です。よろしく お<ruby>願<rt>ねが</rt></ruby>いします。\nマリア： よろしく お<ruby>願<rt>ねが</rt></ruby>いします。",
+                translation: "Yamada: Salam kenal. Saya adalah Yamada. (Saya) orang Jepang.\nMaria: Salam kenal. Saya Maria. (Saya) orang Indonesia.\nYamada: Apakah Saudari Maria seorang pelajar?\nMaria: Bukan, (saya) bukan pelajar. (Saya) pegawai perusahaan. Kalau Saudara Yamada?\nYamada: Saya bukan pegawai perusahaan. (Saya) seorang guru. Senang berkenalan dengan Anda (Mohon bimbingannya).\nMaria: Senang berkenalan dengan Anda juga."
+            },
+            // ... (kode quizzes hari ke 2) ...
+           quizzes: {
+                bunpou: [
+                    { q: "Untuk menyatakan 'A adalah B', partikel apa yang diletakkan setelah Subjek?", a: ["か (ka)", "は (wa)", "の (no)", "に (ni)"], correct: 1 },
+                    { q: "Bagaimana cara mengubah kalimat afirmatif (positif) menjadi kalimat tanya?", a: ["Menambahkan 'ja arimasen'", "Menambahkan 'desu'", "Menambahkan partikel 'ka' di akhir kalimat", "Menghapus partikel 'wa'"], correct: 2 },
+                    { q: "Bentuk negatif (penyangkalan) dari kata '~desu' adalah...", a: ["~masu", "~ja arimasen", "~deshita", "~arimasu"], correct: 1 },
+                    { q: "Kalimat yang benar untuk 'Saya adalah seorang guru' adalah...", a: ["わたしは せんせい です", "わたしは がくせい じゃありません", "せんせいは わたし ですか", "わたしは せんせい じゃありません"], correct: 0 },
+                    { q: "Kalimat 'Apakah kamu pelajar?' dalam bahasa Jepang adalah...", a: ["わたしは がくせい です", "あなたは がくせい ですか", "あなたは せんせい じゃありません", "がくせい は あなた ですか"], correct: 1 },
+                    { q: "Lengkapi kalimat ini: マリアさん (...) がくせい じゃありません。", a: ["か", "も", "は", "の"], correct: 2 },
+                    { q: "Lengkapi kalimat ini: わたしは にほんじん (...)", a: ["です", "ですか", "は", "か"], correct: 0 },
+                    { q: "Terjemahan dari 'いいえ、がくせい じゃありません' adalah...", a: ["Ya, saya pelajar", "Bukan, saya bukan pelajar", "Apakah kamu pelajar?", "Saya adalah pegawai"], correct: 1 },
+                    { q: "Jika ditanya 'やまださんは 先生ですか' dan jawabannya YA, maka kalimat yang benar adalah...", a: ["はい、先生 です。", "いいえ、先生 じゃありません。", "はい、学生 です。", "いいえ、先生 です。"], correct: 0 },
+                    { q: "Pola kalimat '~wa ~ja arimasen' digunakan untuk...", a: ["Menyetujui sesuatu", "Menanyakan sesuatu", "Menyangkal (Bukan)", "Menyatakan kepemilikan"], correct: 2 },
+                    { q: "Partikel 'wa' (sebagai penanda topik) dalam bahasa Jepang harus ditulis menggunakan huruf Hiragana...", a: ["わ", "は", "を", "ん"], correct: 1 },
+                    { q: "Terjemahkan ke bahasa Jepang: 'Saya BUKAN orang Jepang.'", a: ["わたしは にほんじん です", "わたしは にほんじん じゃありません", "わたしは かいしゃいん じゃありません", "あなたは にほんじん ですか"], correct: 1 },
+                    { q: "Kalimat 'やまださんは かいしゃいん ですか' berarti...", a: ["Yamada adalah pegawai", "Apakah Yamada seorang guru?", "Yamada bukan pegawai", "Apakah Tuan Yamada seorang pegawai perusahaan?"], correct: 3 },
+                    { q: "Untuk menjawab pertanyaan bahasa Jepang dengan arti 'Bukan/Tidak', kita menggunakan awalan...", a: ["はい (Hai)", "いいえ (Iie)", "あの (Ano)", "そう (Sou)"], correct: 1 },
+                    { q: "Gabungan pola untuk bertanya kepada orang lain mengenai statusnya adalah...", a: ["[Subjek] は [Kata Benda] じゃありません", "[Subjek] は [Kata Benda] です", "[Subjek] は [Kata Benda] ですか", "[Subjek] も [Kata Benda] です"], correct: 2 }
+                ],
+                kotoba: [
+                    { q: "Apa bahasa Jepangnya 'Saya'?", a: ["あなた", "せんせい", "わたし", "がくせい"], correct: 2 },
+                    { q: "Mana kata yang berarti 'Pegawai Perusahaan'?", a: ["がくせい", "かいしゃいん", "せんせい", "にほんじん"], correct: 1 },
+                    { q: "Ungkapan 'Hajimemashite' diucapkan saat...", a: ["Berpisah", "Pertama kali berkenalan", "Meminta maaf", "Berterima kasih"], correct: 1 },
+                    { q: "Apa arti dari kata 「せんせい」?", a: ["Pelajar", "Dokter", "Guru", "Saya"], correct: 2 },
+                    { q: "Ungkapan untuk menutup perkenalan ('Mohon bimbingannya') adalah...", a: ["よろしく おねがいします", "はじめまして", "ありがとう ございます", "すみません"], correct: 0 }
+                ],
+                dokkai: [
+                    { q: "Berdasarkan cerita, siapakah yang berasal dari Jepang?", a: ["Maria", "Yamada", "Keduanya", "Tidak ada"], correct: 1 },
+                    { q: "Apa pekerjaan Maria?", a: ["Pelajar (Gakusei)", "Guru (Sensei)", "Pegawai Perusahaan (Kaishain)", "Dokter"], correct: 2 },
+                    { q: "Apakah Maria seorang pelajar?", a: ["Ya, dia pelajar", "Bukan, dia pegawai perusahaan", "Bukan, dia guru", "Ya, dia mahasiswa"], correct: 1 },
+                    { q: "Siapakah yang bekerja sebagai guru?", a: ["Maria", "Yamada", "Keduanya", "Tidak disebutkan"], correct: 1 },
+                    { q: "Dari mana asal Maria?", a: ["Jepang", "Malaysia", "Singapura", "Indonesia"], correct: 3 }
+                ]
+            }
         },
         3: {
             title: "Hari 3: Kosakata Lengkap Bab 1 & Partikel Mo/No",
@@ -187,33 +233,33 @@ const Database = {
                 { kanji: '日本', kana: 'にほん', romaji: 'Nihon', arti: 'Jepang' }
             ],
             bunpou: [
-                { 
-                    title: "1. Partikel も (Mo) - Menyatakan 'Juga'", 
-                    explanation: "Jika kamu ingin mengatakan 'juga' (situasinya sama dengan kalimat sebelumnya), kamu bisa mengganti partikel 'Wa' dengan 'Mo'.", 
-                    formula: "[Subjek] も [Kata Benda] です", 
+                {
+                    title: "1. Partikel も (Mo) - Menyatakan 'Juga'",
+                    explanation: "Jika kamu ingin mengatakan 'juga' (situasinya sama dengan kalimat sebelumnya), kamu bisa mengganti partikel 'Wa' dengan 'Mo'.",
+                    formula: "[Subjek] も [Kata Benda] です",
                     examples: [
                         { jp: "やまださんは 先生です。たなかさんも 先生です。", id: "Yamada adalah guru. Tanaka JUGA adalah guru." },
                         { jp: "わたしも インドネシアじんです。", id: "Saya JUGA orang Indonesia." }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "2. Partikel の (No) - Kepemilikan & Keterangan", 
-                    explanation: "Partikel ini mengikat dua kata benda. Kata benda pertama menjelaskan kata benda kedua. Sering kali diartikan sebagai 'milik/dari', tapi terkadang tidak perlu diterjemahkan dalam bahasa Indonesia.", 
-                    formula: "[KB 1] の [KB 2]", 
+                {
+                    title: "2. Partikel の (No) - Kepemilikan & Keterangan",
+                    explanation: "Partikel ini mengikat dua kata benda. Kata benda pertama menjelaskan kata benda kedua. Sering kali diartikan sebagai 'milik/dari', tapi terkadang tidak perlu diterjemahkan dalam bahasa Indonesia.",
+                    formula: "[KB 1] の [KB 2]",
                     examples: [
                         { jp: "わたしは さくら大学の 学生です。", id: "Saya adalah mahasiswa (dari) Universitas Sakura." },
                         { jp: "やまださんは トヨタの 社員です。", id: "Yamada adalah karyawan (perusahaan) Toyota." }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "3. Bertanya 'Siapa' dan 'Umur Berapa'", 
-                    explanation: "Gunakan kata tanya だれ (Dare) untuk bertanya 'Siapa'. Jika ingin lebih sopan, gunakan どなた (Donata). Untuk menanyakan umur, gunakan 何歳 (Nansai) atau bentuk sopannya おいくつ (Oikutsu).", 
-                    formula: "あの人は だれですか / あの方は どなたですか", 
+                {
+                    title: "3. Bertanya 'Siapa' dan 'Umur Berapa'",
+                    explanation: "Gunakan kata tanya だれ (Dare) untuk bertanya 'Siapa'. Jika ingin lebih sopan, gunakan どなた (Donata). Untuk menanyakan umur, gunakan 何歳 (Nansai) atau bentuk sopannya おいくつ (Oikutsu).",
+                    formula: "あの人は だれですか / あの方は どなたですか",
                     examples: [
                         { jp: "あの人は だれですか。", id: "Orang itu siapa?" },
                         { jp: "あの方は どなたですか。", id: "Beliau itu siapa? (Lebih sopan)" },
                         { jp: "たろうくんは なんさいですか。", id: "Taro umurnya berapa?" }
-                    ] 
+                    ]
                 }
             ],
             quizzes: [
@@ -273,59 +319,59 @@ const Database = {
                 { kanji: 'そうです', kana: 'そうです', romaji: 'Sou desu', arti: 'Benar / Ya, betul' }
             ],
             bunpou: [
-                { 
-                    title: "1. Kata Tunjuk Benda (Kore / Sore / Are)", 
-                    explanation: "Digunakan sebagai pengganti kata benda. 'Kore' (Ini) untuk menunjuk benda di dekatmu. 'Sore' (Itu) untuk benda di dekat lawan bicara. 'Are' (Itu Jauh) untuk benda yang jauh dari kalian berdua.", 
-                    formula: "これ / それ / あれ は [Kata Benda] です", 
+                {
+                    title: "1. Kata Tunjuk Benda (Kore / Sore / Are)",
+                    explanation: "Digunakan sebagai pengganti kata benda. 'Kore' (Ini) untuk menunjuk benda di dekatmu. 'Sore' (Itu) untuk benda di dekat lawan bicara. 'Are' (Itu Jauh) untuk benda yang jauh dari kalian berdua.",
+                    formula: "これ / それ / あれ は [Kata Benda] です",
                     examples: [
                         { jp: "それは じしょですか。", id: "Apakah itu kamus?" },
                         { jp: "これは だれの かさですか。", id: "Ini payung siapa?" }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "2. Menempelkan Kata Tunjuk (Kono / Sono / Ano)", 
-                    explanation: "Berbeda dengan Kore/Sore/Are, kata Kono/Sono/Ano TIDAK BISA berdiri sendiri. Mereka harus selalu menempel dan diikuti langsung oleh kata benda untuk menerangkan benda tersebut secara spesifik (misal: Buku ini, Tas itu).", 
-                    formula: "この / その / あの [Kata Benda] は [Keterangan] です", 
+                {
+                    title: "2. Menempelkan Kata Tunjuk (Kono / Sono / Ano)",
+                    explanation: "Berbeda dengan Kore/Sore/Are, kata Kono/Sono/Ano TIDAK BISA berdiri sendiri. Mereka harus selalu menempel dan diikuti langsung oleh kata benda untuk menerangkan benda tersebut secara spesifik (misal: Buku ini, Tas itu).",
+                    formula: "この / その / あの [Kata Benda] は [Keterangan] です",
                     examples: [
                         { jp: "この ほんは わたしのです。", id: "Buku ini adalah milik saya." },
                         { jp: "あの かたは どなたですか。", id: "Beliau itu siapa?" }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "3. Mengonfirmasi Kebenaran (Sou desu / Chigaimasu)", 
-                    explanation: "Saat seseorang bertanya apakah sebuah benda adalah 'A', kamu bisa membenarkannya dengan menjawab 'Hai, Sou desu' (Ya, betul). Jika tebakannya salah, jangan gunakan bentuk negatif yang panjang, cukup ucapkan 'Iie, Chigaimasu' (Bukan / Salah).", 
-                    formula: "はい、そうです。 / いいえ、ちがいます。", 
+                {
+                    title: "3. Mengonfirmasi Kebenaran (Sou desu / Chigaimasu)",
+                    explanation: "Saat seseorang bertanya apakah sebuah benda adalah 'A', kamu bisa membenarkannya dengan menjawab 'Hai, Sou desu' (Ya, betul). Jika tebakannya salah, jangan gunakan bentuk negatif yang panjang, cukup ucapkan 'Iie, Chigaimasu' (Bukan / Salah).",
+                    formula: "はい、そうです。 / いいえ、ちがいます。",
                     examples: [
                         { jp: "それは じしょですか。…はい、そうです。", id: "Apakah itu kamus? ...Ya, betul." },
                         { jp: "それは ミラーさんのですか。…いいえ、ちがいます。", id: "Apakah itu milik Tuan Miller? ...Bukan." }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "4. Memberikan Pilihan (～か、～か)", 
-                    explanation: "Jika kamu ingin bertanya 'A atau B?', cukup gunakan partikel 'Ka' (か) di belakang setiap pilihan. Saat menjawab, tidak perlu mengucapkan Hai/Iie, langsung saja sebutkan jawaban yang benar.", 
-                    formula: "[Pilihan 1] ですか、[Pilihan 2] ですか。", 
+                {
+                    title: "4. Memberikan Pilihan (～か、～か)",
+                    explanation: "Jika kamu ingin bertanya 'A atau B?', cukup gunakan partikel 'Ka' (か) di belakang setiap pilihan. Saat menjawab, tidak perlu mengucapkan Hai/Iie, langsung saja sebutkan jawaban yang benar.",
+                    formula: "[Pilihan 1] ですか、[Pilihan 2] ですか。",
                     examples: [
                         { jp: "これは 「９」ですか、「７」ですか。…「９」です。", id: "Apakah ini '9' atau '7'? ...Ini '9'." }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "5. Partikel 'No' (の) Tingkat Lanjut", 
-                    explanation: "Selain menunjukkan kepemilikan, partikel の (No) punya dua fungsi ajaib lainnya: 1. Menjelaskan isi benda (contoh: Buku (tentang) Komputer). 2. Berfungsi sebagai kata 'Milik' agar kamu tidak perlu mengulang kata benda yang sama berkali-kali.", 
-                    formula: "これ は コンピューター の ほんです / これは わたし の です", 
+                {
+                    title: "5. Partikel 'No' (の) Tingkat Lanjut",
+                    explanation: "Selain menunjukkan kepemilikan, partikel の (No) punya dua fungsi ajaib lainnya: 1. Menjelaskan isi benda (contoh: Buku (tentang) Komputer). 2. Berfungsi sebagai kata 'Milik' agar kamu tidak perlu mengulang kata benda yang sama berkali-kali.",
+                    formula: "これ は コンピューター の ほんです / これは わたし の です",
                     examples: [
                         { jp: "これは コンピューターの ほんです。", id: "Ini adalah buku komputer." },
                         { jp: "あれは だれの かばんですか。…さとうさんのです。", id: "Tas itu punya siapa? ...Punya Sato. (Tidak perlu mengulang kata 'Kaban')" },
                         { jp: "この かばんは あなたのですか。…いいえ、わたしの じゃありません。", id: "Apakah tas ini milik Anda? ...Bukan, bukan milik saya." }
-                    ] 
+                    ]
                 },
-                { 
-                    title: "6. Ekspresi 'Sou desu ka' & Awalan Sopan 'O'", 
-                    explanation: "Jika kamu baru saja menerima informasi baru dan ingin merespons 'Oh, begitu', gunakan kalimat 'Sou desu ka' dengan intonasi menurun di akhir. Selain itu, kamu bisa menambahkan huruf 'O' (お) di depan beberapa benda untuk membuatnya terdengar lebih sopan.", 
-                    formula: "そうですか。(Intonasi turun) / お + [Kata Benda]", 
+                {
+                    title: "6. Ekspresi 'Sou desu ka' & Awalan Sopan 'O'",
+                    explanation: "Jika kamu baru saja menerima informasi baru dan ingin merespons 'Oh, begitu', gunakan kalimat 'Sou desu ka' dengan intonasi menurun di akhir. Selain itu, kamu bisa menambahkan huruf 'O' (お) di depan beberapa benda untuk membuatnya terdengar lebih sopan.",
+                    formula: "そうですか。(Intonasi turun) / お + [Kata Benda]",
                     examples: [
                         { jp: "この かさは あなたのですか。…いいえ、シュミットさんのです。…そうですか。", id: "Payung ini punya Anda? ...Bukan, punya Schmidt. ...Oh, begitu." },
                         { jp: "おみやげ", id: "Oleh-oleh (Bentuk sopan)" }
-                    ] 
+                    ]
                 }
             ],
             quizzes: [
@@ -456,7 +502,7 @@ const Database = {
                 { q: "Untuk menanyakan negara asal seseorang dengan sopan, kita berkata:", a: ["Kuni wa doko desu ka", "Okuni wa dochira desu ka", "Anata wa kuni desu ka", "Okuni wa nan desu ka"], c: 1 }
             ]
         },
-         6: {
+        6: {
             title: "Hari 6: Waktu, Hari & Kata Kerja Dasar",
             description: "Belajar menyebutkan jam, nama-nama hari, serta mulai menggunakan kata kerja dasar dalam bentuk sekarang dan lampau.",
             kotoba: [
