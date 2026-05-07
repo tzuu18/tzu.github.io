@@ -2937,6 +2937,557 @@ const Database = {
         }
     },
 
+    SUP: {
+       101: {
+            title: "Bab 1: Kata Bilangan",
+            description: "Daftar lengkap angka dalam bahasa Jepang mulai dari nol hingga ratusan juta, beserta bilangan desimal dan pecahan.",
+            kotoba: [
+                // Angka Dasar
+                { kanji: '0', kana: 'ゼロ / れい', romaji: 'Zero / Rei', arti: 'Nol' },
+                { kanji: '1', kana: 'いち', romaji: 'Ichi', arti: 'Satu' },
+                { kanji: '2', kana: 'に', romaji: 'Ni', arti: 'Dua' },
+                { kanji: '3', kana: 'さん', romaji: 'San', arti: 'Tiga' },
+                { kanji: '4', kana: 'よん / し', romaji: 'Yon / Shi', arti: 'Empat' },
+                { kanji: '5', kana: 'ご', romaji: 'Go', arti: 'Lima' },
+                { kanji: '6', kana: 'ろく', romaji: 'Roku', arti: 'Enam' },
+                { kanji: '7', kana: 'なな / しち', romaji: 'Nana / Shichi', arti: 'Tujuh' },
+                { kanji: '8', kana: 'はち', romaji: 'Hachi', arti: 'Delapan' },
+                { kanji: '9', kana: 'きゅう / く', romaji: 'Kyuu / Ku', arti: 'Sembilan' },
+                { kanji: '10', kana: 'じゅう', romaji: 'Juu', arti: 'Sepuluh' },
+                
+                // Belasan
+                { kanji: '11', kana: 'じゅういち', romaji: 'Juuichi', arti: 'Sebelas' },
+                { kanji: '12', kana: 'じゅうに', romaji: 'Juuni', arti: 'Dua belas' },
+                { kanji: '13', kana: 'じゅうさん', romaji: 'Juusan', arti: 'Tiga belas' },
+                { kanji: '14', kana: 'じゅうよん / じゅうし', romaji: 'Juuyon / Juushi', arti: 'Empat belas' },
+                { kanji: '15', kana: 'じゅうご', romaji: 'Juugo', arti: 'Lima belas' },
+                { kanji: '16', kana: 'じゅうろく', romaji: 'Juuroku', arti: 'Enam belas' },
+                { kanji: '17', kana: 'じゅうなな / じゅうしち', romaji: 'Juunana / Juushichi', arti: 'Tujuh belas' },
+                { kanji: '18', kana: 'じゅうはち', romaji: 'Juuhachi', arti: 'Delapan belas' },
+                { kanji: '19', kana: 'じゅうきゅう / じゅうく', romaji: 'Juukyuu / Juuku', arti: 'Sembilan belas' },
+                
+                // Puluhan
+                { kanji: '20', kana: 'にじゅう', romaji: 'Nijuu', arti: 'Dua puluh' },
+                { kanji: '30', kana: 'さんじゅう', romaji: 'Sanjuu', arti: 'Tiga puluh' },
+                { kanji: '40', kana: 'よんじゅう', romaji: 'Yonjuu', arti: 'Empat puluh' },
+                { kanji: '50', kana: 'ごじゅう', romaji: 'Gojuu', arti: 'Lima puluh' },
+                { kanji: '60', kana: 'ろくじゅう', romaji: 'Rokujuu', arti: 'Enam puluh' },
+                { kanji: '70', kana: 'ななじゅう / しちじゅう', romaji: 'Nanajuu / Shichijuu', arti: 'Tujuh puluh' },
+                { kanji: '80', kana: 'はちじゅう', romaji: 'Hachijuu', arti: 'Delapan puluh' },
+                { kanji: '90', kana: 'きゅうじゅう', romaji: 'Kyuujuu', arti: 'Sembilan puluh' },
+                
+                // Ratusan
+                { kanji: '100', kana: 'ひゃく', romaji: 'Hyaku', arti: 'Seratus' },
+                { kanji: '200', kana: 'にひゃく', romaji: 'Nihyaku', arti: 'Dua ratus' },
+                { kanji: '300', kana: 'さんびゃく', romaji: 'Sanbyaku', arti: 'Tiga ratus' },
+                { kanji: '400', kana: 'よんひゃく', romaji: 'Yonhyaku', arti: 'Empat ratus' },
+                { kanji: '500', kana: 'ごひゃく', romaji: 'Gohyaku', arti: 'Lima ratus' },
+                { kanji: '600', kana: 'ろっぴゃく', romaji: 'Roppyaku', arti: 'Enam ratus' },
+                { kanji: '700', kana: 'ななひゃく', romaji: 'Nanahyaku', arti: 'Tujuh ratus' },
+                { kanji: '800', kana: 'はっぴゃく', romaji: 'Happyaku', arti: 'Delapan ratus' },
+                { kanji: '900', kana: 'きゅうひゃく', romaji: 'Kyuuhyaku', arti: 'Sembilan ratus' },
+                
+                // Ribuan
+                { kanji: '1.000', kana: 'せん', romaji: 'Sen', arti: 'Seribu' },
+                { kanji: '2.000', kana: 'にせん', romaji: 'Nisen', arti: 'Dua ribu' },
+                { kanji: '3.000', kana: 'さんぜん', romaji: 'Sanzen', arti: 'Tiga ribu' },
+                { kanji: '4.000', kana: 'よんせん', romaji: 'Yonsen', arti: 'Empat ribu' },
+                { kanji: '5.000', kana: 'ごせん', romaji: 'Gosen', arti: 'Lima ribu' },
+                { kanji: '6.000', kana: 'ろくせん', romaji: 'Rokusen', arti: 'Enam ribu' },
+                { kanji: '7.000', kana: 'ななせん', romaji: 'Nanasen', arti: 'Tujuh ribu' },
+                { kanji: '8.000', kana: 'はっせん', romaji: 'Hassen', arti: 'Delapan ribu' },
+                { kanji: '9.000', kana: 'きゅうせん', romaji: 'Kyuusen', arti: 'Sembilan ribu' },
+                
+                // Puluhan Ribu ke atas (Sistem Man)
+                { kanji: '10.000', kana: 'いちまん', romaji: 'Ichiman', arti: 'Sepuluh ribu (1 Man)' },
+                { kanji: '100.000', kana: 'じゅうまん', romaji: 'Juuman', arti: 'Seratus ribu (10 Man)' },
+                { kanji: '1.000.000', kana: 'ひゃくまん', romaji: 'Hyakuman', arti: 'Satu juta (100 Man)' },
+                { kanji: '10.000.000', kana: 'せんまん', romaji: 'Senman', arti: 'Sepuluh juta (1.000 Man)' },
+                { kanji: '100.000.000', kana: 'いちおく', romaji: 'Ichioku', arti: 'Seratus juta (1 Oku)' },
+                
+                // Bilangan Desimal
+                { kanji: '17.5', kana: 'じゅうななてんご', romaji: 'Juunana ten go', arti: 'Tujuh belas koma lima' },
+                { kanji: '0.83', kana: 'れいてんはちさん', romaji: 'Rei ten hachi san', arti: 'Nol koma delapan tiga' },
+                
+                // Pecahan
+                { kanji: '1/2', kana: 'にぶんのいち', romaji: 'Ni bun no ichi', arti: 'Setengah (Satu per dua)' },
+                { kanji: '3/4', kana: 'よんぶんのさん', romaji: 'Yon bun no san', arti: 'Tiga perempat' }
+            ],
+            bunpou: [],
+            quizzes: []
+        },
+        102: {
+            title: "Bab 2: Ungkapan Waktu",
+            description: "Daftar lengkap kosakata keterangan waktu yang meliputi hari, minggu, bulan, dan tahun.",
+            kotoba: [
+                // === KELOMPOK HARI ===
+                { kanji: '一昨日', kana: 'おととい', romaji: 'Ototoi', arti: 'Kemarin lusa' },
+                { kanji: '昨日', kana: 'きのう', romaji: 'Kinou', arti: 'Kemarin' },
+                { kanji: '今日', kana: 'きょう', romaji: 'Kyou', arti: 'Hari ini' },
+                { kanji: '明日', kana: 'あした', romaji: 'Ashita', arti: 'Besok' },
+                { kanji: '明後日', kana: 'あさって', romaji: 'Asatte', arti: 'Lusa' },
+                { kanji: '毎日', kana: 'まいにち', romaji: 'Mainichi', arti: 'Setiap hari' },
+
+                // === KELOMPOK PAGI ===
+                { kanji: '一昨日の朝', kana: 'おとといの あさ', romaji: 'Ototoi no asa', arti: 'Kemarin lusa pagi' },
+                { kanji: '昨日の朝', kana: 'きのうの あさ', romaji: 'Kinou no asa', arti: 'Kemarin pagi' },
+                { kanji: '今朝', kana: 'けさ', romaji: 'Kesa', arti: 'Tadi pagi' },
+                { kanji: '明日の朝', kana: 'あしたの あさ', romaji: 'Ashita no asa', arti: 'Besok pagi' },
+                { kanji: '明後日の朝', kana: 'あさっての あさ', romaji: 'Asatte no asa', arti: 'Lusa pagi' },
+                { kanji: '毎朝', kana: 'まいあさ', romaji: 'Maiasa', arti: 'Setiap pagi' },
+
+                // === KELOMPOK MALAM ===
+                { kanji: '一昨日の晩（夜）', kana: 'おとといの ばん（よる）', romaji: 'Ototoi no ban (yoru)', arti: 'Kemarin lusa malam' },
+                { kanji: '昨日の晩（夜）', kana: 'きのうの ばん（よる）', romaji: 'Kinou no ban (yoru)', arti: 'Kemarin malam' },
+                { kanji: '今晩（今日の夜）', kana: 'こんばん（きょうの よる）', romaji: 'Konban (Kyou no yoru)', arti: 'Malam ini' },
+                { kanji: '明日の晩（夜）', kana: 'あしたの ばん（よる）', romaji: 'Ashita no ban (yoru)', arti: 'Besok malam' },
+                { kanji: '明後日の晩（夜）', kana: 'あさっての ばん（よる）', romaji: 'Asatte no ban (yoru)', arti: 'Lusa malam' },
+                { kanji: '毎晩', kana: 'まいばん', romaji: 'Maiban', arti: 'Setiap malam' },
+
+                // === KELOMPOK MINGGU ===
+                { kanji: '先々週（二週間前）', kana: 'せんせんしゅう（にしゅうかんまえ）', romaji: 'Sensenshuu (Nishuukan mae)', arti: 'Dua minggu yang lalu' },
+                { kanji: '先週', kana: 'せんしゅう', romaji: 'Senshuu', arti: 'Minggu lalu' },
+                { kanji: '今週', kana: 'こんしゅう', romaji: 'Konshuu', arti: 'Minggu ini' },
+                { kanji: '来週', kana: 'らいしゅう', romaji: 'Raishuu', arti: 'Minggu depan' },
+                { kanji: '再来週', kana: 'さらいしゅう', romaji: 'Saraishuu', arti: 'Dua minggu lagi' },
+                { kanji: '毎週', kana: 'まいしゅう', romaji: 'Maishuu', arti: 'Setiap minggu' },
+
+                // === KELOMPOK BULAN ===
+                { kanji: '先々月（二か月前）', kana: 'せんせんげつ（にかげつまえ）', romaji: 'Sensengetsu (Nikagetsu mae)', arti: 'Dua bulan yang lalu' },
+                { kanji: '先月', kana: 'せんげつ', romaji: 'Sengetsu', arti: 'Bulan lalu' },
+                { kanji: '今月', kana: 'こんげつ', romaji: 'Kongetsu', arti: 'Bulan ini' },
+                { kanji: '来月', kana: 'らいげつ', romaji: 'Raigetsu', arti: 'Bulan depan' },
+                { kanji: '再来月', kana: 'さらいげつ', romaji: 'Saraigetsu', arti: 'Dua bulan lagi' },
+                { kanji: '毎月', kana: 'まいつき', romaji: 'Maitsuki', arti: 'Setiap bulan' },
+
+                // === KELOMPOK TAHUN ===
+                { kanji: '一昨年', kana: 'おととし', romaji: 'Ototoshi', arti: 'Dua tahun yang lalu' },
+                { kanji: '去年', kana: 'きょねん', romaji: 'Kyonen', arti: 'Tahun lalu' },
+                { kanji: '今年', kana: 'ことし', romaji: 'Kotoshi', arti: 'Tahun ini' },
+                { kanji: '来年', kana: 'らいねん', romaji: 'Rainen', arti: 'Tahun depan' },
+                { kanji: '再来年', kana: 'さらいねん', romaji: 'Sarainen', arti: 'Dua tahun lagi' },
+                { kanji: '毎年', kana: 'まいとし / まいねん', romaji: 'Maitoshi / Mainen', arti: 'Setiap tahun' }
+            ],
+            bunpou: [],
+            quizzes: []
+        },
+        103: {
+            title: "Bab 3: Penanda Waktu & Durasi",
+            description: "Daftar lengkap kata bantu bilangan untuk menyebutkan jam, menit, kalender (hari, tanggal, bulan), serta jangka waktu (durasi).",
+            kotoba: [
+                // === PENANDA JAM (〜時) ===
+                { kanji: '1時', kana: 'いちじ', romaji: 'Ichiji', arti: 'Jam 1' },
+                { kanji: '2時', kana: 'にじ', romaji: 'Niji', arti: 'Jam 2' },
+                { kanji: '3時', kana: 'さんじ', romaji: 'Sanji', arti: 'Jam 3' },
+                { kanji: '4時', kana: 'よじ', romaji: 'Yoji', arti: 'Jam 4' },
+                { kanji: '5時', kana: 'ごじ', romaji: 'Goji', arti: 'Jam 5' },
+                { kanji: '6時', kana: 'ろくじ', romaji: 'Rokuji', arti: 'Jam 6' },
+                { kanji: '7時', kana: 'しちじ', romaji: 'Shichiji', arti: 'Jam 7' },
+                { kanji: '8時', kana: 'はちじ', romaji: 'Hachiji', arti: 'Jam 8' },
+                { kanji: '9時', kana: 'くじ', romaji: 'Kuji', arti: 'Jam 9' },
+                { kanji: '10時', kana: 'じゅうじ', romaji: 'Juuji', arti: 'Jam 10' },
+                { kanji: '11時', kana: 'じゅういちじ', romaji: 'Juuichiji', arti: 'Jam 11' },
+                { kanji: '12時', kana: 'じゅうにじ', romaji: 'Juuniji', arti: 'Jam 12' },
+                { kanji: '何時', kana: 'なんじ', romaji: 'Nanji', arti: 'Jam berapa?' },
+
+                // === PENANDA MENIT (〜分) ===
+                { kanji: '1分', kana: 'いっぷん', romaji: 'Ippun', arti: '1 Menit' },
+                { kanji: '2分', kana: 'にふん', romaji: 'Nifun', arti: '2 Menit' },
+                { kanji: '3分', kana: 'さんぷん', romaji: 'Sanpun', arti: '3 Menit' },
+                { kanji: '4分', kana: 'よんぷん', romaji: 'Yonpun', arti: '4 Menit' },
+                { kanji: '5分', kana: 'ごふん', romaji: 'Gofun', arti: '5 Menit' },
+                { kanji: '6分', kana: 'ろっぷん', romaji: 'Roppun', arti: '6 Menit' },
+                { kanji: '7分', kana: 'ななふん', romaji: 'Nanafun', arti: '7 Menit' },
+                { kanji: '8分', kana: 'はっぷん', romaji: 'Happun', arti: '8 Menit' },
+                { kanji: '9分', kana: 'きゅうふん', romaji: 'Kyuufun', arti: '9 Menit' },
+                { kanji: '10分', kana: 'じゅっぷん / じっぷん', romaji: 'Juppun / Jippun', arti: '10 Menit' },
+                { kanji: '15分', kana: 'じゅうごふん', romaji: 'Juugofun', arti: '15 Menit' },
+                { kanji: '30分', kana: 'さんじゅっぷん / はん', romaji: 'Sanjuppun / Han', arti: '30 Menit (Setengah)' },
+                { kanji: '何分', kana: 'なんぷん', romaji: 'Nanpun', arti: 'Berapa menit?' },
+
+                // === NAMA HARI (〜曜日) ===
+                { kanji: '日曜日', kana: 'にちようび', romaji: 'Nichiyoubi', arti: 'Hari Minggu' },
+                { kanji: '月曜日', kana: 'げつようび', romaji: 'Getsuyoubi', arti: 'Hari Senin' },
+                { kanji: '火曜日', kana: 'かようび', romaji: 'Kayoubi', arti: 'Hari Selasa' },
+                { kanji: '水曜日', kana: 'すいようび', romaji: 'Suiyoubi', arti: 'Hari Rabu' },
+                { kanji: '木曜日', kana: 'もくようび', romaji: 'Mokuyoubi', arti: 'Hari Kamis' },
+                { kanji: '金曜日', kana: 'きんようび', romaji: 'Kinyoubi', arti: 'Hari Jumat' },
+                { kanji: '土曜日', kana: 'どようび', romaji: 'Doyoubi', arti: 'Hari Sabtu' },
+                { kanji: '何曜日', kana: 'なんようび', romaji: 'Nanyoubi', arti: 'Hari apa?' },
+
+                // === PENANDA BULAN (〜月) ===
+                { kanji: '1月', kana: 'いちがつ', romaji: 'Ichigatsu', arti: 'Januari' },
+                { kanji: '2月', kana: 'にがつ', romaji: 'Nigatsu', arti: 'Februari' },
+                { kanji: '3月', kana: 'さんがつ', romaji: 'Sangatsu', arti: 'Maret' },
+                { kanji: '4月', kana: 'しがつ', romaji: 'Shigatsu', arti: 'April' },
+                { kanji: '5月', kana: 'ごがつ', romaji: 'Gogatsu', arti: 'Mei' },
+                { kanji: '6月', kana: 'ろくがつ', romaji: 'Rokugatsu', arti: 'Juni' },
+                { kanji: '7月', kana: 'しちがつ', romaji: 'Shichigatsu', arti: 'Juli' },
+                { kanji: '8月', kana: 'はちがつ', romaji: 'Hachigatsu', arti: 'Agustus' },
+                { kanji: '9月', kana: 'くがつ', romaji: 'Kugatsu', arti: 'September' },
+                { kanji: '10月', kana: 'じゅうがつ', romaji: 'Juugatsu', arti: 'Oktober' },
+                { kanji: '11月', kana: 'じゅういちがつ', romaji: 'Juuichigatsu', arti: 'November' },
+                { kanji: '12月', kana: 'じゅうにがつ', romaji: 'Juunigatsu', arti: 'Desember' },
+                { kanji: '何月', kana: 'なんがつ', romaji: 'Nangatsu', arti: 'Bulan apa?' },
+
+                // === PENANDA TANGGAL (〜日) ===
+                { kanji: '1日', kana: 'ついたち', romaji: 'Tsuitachi', arti: 'Tanggal 1' },
+                { kanji: '2日', kana: 'ふつか', romaji: 'Futsuka', arti: 'Tanggal 2' },
+                { kanji: '3日', kana: 'みっか', romaji: 'Mikka', arti: 'Tanggal 3' },
+                { kanji: '4日', kana: 'よっか', romaji: 'Yokka', arti: 'Tanggal 4' },
+                { kanji: '5日', kana: 'いつか', romaji: 'Itsuka', arti: 'Tanggal 5' },
+                { kanji: '6日', kana: 'むいか', romaji: 'Muika', arti: 'Tanggal 6' },
+                { kanji: '7日', kana: 'なのか', romaji: 'Nanoka', arti: 'Tanggal 7' },
+                { kanji: '8日', kana: 'ようか', romaji: 'Youka', arti: 'Tanggal 8' },
+                { kanji: '9日', kana: 'ここのか', romaji: 'Kokonoka', arti: 'Tanggal 9' },
+                { kanji: '10日', kana: 'とおか', romaji: 'Tooka', arti: 'Tanggal 10' },
+                { kanji: '14日', kana: 'じゅうよっか', romaji: 'Juuyokka', arti: 'Tanggal 14' },
+                { kanji: '20日', kana: 'はつか', romaji: 'Hatsuka', arti: 'Tanggal 20' },
+                { kanji: '24日', kana: 'にじゅうよっか', romaji: 'Nijuuyokka', arti: 'Tanggal 24' },
+                { kanji: '何日', kana: 'なんにち', romaji: 'Nannichi', arti: 'Tanggal berapa?' },
+
+                // === DURASI JAM (〜時間) ===
+                { kanji: '1時間', kana: 'いちじかん', romaji: 'Ichijikan', arti: 'Selama 1 Jam' },
+                { kanji: '2時間', kana: 'にじかん', romaji: 'Nijikan', arti: 'Selama 2 Jam' },
+                { kanji: '4時間', kana: 'よじかん', romaji: 'Yojikan', arti: 'Selama 4 Jam' },
+                { kanji: '7時間', kana: 'ななじかん / しちじかん', romaji: 'Nanajikan / Shichijikan', arti: 'Selama 7 Jam' },
+                { kanji: '9時間', kana: 'くじかん', romaji: 'Kujikan', arti: 'Selama 9 Jam' },
+                { kanji: '何時間', kana: 'なんじかん', romaji: 'Nanjikan', arti: 'Berapa jam?' },
+
+                // === DURASI HARI (〜日) ===
+                { kanji: '1日', kana: 'いちにち', romaji: 'Ichinichi', arti: 'Selama 1 Hari (Beda dengan tgl 1)' },
+
+                // === DURASI MINGGU (〜週間) ===
+                { kanji: '1週間', kana: 'いっしゅうかん', romaji: 'Isshuukan', arti: 'Selama 1 Minggu' },
+                { kanji: '2週間', kana: 'にしゅうかん', romaji: 'Nishuukan', arti: 'Selama 2 Minggu' },
+                { kanji: '3週間', kana: 'さんしゅうかん', romaji: 'Sanshuukan', arti: 'Selama 3 Minggu' },
+                { kanji: '4週間', kana: 'よんしゅうかん', romaji: 'Yonshuukan', arti: 'Selama 4 Minggu' },
+                { kanji: '8週間', kana: 'はっしゅうかん', romaji: 'Hasshuukan', arti: 'Selama 8 Minggu' },
+                { kanji: '10週間', kana: 'じゅっしゅうかん', romaji: 'Jusshuukan', arti: 'Selama 10 Minggu' },
+                { kanji: '何週間', kana: 'なんしゅうかん', romaji: 'Nanshuukan', arti: 'Berapa minggu?' },
+
+                // === DURASI BULAN (〜か月) ===
+                { kanji: '1か月', kana: 'いっかげつ', romaji: 'Ikkagetsu', arti: 'Selama 1 Bulan' },
+                { kanji: '2か月', kana: 'にかげつ', romaji: 'Nikagetsu', arti: 'Selama 2 Bulan' },
+                { kanji: '3か月', kana: 'さんかげつ', romaji: 'Sankagetsu', arti: 'Selama 3 Bulan' },
+                { kanji: '6か月', kana: 'ろっかげつ / はんとし', romaji: 'Rokkagetsu / Hantoshi', arti: 'Selama 6 Bulan / Setengah Tahun' },
+                { kanji: '8か月', kana: 'はっかげつ', romaji: 'Hakkagetsu', arti: 'Selama 8 Bulan' },
+                { kanji: '何か月', kana: 'なんかげつ', romaji: 'Nankagetsu', arti: 'Berapa bulan?' },
+
+                // === DURASI TAHUN (〜年) ===
+                { kanji: '1年', kana: 'いちねん', romaji: 'Ichinen', arti: 'Selama 1 Tahun' },
+                { kanji: '2年', kana: 'にねん', romaji: 'Ninen', arti: 'Selama 2 Tahun' },
+                { kanji: '4年', kana: 'よねん', romaji: 'Yonen', arti: 'Selama 4 Tahun' },
+                { kanji: '7年', kana: 'ななねん / しちねん', romaji: 'Nananen / Shichinen', arti: 'Selama 7 Tahun' },
+                { kanji: '9年', kana: 'きゅうねん', romaji: 'Kyuunen', arti: 'Selama 9 Tahun' },
+                { kanji: '何年', kana: 'なんねん', romaji: 'Nannen', arti: 'Berapa tahun?' }
+            ],
+            bunpou: [],
+            quizzes: []
+        },
+       104: {
+            title: "Bab 4: Kata Bantu Bilangan (Counters)",
+            description: "Daftar lengkap kata bantu bilangan untuk menghitung berbagai jenis benda, manusia, hewan, durasi, dan urutan dari 1 sampai 10.",
+            kotoba: [
+                {
+                    kategori: '1. Benda Umum (〜つ)',
+                    icon: '🍎',
+                    list: [
+                        { kanji: '一つ', kana: 'ひとつ', romaji: 'Hitotsu', arti: '1 Buah' },
+                        { kanji: '二つ', kana: 'ふたつ', romaji: 'Futatsu', arti: '2 Buah' },
+                        { kanji: '三つ', kana: 'みっつ', romaji: 'Mittsu', arti: '3 Buah' },
+                        { kanji: '四つ', kana: 'よっつ', romaji: 'Yottsu', arti: '4 Buah' },
+                        { kanji: '五つ', kana: 'いつつ', romaji: 'Itsutsu', arti: '5 Buah' },
+                        { kanji: '六つ', kana: 'むっつ', romaji: 'Muttsu', arti: '6 Buah' },
+                        { kanji: '七つ', kana: 'ななつ', romaji: 'Nanatsu', arti: '7 Buah' },
+                        { kanji: '八つ', kana: 'やっつ', romaji: 'Yattsu', arti: '8 Buah' },
+                        { kanji: '九つ', kana: 'ここのつ', romaji: 'Kokonotsu', arti: '9 Buah' },
+                        { kanji: '十', kana: 'とお', romaji: 'Too', arti: '10 Buah' },
+                        { kanji: '幾つ', kana: 'いくつ', romaji: 'Ikutsu', arti: 'Berapa buah?' }
+                    ]
+                },
+                {
+                    kategori: '2. Manusia / Orang (〜人)',
+                    icon: '🧑',
+                    list: [
+                        { kanji: '一人', kana: 'ひとり', romaji: 'Hitori', arti: '1 Orang' },
+                        { kanji: '二人', kana: 'ふたり', romaji: 'Futari', arti: '2 Orang' },
+                        { kanji: '三人', kana: 'さんにん', romaji: 'Sannin', arti: '3 Orang' },
+                        { kanji: '四人', kana: 'よにん', romaji: 'Yonin', arti: '4 Orang' },
+                        { kanji: '五人', kana: 'ごにん', romaji: 'Gonin', arti: '5 Orang' },
+                        { kanji: '六人', kana: 'ろくにん', romaji: 'Rokunin', arti: '6 Orang' },
+                        { kanji: '七人', kana: 'ななにん', romaji: 'Nananin', arti: '7 Orang' },
+                        { kanji: '八人', kana: 'はちにん', romaji: 'Hachinin', arti: '8 Orang' },
+                        { kanji: '九人', kana: 'きゅうにん', romaji: 'Kyuunin', arti: '9 Orang' },
+                        { kanji: '十人', kana: 'じゅうにん', romaji: 'Juunin', arti: '10 Orang' },
+                        { kanji: '何人', kana: 'なんにん', romaji: 'Nannin', arti: 'Berapa orang?' }
+                    ]
+                },
+                {
+                    kategori: '3. Urutan (〜番)',
+                    icon: '🥇',
+                    list: [
+                        { kanji: '一番', kana: 'いちばん', romaji: 'Ichiban', arti: 'Nomor 1' },
+                        { kanji: '二番', kana: 'にばん', romaji: 'Niban', arti: 'Nomor 2' },
+                        { kanji: '三番', kana: 'さんばん', romaji: 'Sanban', arti: 'Nomor 3' },
+                        { kanji: '四番', kana: 'よんばん', romaji: 'Yonban', arti: 'Nomor 4' },
+                        { kanji: '五番', kana: 'ごばん', romaji: 'Goban', arti: 'Nomor 5' },
+                        { kanji: '六番', kana: 'ろくばん', romaji: 'Rokuban', arti: 'Nomor 6' },
+                        { kanji: '七番', kana: 'ななばん', romaji: 'Nanaban', arti: 'Nomor 7' },
+                        { kanji: '八番', kana: 'はちばん', romaji: 'Hachiban', arti: 'Nomor 8' },
+                        { kanji: '九番', kana: 'きゅうばん', romaji: 'Kyuuban', arti: 'Nomor 9' },
+                        { kanji: '十番', kana: 'じゅうばん', romaji: 'Juuban', arti: 'Nomor 10' },
+                        { kanji: '何番', kana: 'なんばん', romaji: 'Nanban', arti: 'Nomor berapa?' }
+                    ]
+                },
+                {
+                    kategori: '4. Benda Tipis & Datar (〜枚)',
+                    icon: '📄',
+                    list: [
+                        { kanji: '一枚', kana: 'いちまい', romaji: 'Ichimai', arti: '1 Lembar' },
+                        { kanji: '二枚', kana: 'にまい', romaji: 'Nimai', arti: '2 Lembar' },
+                        { kanji: '三枚', kana: 'さんまい', romaji: 'Sanmai', arti: '3 Lembar' },
+                        { kanji: '四枚', kana: 'よんまい', romaji: 'Yonmai', arti: '4 Lembar' },
+                        { kanji: '五枚', kana: 'ごまい', romaji: 'Gomai', arti: '5 Lembar' },
+                        { kanji: '六枚', kana: 'ろくまい', romaji: 'Rokumai', arti: '6 Lembar' },
+                        { kanji: '七枚', kana: 'ななまい', romaji: 'Nanamai', arti: '7 Lembar' },
+                        { kanji: '八枚', kana: 'はちまい', romaji: 'Hachimai', arti: '8 Lembar' },
+                        { kanji: '九枚', kana: 'きゅうまい', romaji: 'Kyuumai', arti: '9 Lembar' },
+                        { kanji: '十枚', kana: 'じゅうまい', romaji: 'Juumai', arti: '10 Lembar' },
+                        { kanji: '何枚', kana: 'なんまい', romaji: 'Nanmai', arti: 'Berapa lembar?' }
+                    ]
+                },
+                {
+                    kategori: '5. Mesin & Kendaraan (〜台)',
+                    icon: '🚗',
+                    list: [
+                        { kanji: '一台', kana: 'いちだい', romaji: 'Ichidai', arti: '1 Unit' },
+                        { kanji: '二台', kana: 'にだい', romaji: 'Nidai', arti: '2 Unit' },
+                        { kanji: '三台', kana: 'さんだい', romaji: 'Sandai', arti: '3 Unit' },
+                        { kanji: '四台', kana: 'よんだい', romaji: 'Yondai', arti: '4 Unit' },
+                        { kanji: '五台', kana: 'ごだい', romaji: 'Godai', arti: '5 Unit' },
+                        { kanji: '六台', kana: 'ろくだい', romaji: 'Rokudai', arti: '6 Unit' },
+                        { kanji: '七台', kana: 'ななだい', romaji: 'Nanadai', arti: '7 Unit' },
+                        { kanji: '八台', kana: 'はちだい', romaji: 'Hachidai', arti: '8 Unit' },
+                        { kanji: '九台', kana: 'きゅうだい', romaji: 'Kyuudai', arti: '9 Unit' },
+                        { kanji: '十台', kana: 'じゅうだい', romaji: 'Juudai', arti: '10 Unit' },
+                        { kanji: '何台', kana: 'なんだい', romaji: 'Nandai', arti: 'Berapa unit?' }
+                    ]
+                },
+                {
+                    kategori: '6. Umur (〜歳)',
+                    icon: '🎂',
+                    list: [
+                        { kanji: '一歳', kana: 'いっさい', romaji: 'Issai', arti: 'Umur 1 tahun' },
+                        { kanji: '二歳', kana: 'にさい', romaji: 'Nisai', arti: 'Umur 2 tahun' },
+                        { kanji: '三歳', kana: 'さんさい', romaji: 'Sansai', arti: 'Umur 3 tahun' },
+                        { kanji: '四歳', kana: 'よんさい', romaji: 'Yonsai', arti: 'Umur 4 tahun' },
+                        { kanji: '五歳', kana: 'ごさい', romaji: 'Gosai', arti: 'Umur 5 tahun' },
+                        { kanji: '六歳', kana: 'ろくさい', romaji: 'Rokusai', arti: 'Umur 6 tahun' },
+                        { kanji: '七歳', kana: 'ななさい', romaji: 'Nanasai', arti: 'Umur 7 tahun' },
+                        { kanji: '八歳', kana: 'はっさい', romaji: 'Hassai', arti: 'Umur 8 tahun' },
+                        { kanji: '九歳', kana: 'きゅうさい', romaji: 'Kyuusai', arti: 'Umur 9 tahun' },
+                        { kanji: '十歳', kana: 'じゅっさい', romaji: 'Jussai', arti: 'Umur 10 tahun' },
+                        { kanji: '何歳', kana: 'なんさい', romaji: 'Nansai', arti: 'Umur berapa?' }
+                    ]
+                },
+                {
+                    kategori: '7. Buku & Catatan (〜冊)',
+                    icon: '📚',
+                    list: [
+                        { kanji: '一冊', kana: 'いっさつ', romaji: 'Issatsu', arti: '1 Jilid' },
+                        { kanji: '二冊', kana: 'にさつ', romaji: 'Nisatsu', arti: '2 Jilid' },
+                        { kanji: '三冊', kana: 'さんさつ', romaji: 'Sansatsu', arti: '3 Jilid' },
+                        { kanji: '四冊', kana: 'よんさつ', romaji: 'Yonsatsu', arti: '4 Jilid' },
+                        { kanji: '五冊', kana: 'ごさつ', romaji: 'Gosatsu', arti: '5 Jilid' },
+                        { kanji: '六冊', kana: 'ろくさつ', romaji: 'Rokusatsu', arti: '6 Jilid' },
+                        { kanji: '七冊', kana: 'ななさつ', romaji: 'Nanasatsu', arti: '7 Jilid' },
+                        { kanji: '八冊', kana: 'はっさつ', romaji: 'Hassatsu', arti: '8 Jilid' },
+                        { kanji: '九冊', kana: 'きゅうさつ', romaji: 'Kyuusatsu', arti: '9 Jilid' },
+                        { kanji: '十冊', kana: 'じゅっさつ', romaji: 'Jussatsu', arti: '10 Jilid' },
+                        { kanji: '何冊', kana: 'なんさつ', romaji: 'Nansatsu', arti: 'Berapa jilid?' }
+                    ]
+                },
+                {
+                    kategori: '8. Pakaian (〜着)',
+                    icon: '👕',
+                    list: [
+                        { kanji: '一着', kana: 'いっちゃく', romaji: 'Icchaku', arti: '1 Potong' },
+                        { kanji: '二着', kana: 'にちゃく', romaji: 'Nichaku', arti: '2 Potong' },
+                        { kanji: '三着', kana: 'さんちゃく', romaji: 'Sanchaku', arti: '3 Potong' },
+                        { kanji: '四着', kana: 'よんちゃく', romaji: 'Yonchaku', arti: '4 Potong' },
+                        { kanji: '五着', kana: 'ごちゃく', romaji: 'Gochaku', arti: '5 Potong' },
+                        { kanji: '六着', kana: 'ろくちゃく', romaji: 'Rokuchaku', arti: '6 Potong' },
+                        { kanji: '七着', kana: 'ななちゃく', romaji: 'Nanachaku', arti: '7 Potong' },
+                        { kanji: '八着', kana: 'はっちゃく', romaji: 'Hacchaku', arti: '8 Potong' },
+                        { kanji: '九着', kana: 'きゅうちゃく', romaji: 'Kyuuchaku', arti: '9 Potong' },
+                        { kanji: '十着', kana: 'じゅっちゃく', romaji: 'Jucchaku', arti: '10 Potong' },
+                        { kanji: '何着', kana: 'なんちゃく', romaji: 'Nanchaku', arti: 'Berapa potong?' }
+                    ]
+                },
+                {
+                    kategori: '9. Frekuensi Kali (〜回)',
+                    icon: '🔄',
+                    list: [
+                        { kanji: '一回', kana: 'いっかい', romaji: 'Ikkai', arti: '1 Kali' },
+                        { kanji: '二回', kana: 'にかい', romaji: 'Nikai', arti: '2 Kali' },
+                        { kanji: '三回', kana: 'さんかい', romaji: 'Sankai', arti: '3 Kali' },
+                        { kanji: '四回', kana: 'よんかい', romaji: 'Yonkai', arti: '4 Kali' },
+                        { kanji: '五回', kana: 'ごかい', romaji: 'Gokai', arti: '5 Kali' },
+                        { kanji: '六回', kana: 'ろっかい', romaji: 'Rokkai', arti: '6 Kali' },
+                        { kanji: '七回', kana: 'ななかい', romaji: 'Nanakai', arti: '7 Kali' },
+                        { kanji: '八回', kana: 'はっかい', romaji: 'Hakkai', arti: '8 Kali' },
+                        { kanji: '九回', kana: 'きゅうかい', romaji: 'Kyuukai', arti: '9 Kali' },
+                        { kanji: '十回', kana: 'じゅっかい', romaji: 'Jukkai', arti: '10 Kali' },
+                        { kanji: '何回', kana: 'なんかい', romaji: 'Nankai', arti: 'Berapa kali?' }
+                    ]
+                },
+                {
+                    kategori: '10. Benda Kecil (〜個)',
+                    icon: '🥚',
+                    list: [
+                        { kanji: '一個', kana: 'いっこ', romaji: 'Ikko', arti: '1 Buah' },
+                        { kanji: '二個', kana: 'にこ', romaji: 'Niko', arti: '2 Buah' },
+                        { kanji: '三個', kana: 'さんこ', romaji: 'Sanko', arti: '3 Buah' },
+                        { kanji: '四個', kana: 'よんこ', romaji: 'Yonko', arti: '4 Buah' },
+                        { kanji: '五個', kana: 'ごこ', romaji: 'Goko', arti: '5 Buah' },
+                        { kanji: '六個', kana: 'ろっこ', romaji: 'Rokko', arti: '6 Buah' },
+                        { kanji: '七個', kana: 'ななこ', romaji: 'Nanako', arti: '7 Buah' },
+                        { kanji: '八個', kana: 'はっこ', romaji: 'Hakko', arti: '8 Buah' },
+                        { kanji: '九個', kana: 'きゅうこ', romaji: 'Kyuuko', arti: '9 Buah' },
+                        { kanji: '十個', kana: 'じゅっこ', romaji: 'Jukko', arti: '10 Buah' },
+                        { kanji: '何個', kana: 'なんこ', romaji: 'Nanko', arti: 'Berapa buah?' }
+                    ]
+                },
+                {
+                    kategori: '11. Sepatu & Kaos Kaki (〜足)',
+                    icon: '🧦',
+                    list: [
+                        { kanji: '一足', kana: 'いっそく', romaji: 'Issoku', arti: '1 Pasang' },
+                        { kanji: '二足', kana: 'にそく', romaji: 'Nisoku', arti: '2 Pasang' },
+                        { kanji: '三足', kana: 'さんぞく', romaji: 'Sanzoku', arti: '3 Pasang' },
+                        { kanji: '四足', kana: 'よんそく', romaji: 'Yonsoku', arti: '4 Pasang' },
+                        { kanji: '五足', kana: 'ごそく', romaji: 'Gosoku', arti: '5 Pasang' },
+                        { kanji: '六足', kana: 'ろくそく', romaji: 'Rokusoku', arti: '6 Pasang' },
+                        { kanji: '七足', kana: 'ななそく', romaji: 'Nanasoku', arti: '7 Pasang' },
+                        { kanji: '八足', kana: 'はっそく', romaji: 'Hassoku', arti: '8 Pasang' },
+                        { kanji: '九足', kana: 'きゅうそく', romaji: 'Kyuusoku', arti: '9 Pasang' },
+                        { kanji: '十足', kana: 'じゅっそく', romaji: 'Jussoku', arti: '10 Pasang' },
+                        { kanji: '何足', kana: 'なんぞく', romaji: 'Nanzoku', arti: 'Berapa pasang?' }
+                    ]
+                },
+                {
+                    kategori: '12. Rumah (〜軒)',
+                    icon: '🏠',
+                    list: [
+                        { kanji: '一軒', kana: 'いっけん', romaji: 'Ikken', arti: '1 Bangunan' },
+                        { kanji: '二軒', kana: 'にけん', romaji: 'Niken', arti: '2 Bangunan' },
+                        { kanji: '三軒', kana: 'さんげん', romaji: 'Sangen', arti: '3 Bangunan' },
+                        { kanji: '四軒', kana: 'よんけん', romaji: 'Yonken', arti: '4 Bangunan' },
+                        { kanji: '五軒', kana: 'ごけん', romaji: 'Goken', arti: '5 Bangunan' },
+                        { kanji: '六軒', kana: 'ろっけん', romaji: 'Rokken', arti: '6 Bangunan' },
+                        { kanji: '七軒', kana: 'ななけん', romaji: 'Nanaken', arti: '7 Bangunan' },
+                        { kanji: '八軒', kana: 'はっけん', romaji: 'Hakken', arti: '8 Bangunan' },
+                        { kanji: '九軒', kana: 'きゅうけん', romaji: 'Kyuuken', arti: '9 Bangunan' },
+                        { kanji: '十軒', kana: 'じゅっけん', romaji: 'Jukken', arti: '10 Bangunan' },
+                        { kanji: '何軒', kana: 'なんげん', romaji: 'Nangen', arti: 'Berapa bangunan?' }
+                    ]
+                },
+                {
+                    kategori: '13. Lantai Bangunan (〜階)',
+                    icon: '🏢',
+                    list: [
+                        { kanji: '一階', kana: 'いっかい', romaji: 'Ikkai', arti: 'Lantai 1' },
+                        { kanji: '二階', kana: 'にかい', romaji: 'Nikai', arti: 'Lantai 2' },
+                        { kanji: '三階', kana: 'さんがい', romaji: 'Sangai', arti: 'Lantai 3' },
+                        { kanji: '四階', kana: 'よんかい', romaji: 'Yonkai', arti: 'Lantai 4' },
+                        { kanji: '五階', kana: 'ごかい', romaji: 'Gokai', arti: 'Lantai 5' },
+                        { kanji: '六階', kana: 'ろっかい', romaji: 'Rokkai', arti: 'Lantai 6' },
+                        { kanji: '七階', kana: 'ななかい', romaji: 'Nanakai', arti: 'Lantai 7' },
+                        { kanji: '八階', kana: 'はっかい', romaji: 'Hakkai', arti: 'Lantai 8' },
+                        { kanji: '九階', kana: 'きゅうかい', romaji: 'Kyuukai', arti: 'Lantai 9' },
+                        { kanji: '十階', kana: 'じゅっかい', romaji: 'Jukkai', arti: 'Lantai 10' },
+                        { kanji: '何階', kana: 'なんがい', romaji: 'Nangai', arti: 'Lantai berapa?' }
+                    ]
+                },
+                {
+                    kategori: '14. Benda Kurus & Panjang (〜本)',
+                    icon: '✏️',
+                    list: [
+                        { kanji: '一本', kana: 'いっぽん', romaji: 'Ippon', arti: '1 Batang' },
+                        { kanji: '二本', kana: 'にほん', romaji: 'Nihon', arti: '2 Batang' },
+                        { kanji: '三本', kana: 'さんぼん', romaji: 'Sanbon', arti: '3 Batang' },
+                        { kanji: '四本', kana: 'よんほん', romaji: 'Yonhon', arti: '4 Batang' },
+                        { kanji: '五本', kana: 'ごほん', romaji: 'Gohon', arti: '5 Batang' },
+                        { kanji: '六本', kana: 'ろっぽん', romaji: 'Roppon', arti: '6 Batang' },
+                        { kanji: '七本', kana: 'ななほん', romaji: 'Nanahon', arti: '7 Batang' },
+                        { kanji: '八本', kana: 'はっぽん', romaji: 'Happon', arti: '8 Batang' },
+                        { kanji: '九本', kana: 'きゅうほん', romaji: 'Kyuuhon', arti: '9 Batang' },
+                        { kanji: '十本', kana: 'じゅっぽん', romaji: 'Juppon', arti: '10 Batang' },
+                        { kanji: '何本', kana: 'なんぼん', romaji: 'Nanbon', arti: 'Berapa batang?' }
+                    ]
+                },
+                {
+                    kategori: '15. Minuman di Gelas (〜杯)',
+                    icon: '☕',
+                    list: [
+                        { kanji: '一杯', kana: 'いっぱい', romaji: 'Ippai', arti: '1 Gelas' },
+                        { kanji: '二杯', kana: 'にはい', romaji: 'Nihai', arti: '2 Gelas' },
+                        { kanji: '三杯', kana: 'さんばい', romaji: 'Sanbai', arti: '3 Gelas' },
+                        { kanji: '四杯', kana: 'よんはい', romaji: 'Yonhai', arti: '4 Gelas' },
+                        { kanji: '五杯', kana: 'ごはい', romaji: 'Gohai', arti: '5 Gelas' },
+                        { kanji: '六杯', kana: 'ろっぱい', romaji: 'Roppai', arti: '6 Gelas' },
+                        { kanji: '七杯', kana: 'ななはい', romaji: 'Nanahai', arti: '7 Gelas' },
+                        { kanji: '八杯', kana: 'はっぱい', romaji: 'Happai', arti: '8 Gelas' },
+                        { kanji: '九杯', kana: 'きゅうはい', romaji: 'Kyuuhai', arti: '9 Gelas' },
+                        { kanji: '十杯', kana: 'じゅっぱい', romaji: 'Juppai', arti: '10 Gelas' },
+                        { kanji: '何杯', kana: 'なんばい', romaji: 'Nanbai', arti: 'Berapa gelas?' }
+                    ]
+                },
+                {
+                    kategori: '16. Binatang Kecil & Ikan (〜匹)',
+                    icon: '🐈',
+                    list: [
+                        { kanji: '一匹', kana: 'いっぴき', romaji: 'Ippiki', arti: '1 Ekor' },
+                        { kanji: '二匹', kana: 'にひき', romaji: 'Nihiki', arti: '2 Ekor' },
+                        { kanji: '三匹', kana: 'さんびき', romaji: 'Sanbiki', arti: '3 Ekor' },
+                        { kanji: '四匹', kana: 'よんひき', romaji: 'Yonhiki', arti: '4 Ekor' },
+                        { kanji: '五匹', kana: 'ごひき', romaji: 'Gohiki', arti: '5 Ekor' },
+                        { kanji: '六匹', kana: 'ろっぴき', romaji: 'Roppiki', arti: '6 Ekor' },
+                        { kanji: '七匹', kana: 'ななひき', romaji: 'Nanahiki', arti: '7 Ekor' },
+                        { kanji: '八匹', kana: 'はっぴき', romaji: 'Happiki', arti: '8 Ekor' },
+                        { kanji: '九匹', kana: 'きゅうひき', romaji: 'Kyuuhiki', arti: '9 Ekor' },
+                        { kanji: '十匹', kana: 'じゅっぴき', romaji: 'Juppiki', arti: '10 Ekor' },
+                        { kanji: '何匹', kana: 'なんびき', romaji: 'Nanbiki', arti: 'Berapa ekor?' }
+                    ]
+                }
+            ],
+            bunpou: [],
+            quizzes: []
+        },
+        105: {
+            title: "Bab 5: Konjugasi Kelompok 2 (Ichidan Doushi)",
+            description: "Perubahan dasar kata kerja golongan kedua.",
+            kotoba: [],
+            bunpou: [],
+            quizzes: []
+        },
+        106: {
+            title: "Bab 6: Konjugasi Kelompok 3 (Fukisoku Doushi)",
+            description: "Perubahan kata kerja tidak beraturan (Suru & Kuru).",
+            kotoba: [],
+            bunpou: [],
+            quizzes: []
+        },
+        107: {
+            title: "Bab 7: Tabel Perubahan Bentuk (Te, Ta, Nai, Jisho)",
+            description: "Rangkuman menyeluruh konjugasi kata kerja.",
+            kotoba: [],
+            bunpou: [],
+            quizzes: []
+        }
+    },
+
     // ================= LEVEL N4 (26 - 50) =================
     N4: {
         26: {
